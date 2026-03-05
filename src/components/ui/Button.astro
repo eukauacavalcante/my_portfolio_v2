@@ -1,0 +1,7 @@
+---
+const { link, class: className, buttonTitle } = Astro.props;
+---
+
+<a href={link} class={`${className} cursor-pointer rounded-full`}>
+    <span class="font-semibold">{buttonTitle}</span>
+</a>

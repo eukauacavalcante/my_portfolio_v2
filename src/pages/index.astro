@@ -1,18 +1,107 @@
 ---
-
+import Layout from "../layouts/layout.astro";
+import Button from "../components/ui/Button.astro";
 ---
 
-<html lang="pt-br">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Blog</title>
-	</head>
-	<body>
-		<h1>Blog</h1>
-		<p>Bem-vindo! Aqui você encontrará minhas postagens sobre o mundo da tecnologia.</p>
-	</body>
-</html>
+<Layout pageTitle="Kauã Cavalcante">
+	<main class="max-w-7xl mx-auto flex flex-col items-center">
+		<section id="hero" class="min-h-dvh flex justify-center items-center border-b border-border w-full">
+			<div class="flex flex-col gap-8 justify-center items-center max-w-3xl text-center">
+				<span class="text-sm font-semibold text-muted-foreground bg-chart-1/10 py-2 px-4 border border-chart-1/50 rounded-full">
+					Portfólio Pessoal
+				</span>
+				<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+					Kauã Cavalcante
+				</h1>
+				<p class="text-base sm:text-lg text-muted-foreground max-w-2xl">
+					Desenvolvedor Full Stack especializado em criar soluções escaláveis, seguras e modernas com foco em APIs robustas e experiência no desenvolvimento de sistemas end-to-end.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4">
+					<Button
+						class="bg-foreground py-3 px-6 text-primary-foreground hover:bg-foreground/80 transition-colors"
+						buttonTitle="Ver Projetos"
+					/>
+					<Button
+						class="bg-background py-3 px-6 text-primary border border-border hover:border-accent-foreground/50 transition-colors"
+						buttonTitle="Fale Comigo"
+					/>
+				</div>
+				<div class="flex gap-4">
+					<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
+					<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
+					<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
+				</div>
+			</div>
+		</section>
+		<section id="sobre-mim" class="min-h-dvh flex flex-col lg:flex-row justify-center items-center border-b border-border w-full">
+			<div class="w-full lg:w-1/2 p-8 flex flex-col gap-4">
+				<div class="flex items-center gap-2 px-4 py-2 bg-chart-1/10 border border-chart-1/50 w-fit rounded-full">
+					<span class="w-2 h-2 bg-chart-1 rounded-full"></span>
+					<span class="text-xs text-muted-foreground font-mono uppercase">Sobre mim</span>
+				</div>
+				<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+					Olá, sou<br>Kauã Cavalcante
+				</h1>
+				<h2 class="text-chart-1 text-2xl sm:text-3xl font-semibold">Desenvolvedor Full Stack</h2>
+				<p class="text-xl text-muted-foreground">
+					Programação de Arduino e robôs foi onde iniciei minha trajetória no desenvolvimento, ainda no Ensino Médio. Hoje, sou acadêmico de Análise e Desenvolvimento de Sistemas e planejo sistemas full stack desde a concepção (modelagem, protótipos, arquiteturas, etc.) até a fase final. Então, não faço apenas websites, eu desenvolvo aplicações responsivas com performance e UX avançada. Tudo é intencional: deve parecer certo, leve e comunicar a marca de maneira clara.
+				</p>
+				<p class="text-base text-muted-foreground font-mono">
+					// Se você quer um site que converte resultados e não desmorona no segundo em que você precisa de atualizações, essa é minha praia.
+				</p>
+				<div class="flex flex-row gap-4 mt-4">
+					<Button
+						class="bg-foreground py-3 px-6 text-primary-foreground hover:bg-foreground/80 transition-colors"
+						buttonTitle="Ver meu trabalho"
+					/>
+					<Button
+						class="bg-background py-3 px-6 text-primary border border-border hover:border-accent-foreground/50 transition-colors"
+						buttonTitle="Fale Comigo"
+					/>
+				</div>
+			</div>
+			<div class="w-full lg:w-1/2 p-8 bg-background/10 backdrop-blur-2xl shadow-2xl shadow-chart-1/50 rounded-2xl">
+				<img
+					src="landing/kauacavalcante.jpeg"
+					class="rounded-2xl w-150"
+				/>
+			</div>
+		</section>
+		<section id="#sobre-mim" class="min-h-dvh flex flex-col gap-4 justify-center items-center border-b border-border w-full">
+			<div class="flex items-center gap-2 px-4 py-2 bg-chart-1/10 border border-chart-1/50 w-fit rounded-full">
+				<span class="w-2 h-2 bg-chart-1 rounded-full"></span>
+				<span class="text-xs text-muted-foreground font-mono uppercase">O que faço?</span>
+			</div>
+			<h1 class="text-3xl sm:text-4xl lg:text-5xl text-center font-extrabold">
+				Meus<br>Serviços
+			</h1>
+			<span class="text-muted-foreground font-mono">Soluções especializadas elaboradas com precisão e inovação.</span>
+			<div class="flex flex-row gap-8 mt-10">
+				<div class="bg-card/20 border border-chart-1/30 w-100 h-100 p-4 flex flex-col gap-4 justify-center items-center cursor-default rounded-2xl">
+					<span class="w-20 h-20 bg-chart-1 rounded-2xl"></span>
+					<span class="text-2xl font-semibold">Desenvolvedor Frontend</span>
+					<p class="text-muted-foreground text-center font-mono">
+						Eu construo interfaces front-end rápidas e escaláveis usando React e Next.js, com performance, acessibilidade e UX integradas desde o início. Arquitetura limpa, código de fácil manutenção e interfaces que parecem intencionais.
+					</p>
+					<span class="w-30 h-0.5 bg-chart-1"></span>
+				</div>
+				<div class="bg-card/20 border border-chart-1/30 w-100 h-100 p-4 flex flex-col gap-4 justify-center items-center cursor-default rounded-2xl">
+					<span class="w-20 h-20 bg-chart-1 rounded-2xl"></span>
+					<span class="text-2xl font-semibold">Desenvolvedor Backend</span>
+					<p class="text-muted-foreground text-center font-mono">
+						Eu desenvolvo e dou suporte à lógica de backend, APIs e fluxo de dados para aplicações web modernas. De sistemas de autenticação e CRUD a integrações com serviços de terceiros, foco no que é necessário — sem overengineering.
+					</p>
+					<span class="w-30 h-0.5 bg-chart-1"></span>
+				</div>
+				<div class="bg-card/20 border border-chart-1/30 w-100 h-100 p-4 flex flex-col gap-4 justify-center items-center cursor-default rounded-2xl">
+					<span class="w-20 h-20 bg-chart-1 rounded-2xl"></span>
+					<span class="text-2xl font-semibold">Desenvolvedor Backend</span>
+					<p class="text-muted-foreground text-center font-mono">
+						Eu desenvolvo e dou suporte à lógica de backend, APIs e fluxo de dados para aplicações web modernas. De sistemas de autenticação e CRUD a integrações com serviços de terceiros, foco no que é necessário — sem overengineering.
+					</p>
+					<span class="w-30 h-0.5 bg-chart-1"></span>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
