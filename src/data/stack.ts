@@ -17,7 +17,7 @@ const stack = {
         { name: "Spring Boot", icon: "/icons/django.svg" },
         { name: "MySQL", icon: "/icons/flask.svg" },
         { name: "PostgreSQL", icon: "/icons/flask.svg" },
-    ]
+    ],
 };
 
 export default stack;
