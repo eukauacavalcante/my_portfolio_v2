@@ -2,18 +2,18 @@
 import Button from "../ui/Button.astro";
 ---
 
-<section id="hero" class="min-h-dvh flex justify-center items-center border-b border-border w-full">
-	<div class="flex flex-col gap-8 justify-center items-center max-w-3xl text-center">
-		<span class="text-sm font-semibold text-muted-foreground bg-chart-1/10 py-2 px-4 border border-chart-1/50 rounded-full">
+<section id="hero" class="min-h-svh flex justify-center items-center border-b border-border w-full py-8 sm:py-12 md:py-16 lg:py-20">
+	<div class="flex flex-col gap-6 sm:gap-8 md:gap-10 justify-center items-center max-w-3xl text-center px-4 sm:px-6">
+		<span class="text-xs sm:text-sm font-semibold text-muted-foreground bg-chart-1/10 py-2 px-3 sm:px-4 border border-chart-1/50 rounded-full">
 			Portfólio Pessoal
 		</span>
-		<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+		<h1 class="text-3xl sm:text-4xl lg:text-7xl font-extrabold">
 			Kauã Cavalcante
 		</h1>
-		<p class="text-base sm:text-lg text-muted-foreground max-w-2xl">
+		<p class="text-base sm:text-lg md:text-2xl text-muted-foreground max-w-2xl">
 			Desenvolvedor Full Stack especializado em criar soluções escaláveis, seguras e modernas com foco em APIs robustas e experiência no desenvolvimento de sistemas end-to-end.
 		</p>
-		<div class="flex flex-col sm:flex-row gap-4">
+		<div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
 			<Button href="#projetos" variant="default" size="md">
 				Ver Projetos
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110">
@@ -27,10 +27,10 @@ import Button from "../ui/Button.astro";
 				Fale Comigo
 			</Button>
 		</div>
-		<div class="flex gap-4">
-			<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
-			<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
-			<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
+		<div class="flex gap-3 sm:gap-4">
+			<span class="w-7 h-7 sm:w-8 sm:h-8 bg-chart-1 rounded-full"></span>
+			<span class="w-7 h-7 sm:w-8 sm:h-8 bg-chart-1 rounded-full"></span>
+			<span class="w-7 h-7 sm:w-8 sm:h-8 bg-chart-1 rounded-full"></span>
 		</div>
 	</div>
 </section>

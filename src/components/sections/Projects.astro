@@ -4,20 +4,22 @@ import Button from "../ui/Button.astro";
 import Project from "../../data/project.ts";
 ---
 
-<section id="projetos" class="min-h-dvh flex flex-col gap-4 justify-center items-center w-full px-4 pt-24 lg:pt-32 scroll-mt-20">
+<section id="projetos" class="min-h-svh flex flex-col gap-4 justify-center items-center w-full px-4 pt-24 lg:pt-32 scroll-mt-20">
 	<div class="flex flex-col gap-8 justify-center items-center max-w-3xl text-center mb-4 lg:mb-8">
-		<div class="flex items-center gap-2 px-4 py-2 w-fit rounded-full bg-linear-to-r from-chart-1/10 to-chart-2/10 border border-chart-1/10 backdrop-blur">
-            <span class="w-2 h-2 bg-chart-1 rounded-full animate-pulse"></span>
-            <span class="text-xs text-muted-foreground font-mono uppercase tracking-widest">
-                Projetos
-            </span>
-        </div>
-		<h1 class="text-3xl sm:text-4xl lg:text-5xl text-center font-extrabold">
-			Projetos de<br>Destaque
-		</h1>
+		<div class="flex flex-col gap-2 sm:gap-4 justify-center items-center">
+			<div class="flex items-center gap-2 px-4 py-2 w-fit rounded-full bg-linear-to-r from-chart-1/10 to-chart-2/10 border border-chart-1/10 backdrop-blur">
+				<span class="w-2 h-2 bg-chart-1 rounded-full animate-pulse"></span>
+				<span class="text-[10px] sm:text-xs text-muted-foreground font-mono uppercase tracking-widest">
+					projetos
+				</span>
+			</div>
+			<h1 class="text-3xl sm:text-4xl lg:text-5xl text-center font-extrabold">
+				Projetos de<br>Destaque
+			</h1>
+		</div>
 		<span class="text-muted-foreground font-mono">// Projetos onde coloquei a mão na massa e desenvolvi aplicações modernas, adequadas para o mercado de tecnologia</span>
 	</div>
-    <div class="w-full max-w-7xl flex flex-col gap-6 md:gap-8 lg:gap-12 justify-center items-start px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-7xl flex flex-col gap-6 md:gap-8 lg:gap-12 justify-center items-start sm:px-6 lg:px-8">
         { Project.map((project, index) => (
             <Card size="full" hover={true} class="group flex flex-col gap-4 justify-center items-center w-full">
                 <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10">
@@ -53,7 +55,7 @@ import Project from "../../data/project.ts";
                                     href={project.slug}
                                     variant="outline"
                                     size="sm"
-                                    class="px-4 sm:px-6 py-3 sm:py-4 border border-border text-primary rounded-lg uppercase transition-all duration-300 group/btn hover:scale-[1.02] hover:border-chart-1/60 hover:text-chart-1 hover:shadow-lg hover:shadow-chart-1/20"
+                                    class="px-4 sm:px-6 py-3 sm:py-4 border border-border text-primary uppercase transition-all duration-300 group/btn hover:scale-[1.02] hover:border-chart-1/60 hover:text-chart-1 hover:shadow-lg hover:shadow-chart-1/20"
                                     >
                                         Ver mais
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110">
