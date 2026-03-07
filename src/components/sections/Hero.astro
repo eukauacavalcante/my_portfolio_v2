@@ -1,0 +1,36 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section id="hero" class="min-h-dvh flex justify-center items-center border-b border-border w-full">
+	<div class="flex flex-col gap-8 justify-center items-center max-w-3xl text-center">
+		<span class="text-sm font-semibold text-muted-foreground bg-chart-1/10 py-2 px-4 border border-chart-1/50 rounded-full">
+			Portfólio Pessoal
+		</span>
+		<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+			Kauã Cavalcante
+		</h1>
+		<p class="text-base sm:text-lg text-muted-foreground max-w-2xl">
+			Desenvolvedor Full Stack especializado em criar soluções escaláveis, seguras e modernas com foco em APIs robustas e experiência no desenvolvimento de sistemas end-to-end.
+		</p>
+		<div class="flex flex-col sm:flex-row gap-4">
+			<Button href="#projetos" variant="default" size="md">
+				Ver Projetos
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110">
+                    <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+                </svg>
+			</Button>
+			<Button href="#contato" variant="outline" size="md">
+				<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+				</svg>
+				Fale Comigo
+			</Button>
+		</div>
+		<div class="flex gap-4">
+			<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
+			<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
+			<span class="w-8 h-8 bg-chart-1 rounded-full"></span>
+		</div>
+	</div>
+</section>

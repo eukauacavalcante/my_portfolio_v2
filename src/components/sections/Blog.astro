@@ -1,0 +1,40 @@
+---
+import Button from "../ui/Button.astro";
+import Card from "../ui/Card.astro";
+---
+
+<section>
+    <Card size="full" hover={true} class="flex flex-col sm:flex-row gap-6 items-center justify-between mt-10 overflow-hidden cursor-default group">
+        <div class="w-full sm:w-2/3 flex flex-col gap-4 justify-center items-start z-10">
+            <div class="flex gap-2 px-3 py-1 bg-chart-1/10 border border-chart-1/30 w-fit rounded-full items-center">
+                <span class="w-1.5 h-1.5 bg-chart-1 rounded-full animate-pulse"></span>
+                <span class="text-xs text-muted-foreground font-mono uppercase tracking-widest">Novo</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
+                Conheça o meu<br />
+                Blog Pessoal<span class="text-chart-1">!</span>
+            </h2>
+            <p class="text-sm text-muted-foreground leading-relaxed">
+                Veja minhas postagens semanalmente sobre minha rotina de estudos e o mundo da tecnologia em geral.
+            </p>
+            <div class="flex flex-row flex-wrap gap-3 mt-1">
+                <Button variant="default" size="sm" class="group/btn py-3 border-0 uppercase rounded-sm transition-all duration-300 hover:scale-[1.02]">
+                    Visitar Blog
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110">
+                    <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+                    </svg>
+                </Button>
+                <Button variant="outline" size="sm" class="uppercase rounded-sm py-3 hover:border-chart-1/50 hover:text-chart-1 hover:bg-chart-1/5 transition-all duration-300">
+                    Entrar em Contato
+                </Button>
+            </div>
+        </div>
+        <div class="hidden sm:flex w-1/3 justify-center items-center z-10">
+            <div class="w-28 h-28 lg:w-36 lg:h-36 rounded-2xl bg-chart-1/10 border border-chart-1/20 flex items-center justify-center group-hover:scale-105 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 256 256" class="text-chart-1 opacity-70">
+                    <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H216V96H40ZM40,200V112H216v88Z"></path>
+                </svg>
+            </div>
+        </div>
+    </Card>
+</section>

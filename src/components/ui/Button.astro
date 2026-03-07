@@ -1,7 +1,36 @@
 ---
-const { link, class: className, buttonTitle } = Astro.props;
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+    href?: string;
+    variant?: "default" | "outline";
+    size?: "sm" | "md" | "lg";
+    class?: string;
+}
+
+const { 
+    href = "#", 
+    variant = "default", 
+    size = "md",
+    class: className = "" 
+} = Astro.props;
+
+const baseStyles = "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
+
+const variantStyles = {
+    default: "bg-foreground text-primary-foreground rounded-full hover:bg-foreground/80 active:scale-95",
+    outline: "bg-transparent border-2 border-border text-foreground rounded-full hover:text-accent-foreground hover:border-accent-foreground/50",
+};
+
+const sizeStyles = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg"
+};
+
+const buttonClasses = twMerge(baseStyles, variantStyles[variant], sizeStyles[size], className);
 ---
 
-<a href={link} class={`${className} cursor-pointer rounded-full`}>
-    <span class="font-semibold">{buttonTitle}</span>
+<a href={href} class={buttonClasses}>
+    <slot />
 </a>

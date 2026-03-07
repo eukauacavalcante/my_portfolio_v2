@@ -1,0 +1,44 @@
+---
+import Card from "../ui/Card.astro";
+---
+
+<section id="servicos" class="min-h-dvh flex flex-col gap-4 justify-center items-center w-full">
+    <div class="flex flex-col gap-8 justify-center items-center max-w-3xl text-center">
+		<div class="flex items-center gap-2 px-4 py-2 w-fit rounded-full bg-linear-to-r from-chart-1/10 to-chart-2/10 border border-chart-1/10 backdrop-blur">
+            <span class="w-2 h-2 bg-chart-1 rounded-full animate-pulse"></span>
+            <span class="text-xs text-muted-foreground font-mono uppercase tracking-widest">
+                O que faço
+            </span>
+        </div>
+		<h1 class="text-3xl sm:text-4xl lg:text-5xl text-center font-extrabold">
+			Meus<br>Serviços
+		</h1>
+		<span class="text-muted-foreground font-mono">// Soluções especializadas elaboradas com precisão e inovação.</span>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-10 px-4">
+		<Card size="full" hover={true} class="flex flex-col gap-4 justify-center items-center">
+			<span class="w-20 h-20 bg-chart-1 rounded-2xl"></span>
+			<span class="text-2xl font-semibold text-center">Desenvolvedor Frontend</span>
+			<p class="text-muted-foreground text-center leading-relaxed text-sm">
+				Eu construo interfaces front-end rápidas e escaláveis usando React e Next.js, com performance, acessibilidade e UX integradas desde o início. Arquitetura limpa, código de fácil manutenção e interfaces que parecem intencionais.
+			</p>
+			<span class="w-30 h-0.5 bg-chart-1"></span>
+		</Card>
+		<Card size="full" hover={true} class="flex flex-col gap-4 justify-center items-center">
+			<span class="w-20 h-20 bg-chart-1 rounded-2xl"></span>
+			<span class="text-2xl font-semibold text-center">Desenvolvedor Backend</span>
+			<p class="text-muted-foreground text-center leading-relaxed text-sm">
+				Eu desenvolvo e dou suporte à lógica de backend, APIs e fluxo de dados para aplicações web modernas. De sistemas de autenticação e CRUD a integrações com serviços de terceiros, foco no que é necessário — sem overengineering.
+			</p>
+			<span class="w-30 h-0.5 bg-chart-1"></span>
+		</Card>
+		<Card size="full" hover={true} class="flex flex-col gap-4 justify-center items-center">
+			<span class="w-20 h-20 bg-chart-1 rounded-2xl"></span>
+			<span class="text-2xl font-semibold text-center">Desenvolvedor Full Stack</span>
+			<p class="text-muted-foreground text-center leading-relaxed text-sm">
+				Combino experiência em frontend e backend para criar soluções completas. Da concepção ao deploy, gerencio todo o ciclo de desenvolvimento com foco em escalabilidade e manutenibilidade.
+			</p>
+			<span class="w-30 h-0.5 bg-chart-1"></span>
+		</Card>
+	</div>
+</section>
