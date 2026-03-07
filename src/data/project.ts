@@ -13,10 +13,10 @@ const projects = [
         image: "",
         title: "Morpheus Env",
         phrase: "Projeto acadêmico para monitoramento de desempenho em tempo e funções de conversão binária",
-        resume: "O Morpheu Env é um projeto acadêmico focado no monitoramento de desempenho em tempo real e na implementação de funções de conversão binária, visando otimizar processos e melhorar a eficiência em ambientes computacionais.",
+        resume: "O Morpheus Env é um projeto acadêmico focado no monitoramento de desempenho em tempo real e na implementação de funções de conversão binária, visando otimizar processos e melhorar a eficiência em ambientes computacionais.",
         description: "",
         tags: ["Django", "Projeto Acadêmico"],
-        slug: "blog-pessoal",
+        slug: "morpheus-env",
         date: "2025",
     },
 ];

@@ -1,23 +1,23 @@
 const stack = {
-    frontend: [
-        { name: "HTML5", icon: "/icons/react.svg" },
-        { name: "CSS3", icon: "/icons/vue.svg" },
-        { name: "JavaScript", icon: "/icons/svelte.svg" },
-        { name: "TypeScript", icon: "/icons/astro.svg" },
-        { name: "React", icon: "/icons/tailwind.svg" },
-        { name: "Tailwind", icon: "/icons/tailwind.svg" },
-        { name: "Next.js", icon: "/icons/tailwind.svg" },
-        { name: "Astro", icon: "/icons/tailwind.svg" },
-        { name: "Shadcn UI", icon: "/icons/tailwind.svg" },
-    ],
-    backend: [
-        { name: "Python", icon: "/icons/nodejs.svg" },
-        { name: "Django", icon: "/icons/nodejs.svg" },
-        { name: "Java", icon: "/icons/express.svg" },
-        { name: "Spring Boot", icon: "/icons/django.svg" },
-        { name: "MySQL", icon: "/icons/flask.svg" },
-        { name: "PostgreSQL", icon: "/icons/flask.svg" },
-    ],
+  frontend: [
+    { name: "HTML5", icon: "vscode-icons:file-type-html" },
+    { name: "CSS3", icon: "vscode-icons:file-type-css2" },
+    { name: "JavaScript", icon: "logos:javascript" },
+    { name: "TypeScript", icon: "devicon:typescript" },
+    { name: "React", icon: "logos:react" },
+    { name: "Tailwind", icon: "logos:tailwindcss-icon" },
+    { name: "Next.js", icon: "simple-icons:nextdotjs" },
+    { name: "Astro", icon: "skill-icons:astro" },
+    { name: "Shadcn UI", icon: "simple-icons:shadcnui" },
+  ],
+  backend: [
+    { name: "Python", icon: "logos:python" },
+    { name: "Django", icon: "logos:django-icon" },
+    { name: "Java", icon: "logos:java" },
+    { name: "Spring Boot", icon: "simple-icons:springboot" },
+    { name: "MySQL", icon: "logos:mysql-icon" },
+    { name: "PostgreSQL", icon: "logos:postgresql" },
+  ],
 };
 
 export default stack;
