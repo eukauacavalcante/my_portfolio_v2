@@ -15,6 +15,7 @@ const stack = {
     { name: "Django", icon: "logos:django-icon" },
     { name: "Java", icon: "logos:java" },
     { name: "Spring Boot", icon: "simple-icons:springboot" },
+    { name: "Postman", icon: "logos:postman-icon" },
     { name: "MySQL", icon: "logos:mysql-icon" },
     { name: "PostgreSQL", icon: "logos:postgresql" },
   ],

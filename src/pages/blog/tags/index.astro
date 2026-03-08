@@ -1,0 +1,67 @@
+---
+import Layout from '@/layouts/layout.astro';
+import Card from '@/components/ui/Card.astro';
+import Icon from 'astro-iconify';
+
+const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true })) as any[];
+
+const tagMap: Record<string, { count: number; latest: Date }> = {};
+
+allPosts.forEach((post: any) => {
+    const tags: string[] = post.frontmatter.tags ?? [];
+    tags.forEach((tag) => {
+        const postDate = new Date(post.frontmatter.pubDate);
+        if (!tagMap[tag]) {
+            tagMap[tag] = { count: 0, latest: postDate };
+        }
+        tagMap[tag].count += 1;
+        if (postDate > tagMap[tag].latest) {
+            tagMap[tag].latest = postDate;
+        }
+    });
+});
+
+const tags = Object.entries(tagMap).sort((a, b) => b[1].count - a[1].count);
+
+const pageTitle = "Tags";
+---
+
+<Layout title={pageTitle}>
+    <section class="min-h-svh w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+
+        <div class="flex flex-col gap-3 mb-12 sm:mb-16">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="h-px w-8 bg-muted-foreground/40 inline-block"></span>
+                <span class="text-xs font-mono text-muted-foreground tracking-widest uppercase">explorar por tema</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Tags</h1>
+            <p class="text-sm sm:text-base md:text-lg text-muted-foreground font-mono">
+                // {tags.length} {tags.length === 1 ? 'tema encontrado' : 'temas encontrados'} nos posts
+            </p>
+        </div>
+
+        {tags.length > 0 ? (
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {tags.map(([tag, { count }]) => (
+                    <a href={`/blog/tags/${tag}`} class="group">
+                        <Card size="full" hover class="p-5 h-full">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="text-base sm:text-lg font-bold group-hover:text-foreground/80 transition-colors">
+                                    #{tag}
+                                </span>
+                                <span class="text-xs font-mono text-muted-foreground bg-muted px-2 py-0.5 rounded-full shrink-0">
+                                    {count} {count === 1 ? 'post' : 'posts'}
+                                </span>
+                            </div>
+                        </Card>
+                    </a>
+                ))}
+            </div>
+        ) : (
+            <Card size="full" class="py-16 flex flex-col items-center justify-center gap-3 text-center">
+                <Icon name="lucide:tag" class="w-8 h-8 text-muted-foreground" />
+                <p class="text-muted-foreground font-mono text-sm">// Nenhuma tag encontrada ainda.</p>
+            </Card>
+        )}
+    </section>
+</Layout>

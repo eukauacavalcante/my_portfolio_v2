@@ -1,13 +1,16 @@
 ---
-title: 'Lançamento do meu blog pessoal'
-pubDate: 04-03-2026
+layout: ../layouts/PostLayout.astro
+title: 'Teste'
+pubDate: 01/03/2026
 description: 'Anúncio do lançamento do meu blog pessoal'
 author: 'Kauã Cavalcante'
+readingTime: 3
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'
 tags: ["portfólio", "blogging", "astro"]
 ---
+
 # Lançamento do meu blog pessoal
 
 Published on: 2022-07-01

@@ -1,5 +1,5 @@
 "use client";
-import { HoverEffect } from "./card-hover-effect";
+import { HoverEffect } from "./CardHoverEffect";
 
 const services = [
   {

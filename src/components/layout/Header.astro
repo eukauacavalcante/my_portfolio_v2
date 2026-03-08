@@ -1,8 +1,9 @@
 ---
 import Button from "../ui/Button.astro";
+import { Icon } from "astro-iconify";
 ---
 
-<header class="sticky top-2 sm:top-4 z-50 w-full max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 items-center px-3 sm:px-4 md:px-6 py-2.5 sm:py-3.5 bg-background/50 backdrop-blur-2xl border border-border rounded-full">
+<header class="sticky top-2 sm:top-4 z-50 w-full max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 items-center px-3 sm:px-4 md:px-6 py-2.5 sm:py-3.5 bg-background/50 backdrop-blur-2xl border border-border rounded-full">
     <div class="flex items-center gap-3 sm:gap-6 justify-start">
         <a href="/" class="text-base sm:text-lg md:text-xl font-extrabold">
             KC<span class="text-chart-1">.</span>
@@ -13,18 +14,19 @@ import Button from "../ui/Button.astro";
             <span class="text-sm font-semibold uppercase cursor-pointer">EN</span>
         </div>
     </div>
-    <nav class="hidden lg:flex justify-center">
-        <ul class="flex items-center gap-4 lg:gap-6 text-xs lg:text-sm text-muted-foreground">
-            <li><a href="#sobre-mim" class="hover:text-accent-foreground transition-colors">Sobre</a></li>
-            <li><a href="#servicos" class="hover:text-accent-foreground transition-colors">Serviços</a></li>
-            <li><a href="#projetos" class="hover:text-accent-foreground transition-colors">Projetos</a></li>
+    <nav class="hidden md:flex justify-center">
+        <ul class="flex items-center gap-4 lg:gap-6 text-xs lg:text-sm text-muted-foreground font-mono">
+            <li><a href="/#sobre-mim" class="hover:text-accent-foreground transition-colors">Sobre</a></li>
+            <li><a href="/#servicos" class="hover:text-accent-foreground transition-colors">Serviços</a></li>
+            <li><a href="/#projetos" class="hover:text-accent-foreground transition-colors">Projetos</a></li>
             <li><a href="/blog" class="hover:text-accent-foreground transition-colors">Blog</a></li>
-            <li><a href="#contato" class="hover:text-accent-foreground transition-colors">Contato</a></li>
+            <li><a href="/#contato" class="hover:text-accent-foreground transition-colors">Contato</a></li>
         </ul>
     </nav>
-    <div class="hidden sm:flex justify-end">
+    <div class="hidden md:flex justify-end">
         <Button variant="default" size="sm">
             Conecte-se
+            <Icon name="mdi:linkedin" width="28" height="26" />
         </Button>
     </div>
 </header>

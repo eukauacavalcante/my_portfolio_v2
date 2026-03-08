@@ -17,7 +17,9 @@ import Project from "../../data/project.ts";
 				Projetos de<br>Destaque
 			</h1>
 		</div>
-		<span class="text-muted-foreground font-mono">// Projetos onde coloquei a mão na massa e desenvolvi aplicações modernas, adequadas para o mercado de tecnologia</span>
+		<span class="text-muted-foreground font-mono">
+            // Projetos onde coloquei a mão na massa e desenvolvi aplicações modernas, adequadas para o mercado de tecnologia
+        </span>
 	</div>
     <div class="w-full max-w-7xl flex flex-col gap-6 md:gap-8 lg:gap-12 justify-center items-start sm:px-6 lg:px-8">
         { Project.map((project, index) => (
@@ -55,18 +57,18 @@ import Project from "../../data/project.ts";
                                     href={project.slug}
                                     variant="outline"
                                     size="sm"
-                                    class="px-4 sm:px-6 py-3 sm:py-4 border border-border text-primary uppercase transition-all duration-300 group/btn hover:scale-[1.02] hover:border-chart-1/60 hover:text-chart-1 hover:shadow-lg hover:shadow-chart-1/20"
-                                    >
-                                        Ver mais
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110">
-                                            <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
-                                        </svg>
+                                    class="px-4 sm:px-6 py-3 sm:py-4 border border-border text-primary uppercase group/btn hover:scale-[1.02] hover:border-chart-1/60 hover:text-chart-1 hover:shadow-lg hover:shadow-chart-1/20"
+                                >
+                                    Ver mais
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110">
+                                        <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+                                    </svg>
                                 </Button>
                             </div>
                         </div>
                     </div>
                 </div>
             </Card>
-        )) }
+        ))}
     </div>
 </section>

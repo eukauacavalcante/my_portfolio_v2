@@ -1,0 +1,87 @@
+---
+import Icon from "astro-iconify";
+import Layout from "../../../layouts/layout.astro";
+import Button from "@/components/ui/Button.astro";
+
+const { frontmatter } = Astro.props;
+
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+});
+---
+
+<Layout pageTitle={frontmatter.title}>
+    <article class="min-h-svh w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+
+        <div class="mb-8 sm:mb-12">
+            <Button href="/blog" variant="outline" size="sm">
+                <Icon name="lucide:arrow-left" class="w-4 h-4 mr-1" />
+                Voltar ao blog
+            </Button>
+        </div>
+
+        {frontmatter.tags?.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-4">
+                {frontmatter.tags.map((tag: string) => (
+                    <a
+                        href={`/blog/tags/${tag}`}
+                        class="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded hover:border-foreground/40 hover:text-primary transition-colors"
+                    >
+                        #{tag}
+                    </a>
+                ))}
+            </div>
+        )}
+
+        <div class="flex flex-col gap-3 mb-8">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                {frontmatter.title}
+            </h1>
+            <p class="text-sm sm:text-base md:text-lg text-muted-foreground font-mono leading-relaxed">
+                // {frontmatter.description}
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-4 text-xs sm:text-base md:text-lg font-mono text-muted-foreground mb-8 pb-8 border-b border-border">
+            <span>
+                <Icon name="lucide:calendar" class="w-4 h-4 inline-block" />
+                Publicado em <time datetime={frontmatter.pubDate}>{formattedDate}</time>
+            </span>
+            <span>
+                <Icon name="lucide:user" class="w-4 h-4 inline-block" />
+                <span>Por 
+                    <a href="/#sobre-mim" class="text-primary underline hover:text-muted-foreground transition-colors">
+                        {frontmatter.author}
+                    </a>
+                </span>
+            </span>
+            { frontmatter.readingTime && 
+                <span>
+                    <Icon name="lucide:clock" class="w-4 h-4 inline-block" />
+                    Tempo de leitura: {frontmatter.readingTime} min
+                </span>
+            }
+        </div>
+
+        {frontmatter.image?.url && (
+            <div class="w-full mb-10 rounded-2xl overflow-hidden border border-border">
+                <img
+                    src={frontmatter.image.url}
+                    alt={frontmatter.image.alt ?? frontmatter.title}
+                    class="w-full h-auto object-cover max-h-105"
+                />
+            </div>
+        )}
+
+        <slot />
+
+        <div class="mt-14 pt-8 border-t border-border">
+            <Button href="/blog" variant="outline">
+                ← Ver todos os posts
+            </Button>
+        </div>
+
+    </article>
+</Layout>
