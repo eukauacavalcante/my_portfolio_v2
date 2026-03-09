@@ -2,6 +2,7 @@
 import Icon from "astro-iconify";
 import Layout from "../../../layouts/layout.astro";
 import Button from "@/components/ui/Button.astro";
+import TagButton from "../components/ui/TagButton.astro";
 
 const { frontmatter } = Astro.props;
 
@@ -13,27 +14,14 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('pt-BR', 
 ---
 
 <Layout pageTitle={frontmatter.title}>
-    <article class="min-h-svh w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+    <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
 
         <div class="mb-8 sm:mb-12">
-            <Button href="/blog" variant="outline" size="sm">
+            <Button href="/blog" variant="outline">
                 <Icon name="lucide:arrow-left" class="w-4 h-4 mr-1" />
                 Voltar ao blog
             </Button>
         </div>
-
-        {frontmatter.tags?.length > 0 && (
-            <div class="flex flex-wrap gap-2 mb-4">
-                {frontmatter.tags.map((tag: string) => (
-                    <a
-                        href={`/blog/tags/${tag}`}
-                        class="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded hover:border-foreground/40 hover:text-primary transition-colors"
-                    >
-                        #{tag}
-                    </a>
-                ))}
-            </div>
-        )}
 
         <div class="flex flex-col gap-3 mb-8">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
@@ -44,25 +32,31 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('pt-BR', 
             </p>
         </div>
 
-        <div class="flex flex-col gap-4 text-xs sm:text-base md:text-lg font-mono text-muted-foreground mb-8 pb-8 border-b border-border">
-            <span>
+        {frontmatter.tags?.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-4">
+                {frontmatter.tags.map((tag: string) => (
+                    <TagButton tag={tag} />
+                ))}
+            </div>
+        )}
+
+        <div class="flex flex-col gap-2 text-xs sm:text-sm md:text-base text-muted-foreground mb-8 pb-8 border-b border-border">
+            <span class="flex flex-row gap-1 justify-start items-center">
                 <Icon name="lucide:calendar" class="w-4 h-4 inline-block" />
                 Publicado em <time datetime={frontmatter.pubDate}>{formattedDate}</time>
             </span>
-            <span>
+            <span class="flex flex-row gap-1 justify-start items-center">
                 <Icon name="lucide:user" class="w-4 h-4 inline-block" />
                 <span>Por 
-                    <a href="/#sobre-mim" class="text-primary underline hover:text-muted-foreground transition-colors">
+                    <a href="/#sobre-mim" class="text-primary hover:underline transition">
                         {frontmatter.author}
                     </a>
                 </span>
             </span>
-            { frontmatter.readingTime && 
-                <span>
-                    <Icon name="lucide:clock" class="w-4 h-4 inline-block" />
-                    Tempo de leitura: {frontmatter.readingTime} min
-                </span>
-            }
+            <span class="flex flex-row gap-1 justify-start items-center">
+                <Icon name="lucide:clock" class="w-4 h-4 inline-block" />
+                Tempo de leitura: {frontmatter.readingTime} min
+            </span>
         </div>
 
         {frontmatter.image?.url && (
@@ -75,11 +69,14 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('pt-BR', 
             </div>
         )}
 
-        <slot />
+        <div class="prose prose-invert max-w-none text-base sm:text-lg">
+            <slot />
+        </div>
 
-        <div class="mt-14 pt-8 border-t border-border">
-            <Button href="/blog" variant="outline">
-                ← Ver todos os posts
+        <div class="flex justify-center mt-14 pt-8 border-t border-border">
+            <Button href="/blog" variant="outline" class="group">
+                <Icon name="lucide:arrow-left" class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition" />
+                Voltar
             </Button>
         </div>
 

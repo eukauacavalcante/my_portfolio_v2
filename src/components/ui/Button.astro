@@ -4,14 +4,14 @@ import { twMerge } from "tailwind-merge";
 interface Props {
     href?: string;
     variant?: "default" | "outline";
-    size?: "sm" | "md" | "lg";
+    size?: "responsive" | "lg" | "full";
     class?: string;
 }
 
 const { 
     href = "#", 
     variant = "default", 
-    size = "md",
+    size = "responsive",
     class: className = "" 
 } = Astro.props;
 
@@ -23,9 +23,9 @@ const variantStyles = {
 };
 
 const sizeStyles = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg"
+    responsive: "px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base",
+    lg: "px-8 py-4 text-lg",
+    full: "w-full px-6 py-3 text-base"
 };
 
 const buttonClasses = twMerge(baseStyles, variantStyles[variant], sizeStyles[size], className);

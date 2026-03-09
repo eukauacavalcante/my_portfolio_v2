@@ -1,0 +1,10 @@
+---
+const tag = Astro.props.tag;
+---
+
+<a
+    href={`/blog/tags/${tag}`}
+    class="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded hover:border-foreground/40 hover:text-primary transition-colors"
+>
+    #{tag}
+</a>

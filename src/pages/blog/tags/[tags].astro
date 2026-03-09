@@ -1,6 +1,7 @@
 ---
-import Layout from '@/layouts/layout.astro';
+import BlogLayout from "../layouts/Layout.astro";
 import Card from '@/components/ui/Card.astro';
+import BlogCard from '../components/ui/BlogCard.astro';
 import Button from '@/components/ui/Button.astro';
 import Icon from 'astro-iconify';
 
@@ -31,71 +32,36 @@ for (let i = 0; i < posts.length; i += 2) {
 }
 ---
 
-<Layout pageTitle={`#${tag}`}>
+<BlogLayout pageTitle={`#${tag}`}>
     <section class="min-h-svh w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
 
         <div class="mb-8 sm:mb-12">
-            <Button href="/blog/tags" variant="outline" size="sm">
+            <Button href="/blog/tags" variant="outline">
                 <Icon name="lucide:arrow-left" class="w-4 h-4 mr-2" />
                 Todas as tags
             </Button>
         </div>
 
-        <div class="flex flex-col gap-3 mb-10 sm:mb-14">
-            <div class="flex items-center gap-3 mb-1">
-                <span class="h-px w-8 bg-muted-foreground/40 inline-block"></span>
-                <span class="text-xs font-mono text-muted-foreground tracking-widest uppercase">navegando por tag</span>
-            </div>
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+        <div class="flex flex-col gap-2 mb-10 sm:mb-14 lg:mb-16">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
                 #{tag}
             </h1>
-            <p class="text-sm sm:text-base md:text-lg text-muted-foreground font-mono">
+            <p class="text-sm sm:text-base text-muted-foreground font-mono max-w-xl mt-1">
                 // {posts.length} {posts.length === 1 ? 'post encontrado' : 'posts encontrados'}
             </p>
         </div>
 
+        <h2 class="text-xs sm:text-sm font-mono text-muted-foreground tracking-widest uppercase flex items-center gap-3 mb-4 sm:mb-6">
+            <span class="h-px w-16 sm:w-20 bg-linear-to-r from-chart-1 to-chart-2 inline-block"></span>
+            Navegando por #{tag}
+        </h2>
+
         {postPairs.length > 0 ? (
             <div class="flex flex-col gap-4 sm:gap-6">
                 {postPairs.map((pair) => (
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                        {pair.map((post: any) => (
-                            <Card size="full" hover class="flex flex-col justify-between gap-4 p-6">
-                                <div class="flex flex-col gap-3">
-                                    <div class="flex flex-wrap gap-2">
-                                        {(post.frontmatter.tags ?? [])
-                                            .filter((t: string) => t !== tag)
-                                            .slice(0, 2)
-                                            .map((t: string) => (
-                                                <a
-                                                    href={`/blog/tags/${t}`}
-                                                    class="text-xs font-mono text-muted-foreground border border-border px-2 py-0.5 rounded hover:border-foreground/40 transition-colors"
-                                                >
-                                                    #{t}
-                                                </a>
-                                            ))
-                                        }
-                                    </div>
-                                    <h2 class="text-xl font-bold leading-snug">
-                                        {post.frontmatter.title}
-                                    </h2>
-                                    <p class="text-muted-foreground text-sm leading-relaxed line-clamp-3">
-                                        {post.frontmatter.description}
-                                    </p>
-                                </div>
-                                <div class="flex items-center justify-between pt-2 border-t border-border">
-                                    <span class="text-xs text-muted-foreground font-mono">
-                                        {new Date(post.frontmatter.pubDate).toLocaleDateString('pt-BR', {
-                                            day: '2-digit',
-                                            month: 'short',
-                                            year: 'numeric'
-                                        })}
-                                    </span>
-                                    <Button href={post.url} size="sm" variant="outline">
-                                        Ler mais
-                                        <Icon name="mdi:arrow-right" class="w-4 h-4" />
-                                    </Button>
-                                </div>
-                            </Card>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                        {pair.map((post) => (
+                            <BlogCard post={post} />
                         ))}
                     </div>
                 ))}
@@ -107,4 +73,4 @@ for (let i = 0; i < posts.length; i += 2) {
             </Card>
         )}
     </section>
-</Layout>
+</BlogLayout>
