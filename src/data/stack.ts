@@ -13,6 +13,7 @@ const stack = {
   backend: [
     { name: "Python", icon: "logos:python" },
     { name: "Django", icon: "logos:django-icon" },
+    { name: "FastAPI", icon: "logos:fastapi-icon" },
     { name: "Java", icon: "logos:java" },
     { name: "Spring Boot", icon: "simple-icons:springboot" },
     { name: "Postman", icon: "logos:postman-icon" },

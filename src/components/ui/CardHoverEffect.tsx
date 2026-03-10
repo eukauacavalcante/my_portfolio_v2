@@ -36,7 +36,7 @@ export const HoverEffect = ({
             <AnimatePresence>
               {hoveredIndex === idx && (
                 <motion.span
-                  className="absolute inset-0 h-full w-full bg-chart-1/10 block rounded-3xl"
+                  className="absolute inset-0 h-full w-full bg-linear-to-r from-chart-1 to-chart-2 block rounded-3xl"
                   layoutId="hoverBackground"
                   initial={{ opacity: 0 }}
                   animate={{
@@ -73,7 +73,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-card border border-border group-hover:border-chart-1/40 transition-colors duration-300 relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-card border border-border relative z-20",
         className
       )}
     >
@@ -96,7 +96,7 @@ export const CardIcon = ({
   return (
     <div
       className={cn(
-        "w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-chart-1/15 border border-chart-1/20 flex items-center justify-center text-chart-1 group-hover:bg-chart-1/25 transition-colors duration-300",
+        "w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl border flex items-center justify-center text-chart-1 bg-chart-1/25 group-hover:bg-linear-to-r group-hover:from-chart-1/10 group-hover:to-chart-2/10 group-hover:text-primary group-hover:font-semibold transition-all duration-300",
         className
       )}
     >
@@ -142,7 +142,7 @@ export const CardDivider = ({ className }: { className?: string }) => {
   return (
     <span
       className={cn(
-        "w-16 sm:w-24 h-0.5 bg-linear-to-r from-chart-1 to-chart-2 rounded-full mt-1",
+        "w-16 sm:w-24 h-0.5 bg-chart-1/25 group-hover:bg-linear-to-r group-hover:from-chart-1 group-hover:to-chart-2 rounded-full mt-1 transition-colors duration-300",
         className
       )}
     />

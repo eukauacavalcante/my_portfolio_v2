@@ -1,0 +1,22 @@
+---
+const budgeText = Astro.props.budgeText;
+const title = Astro.props.title;
+const description = Astro.props.description;
+---
+
+<div class="section-header">
+    <div class="section-badge-title">
+        <div class="section-badge">
+            <span class="section-badge-indicator"></span>
+            <span class="section-badge-text">
+                {budgeText}
+            </span>
+        </div>
+        <h1 class="section-title">
+            {title}
+        </h1>
+    </div>
+    <span class="section-description">
+        // {description}
+    </span>
+</div>

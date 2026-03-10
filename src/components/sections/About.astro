@@ -4,14 +4,14 @@ import { Image } from "astro:assets";
 import myImage from "../../../public/me/kauacavalcante.jpeg";
 ---
 
-<section id="sobre-mim" class="min-h-svh flex flex-col lg:flex-row justify-center items-center w-full py-8 sm:py-12 md:py-16 lg:py-20">
-	<div class="w-full lg:w-1/2 px-4 sm:px-6 md:px-8 py-6 sm:py-8 flex flex-col gap-3 sm:gap-4 md:gap-5">
-		<div class="flex items-center gap-2 px-4 py-2 w-fit rounded-full bg-linear-to-r from-chart-1/10 to-chart-2/10 border border-chart-1/10 backdrop-blur">
-            <span class="w-2 h-2 bg-chart-1 rounded-full animate-pulse"></span>
-            <span class="text-[10px] sm:text-xs text-muted-foreground font-mono uppercase tracking-widest">
-                Sobre mim
-            </span>
-        </div>
+<section id="sobre-mim" class="max-w-7xl min-h-svh flex flex-col lg:flex-row justify-center items-center w-full py-8 sm:py-12 md:py-16 lg:py-20">
+	<div class="w-full lg:w-1/2 py-6 sm:py-8 flex flex-col gap-3 sm:gap-4 md:gap-5">
+		<div class="section-badge">
+			<span class="section-badge-indicator"></span>
+			<span class="section-badge-text">
+				Sobre Mim
+			</span>
+		</div>
 		<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
 			Olá, sou<br>Kauã Cavalcante
 		</h1>
@@ -34,7 +34,7 @@ import myImage from "../../../public/me/kauacavalcante.jpeg";
 			</Button>
 		</div>
 	</div>
-	<div class="w-full lg:w-1/2 px-4 sm:px-6 md:px-8 py-6 sm:py-8 flex justify-center items-center group relative antialiased">
+	<div class="w-full lg:w-1/2 flex justify-center items-center group relative antialiased">
 		<div class="absolute inset-0 bg-chart-1/15 blur-[120px] rounded-full scale-90 group-hover:scale-110 transition-transform duration-1000 opacity-60 pointer-events-none"></div>
 		<div class="relative w-full max-w-137.5 aspect-square flex flex-col overflow-hidden rounded-xl sm:rounded-3xl border border-border shadow-2xl shadow-chart-1/30 bg-background/30 backdrop-blur-lg hover:-translate-y-3 transition-all duration-500 ease-in-out">
 			<div class="w-full h-10 sm:h-11 bg-foreground border-b border-border flex items-center px-4 sm:px-5 gap-2 shrink-0">

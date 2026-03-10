@@ -1,0 +1,28 @@
+/* ===== Base styles for Section ===== */
+.section-header {
+    @apply flex flex-col gap-8 justify-center items-center max-w-3xl text-center mb-4 lg:mb-8;
+}
+
+.section-badge-title {
+    @apply flex flex-col gap-2 sm:gap-4 justify-center items-center;
+}
+
+.section-badge {
+    @apply flex items-center gap-2 px-4 py-2 w-fit rounded-full bg-linear-to-r from-chart-1/10 to-chart-2/10 border border-chart-1/10 backdrop-blur;
+}
+
+.section-badge-indicator {
+    @apply w-2 h-2 bg-chart-1 rounded-full animate-pulse;
+}
+
+.section-badge-text {
+    @apply text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest leading-none;
+}
+
+.section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold;
+}
+
+.section-description {
+    @apply text-muted-foreground font-mono;
+}

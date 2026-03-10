@@ -2,66 +2,82 @@
 import Card from "../ui/Card.astro";
 import Button from "../ui/Button.astro";
 import Project from "../../data/project.ts";
+import Icon from "astro-iconify";
+import SectionHeader from "../ui/SectionHeader.astro";
+import { Image } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/projects/**/*.{png,jpg,jpeg,webp}"
+);
 ---
 
-<section id="projetos" class="min-h-svh flex flex-col gap-4 justify-center items-center w-full px-4 pt-24 lg:pt-32 scroll-mt-20">
-	<div class="flex flex-col gap-8 justify-center items-center max-w-3xl text-center mb-4 lg:mb-8">
-		<div class="flex flex-col gap-2 sm:gap-4 justify-center items-center">
-			<div class="flex items-center gap-2 px-4 py-2 w-fit rounded-full bg-linear-to-r from-chart-1/10 to-chart-2/10 border border-chart-1/10 backdrop-blur">
-				<span class="w-2 h-2 bg-chart-1 rounded-full animate-pulse"></span>
-				<span class="text-[10px] sm:text-xs text-muted-foreground font-mono uppercase tracking-widest">
-					projetos
-				</span>
-			</div>
-			<h1 class="text-3xl sm:text-4xl lg:text-5xl text-center font-extrabold">
-				Projetos de<br>Destaque
-			</h1>
-		</div>
-		<span class="text-muted-foreground font-mono">
-            // Projetos onde coloquei a mão na massa e desenvolvi aplicações modernas, adequadas para o mercado de tecnologia
-        </span>
-	</div>
-    <div class="w-full max-w-7xl flex flex-col gap-6 md:gap-8 lg:gap-12 justify-center items-start sm:px-6 lg:px-8">
-        { Project.map((project, index) => (
-            <Card size="full" hover={true} class="group flex flex-col gap-4 justify-center items-center w-full">
-                <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10">
-                    <div class="w-full lg:w-3/5 bg-chart-1/10 rounded-lg aspect-video shrink-0 order-2 lg:order-1"></div>
-                    <div class="w-full lg:w-2/5 flex flex-col gap-3 justify-center items-start order-1 lg:order-2">
-                        <div class="w-full flex flex-row gap-4 justify-between items-center">
-                            <span class="text-xs text-muted-foreground font-mono uppercase">
-                                {project.date}
-                            </span>
-                            <span class="w-8 h-8 flex items-center justify-center border border-border rounded-full text-sm text-muted-foreground font-mono leading-none shrink-0 group-hover:text-chart-1 transition-colors">
-                                0{index + 1}
-                            </span>
+<section id="projetos" class="max-w-7xl min-h-svh flex flex-col gap-4 justify-center items-center w-full pt-24 lg:pt-32 scroll-mt-20">
+    <SectionHeader
+        budgeText="Projetos"
+        title="Projetos de Destaque"
+        description="Projetos onde coloquei a mão na massa e desenvolvi aplicações modernas, adequadas para o mercado de tecnologia"
+    />
+    <div class="w-full max-w-5xl flex flex-col gap-6 md:gap-8 lg:gap-12 justify-center items-start">
+        { Project.map(async (project, index) => {
+            const imageModule = project.image ? await images[project.image]?.() : null;
+
+            return (
+                <Card size="full" hover={true} class="flex flex-col gap-4 justify-center items-center w-full group">
+                    <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10">
+                        <div class="w-full lg:w-3/5 bg-linear-to-tr from-chart-1/10 to-chart-2/10 rounded-lg aspect-video shrink-0 order-2 lg:order-1">
+                            { imageModule ? (
+                                <Image
+                                    src={imageModule.default}
+                                    alt={project.title}
+                                    width={800}
+                                    height={450}
+                                    class="w-full h-full object-cover"
+                                />
+                            ) : (
+                                <div class="w-full h-full flex items-center justify-center text-muted-foreground">
+                                    <Icon name="mdi:camera-outline" width="48" height="48" />
+                                </div>
+                            )}
                         </div>
-                        <div class="flex flex-col gap-1.5 mb-2 sm:mb-4">
-                            <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight group-hover:text-chart-1 transition-colors">
-                                {project.title}
-                            </span>
-                            <span class="text-sm text-muted-foreground font-mono">
-                                // {project.phrase}
-                            </span>
-                        </div>
-                        <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">{project.resume}</p>
-                        <div class="flex flex-row flex-wrap gap-2">
-                            {project.tags.map((tag) => (
-                                <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
-                                    {tag}
+                        <div class="w-full lg:w-2/5 flex flex-col gap-3 justify-center items-start order-1 lg:order-2">
+                            <div class="w-full flex flex-row gap-4 justify-between items-center">
+                                <span class="text-xs text-muted-foreground font-mono uppercase">
+                                    {project.date}
                                 </span>
-                            ))}
+                                <span class="w-8 h-8 flex items-center justify-center border border-border rounded-full text-sm text-muted-foreground font-mono leading-none shrink-0 group-hover:text-gradient duration-500 transition-all">
+                                    0{index + 1}
+                                </span>
+                            </div>
+                            <div class="flex flex-col gap-1.5 mb-2 sm:mb-4">
+                                <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight group-hover:text-gradient duration-500 transition-all">
+                                    {project.title}
+                                </span>
+                                <span class="text-sm text-muted-foreground font-mono">
+                                    // {project.phrase}
+                                </span>
+                            </div>
+                            <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                                {project.resume}
+                            </p>
+                            <div class="flex flex-row flex-wrap gap-2">
+                                {project.tags.map((tag) => (
+                                    <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                            <Button
+                                href={project.slug}
+                                size="full"
+                                class="px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base dark:text-primary bg-linear-to-r from-chart-1 to-chart-2 border-0 uppercase group/btn"
+                            >
+                                Ver {project.title}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+                            </Button>
                         </div>
-                        <Button
-                            href={project.slug}
-                            size="full"
-                            class="px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base dark:text-primary bg-linear-to-r from-chart-1 to-chart-2 hover:from-chart-1/50 hover:chart-2/50 border-0 uppercase group/btn"
-                        >
-                            Ver {project.title}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" class="transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
-                        </Button>
                     </div>
-                </div>
-            </Card>
-        ))}
+                </Card>
+            );
+        })}
     </div>
 </section>

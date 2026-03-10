@@ -1,0 +1,16 @@
+/* ===== Base styles for Form elements ===== */
+.label-base {
+    @apply text-xs text-muted-foreground font-mono uppercase tracking-widest;
+}
+
+.input-base {
+    @apply w-full px-4 py-2.5 bg-transparent border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-chart-1 focus:ring-1 focus:ring-chart-1/30 transition-all duration-200;
+}
+
+.checkbox-label {
+    @apply px-4 py-2 border border-border text-xs text-muted-foreground font-semibold has-checked:bg-linear-to-r has-checked:from-chart-1 has-checked:to-chart-2 has-checked:text-white has-checked:border-transparent transition-all duration-200 uppercase rounded-lg cursor-pointer select-none;
+}
+
+.checkbox-input {
+    @apply sr-only;
+}
