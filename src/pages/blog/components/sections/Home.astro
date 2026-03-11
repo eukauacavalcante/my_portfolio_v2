@@ -6,9 +6,9 @@ import BlogCard from "../ui/BlogCard.astro";
 
 const allPosts = Object.values(import.meta.glob('../../posts/*.md', { eager: true })) as any[];
 
-// Sort by pubDate descending
+// Sort by publishedOn descending
 const sortedPosts = allPosts.sort((a, b) =>
-    new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+    new Date(b.frontmatter.publishedOn).getTime() - new Date(a.frontmatter.publishedOn).getTime()
 );
 
 const [featured, ...restPosts] = sortedPosts;

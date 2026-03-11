@@ -5,9 +5,9 @@ const stack = {
     { name: "JavaScript", icon: "logos:javascript" },
     { name: "TypeScript", icon: "devicon:typescript" },
     { name: "React", icon: "logos:react" },
-    { name: "Tailwind", icon: "logos:tailwindcss-icon" },
     { name: "Next.js", icon: "simple-icons:nextdotjs" },
     { name: "Astro", icon: "skill-icons:astro" },
+    { name: "Tailwind", icon: "logos:tailwindcss-icon" },
     { name: "Shadcn UI", icon: "simple-icons:shadcnui" },
   ],
   backend: [

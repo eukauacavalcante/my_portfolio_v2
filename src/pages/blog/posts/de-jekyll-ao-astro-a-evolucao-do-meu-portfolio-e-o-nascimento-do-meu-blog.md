@@ -1,14 +1,15 @@
 ---
 layout: ../layouts/PostLayout.astro
 title: "De Jekyll ao Astro: a evolução do meu portfólio e o nascimento do meu blog."
-pubDate: 03/07/2026
-description: "As escolhas, os erros e os aprendizados que me trouxeram até aqui — e ao lançamento do meu blog."
+description: "As escolhas, os erros e os aprendizados que me trouxeram até aqui, e ao lançamento do meu blog."
 author: "Kauã Cavalcante"
+publishedOn: "03/07/2026"
+updatedOn: "03/08/2026"
 readingTime: 15
-# image:
-#     url: "blog/post-1/logoVortex.png"
-#     alt: "The Astro logo on a dark background with a pink glow."
-tags: ["portfolio", "blog", "new"]
+image:
+    url: "blog/post-1/imagem-representativa.jpeg"
+    alt: "Um celular com o site do blog aberto. Ao fundo, um monitor com o site do portfólio aberto na tela inicial."
+tags: ["portfolio", "blog", "novo"]
 ---
 
 Depois de algumas semanas reconstruindo meu portfólio com foco em performance, finalmente publiquei a nova versão — e junto com ela nasceu este blog.
@@ -43,7 +44,7 @@ Após um tempo aprendendo ainda mais sobre Next.js -- inclusive iniciando um pro
 
 ## Do Next.js para Astro
 
-Em certo dia, rolando o feed do Twitter (me recuso a chamar de X), eu vi uma publicação do Chris (sócio da [AbacatePay](https://abacatepay.com)) relatando que estava em trabalho de transição do Next.js para o Astro. Os motivos envolviam versões com bugs e muitos pacotes JS sendo carregados no client-side, o que poderia tornar a aplicação lenta. O Astro seria uma opção para resolver esses problemas.
+Em certo dia, rolando o feed do Twitter (me recuso a chamar de X), eu vi uma publicação do Chris (sócio da [AbacatePay](https://abacatepay.com)) relatando que estava em trabalho de transição do Next.js para o Astro. Os motivos envolviam versões com bugs que eram descobertos de acordo com o aumento da complexidade do projeto. O Astro seria uma opção para resolver esses problemas.
 
 Após ler essa postagem do Chris, eu anotei o nome do framework Astro para procurar mais informações sobre. Dias depois, pesquisei sobre o Astro e fui direto ler a documentação para saber o que o Astro tinha para oferecer que me faria separar um tempinho do meu dia para aprender sobre. E fiquei surpreso.
 
@@ -61,7 +62,7 @@ Abaixo, mostro um gráfico derivado de uma pesquisa realizada pelo HTTP Archive,
   <img src="/blog/post-1/origins-with-good-scores.svg" alt="img" />
 </div>
 
-Confira mais informações [clicando aqui](https://httparchive.org/reports/techreport/tech?client=mobile&tech=Astro,WordPress,Gatsby,Next.js,Nuxt.js&geo=ALL&rank=ALL&page=1).
+Confira mais informações no site [httparchive.org](https://httparchive.org/reports/techreport/tech?client=mobile&tech=Astro,WordPress,Gatsby,Next.js,Nuxt.js&geo=ALL&rank=ALL&page=1).
 
 Há diversas outras características que diferenciam o Astro de outros frameworks. Não vou dar uma aula aqui, confira a documentação completa em [docs.astro.build](https://docs.astro.build).
 
@@ -83,7 +84,7 @@ A Inteligência Artificial pode construir um sistema do zero, mas todo o conheci
 
 Aqui, postarei minha rotina de estudo e como desenvolvo minhas aplicações. Avaliando a real necessidade de um blog, cheguei à conclusão que eu aprenderia muito mais explicando conceitos simples e complexos. Afinal, no meio da explicação eu também descubro coisas novas. Como diz o ditado, o sinal definitivo de que alguém realmente conhece um assunto é a capacidade de ensiná-lo.
 
-Para as postagens, planejo utilizar uma linguagem mais natural sem excesso de formalidade. Não quero dizer que vou me permitir cometer erros de português, apenas que quero tratar cada conteúdo como um "diário técnico", sempre dissertando sobre assuntos que estão em debate no mundo da tecnologia. E para ser sincero, é bem chato ler artigos com excesso de linguagem culta: você passa mais tempo buscando o significado de palavras do que absorvendo o conhecimento do tema em si.
+Para as postagens, planejo utilizar uma linguagem mais natural, sem excesso de formalidade. Não quero dizer que vou me permitir cometer erros de português, apenas que pretendo tratar cada conteúdo como um “diário técnico”, refletindo sobre assuntos que estão em debate no mundo da tecnologia. Além disso, pretendo seguir uma sequência de desenvolvimento fácil de compreender: apresento o tema, explico diferentes contextos e, ao final, proponho uma solução na minha visão (se for o caso).
 
 Estou pensando em realizar postagens semanalmente. A todo momento eu estou descobrindo algo novo e seria interessante compartilhar isso por aqui.
 

@@ -7,11 +7,14 @@ import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
 
-const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('pt-BR', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-});
+function formattedDate(dateString: string) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+    });
+}
 ---
 
 <Layout pageTitle={frontmatter.title}>
@@ -24,28 +27,46 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('pt-BR', 
             </Button>
         </div>
 
-        <div class="flex flex-col gap-3 mb-8">
+        <div class="flex flex-col gap-3">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
                 {frontmatter.title}
             </h1>
-            <p class="text-sm sm:text-base md:text-lg font-mono leading-relaxed">
+            <p class="text-sm sm:text-base md:text-lg font-mono leading-relaxed text-muted-foreground">
                 // {frontmatter.description}
             </p>
         </div>
 
         {frontmatter.tags?.length > 0 && (
-            <div class="flex flex-wrap gap-2 mb-4">
+            <div class="flex flex-wrap gap-2 my-4">
                 {frontmatter.tags.map((tag: string) => (
                     <TagButton tag={tag} />
                 ))}
             </div>
         )}
 
+        {frontmatter.image?.url && (
+            <div class="w-full h-50 md:h-100 mb-10 rounded-2xl overflow-hidden border border-border">
+                <Image
+                    src={"/" + frontmatter.image.url}
+                    alt={frontmatter.image.alt ?? frontmatter.title}
+                    width={100}
+                    height={100}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+            </div>
+        )}
+
         <div class="flex flex-col gap-2 text-xs sm:text-sm md:text-base text-muted-foreground mb-8 pb-8 border-b border-border">
             <span class="flex flex-row gap-1 justify-start items-center">
                 <Icon name="lucide:calendar" class="w-4 h-4 inline-block" />
-                Publicado em <time datetime={frontmatter.pubDate}>{formattedDate}</time>
+                Publicado em <time datetime={frontmatter.publishedOn}>{formattedDate(frontmatter.publishedOn)}</time>
             </span>
+            { frontmatter.updatedOn && (
+                <span class="flex flex-row gap-1 justify-start items-center">
+                    <Icon name="lucide:refresh-cw" class="w-4 h-4 inline-block" />
+                    Última edição em <time datetime={frontmatter.updatedOn}>{formattedDate(frontmatter.updatedOn)}</time>
+                </span>
+            )}
             <span class="flex flex-row gap-1 justify-start items-center">
                 <Icon name="lucide:user" class="w-4 h-4 inline-block" />
                 <span>Por 
@@ -59,18 +80,6 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString('pt-BR', 
                 Tempo de leitura: {frontmatter.readingTime} min
             </span>
         </div>
-
-        {frontmatter.image?.url && (
-            <div class="w-full mb-10 rounded-2xl overflow-hidden border border-border">
-                <Image
-                    src={"/" + frontmatter.image.url}
-                    alt={frontmatter.image.alt ?? frontmatter.title}
-                    width={450}
-                    height={450}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-            </div>
-        )}
 
         <div class="prose dark:prose-invert max-w-none text-primary text-base sm:text-lg leading-relaxed">
             <slot />
