@@ -96,7 +96,7 @@ export const CardIcon = ({
   return (
     <div
       className={cn(
-        "w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl border flex items-center justify-center text-chart-1 bg-chart-1/25 group-hover:bg-linear-to-r group-hover:from-chart-1/10 group-hover:to-chart-2/10 group-hover:text-primary group-hover:font-semibold transition-all duration-300",
+        "w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl border flex items-center justify-center text-white bg-linear-to-tr from-chart-1 to-chart-2",
         className
       )}
     >

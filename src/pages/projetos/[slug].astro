@@ -1,0 +1,234 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/layout.astro";
+import projects from "../../data/project";
+import Button from "../../components/ui/Button.astro";
+import Card from "../../components/ui/Card.astro";
+import Icon from "astro-iconify";
+
+export function getStaticPaths() {
+    return projects.map((project) => ({
+        params: { slug: project.slug },
+        props: { project },
+    }));
+}
+
+const { slug } = Astro.params;
+const projectFromProps = Astro.props.project;
+const project = projectFromProps ?? projects.find((item) => item.slug === slug);
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/projects/**/*.{png,jpg,jpeg,webp}"
+);
+const imageModule = project?.image ? await images[project.image]?.() : null;
+
+if (!project) {
+    Astro.response.status = 404;
+}
+
+const pageTitle = project
+    ? `${project.title}`
+    : "Projeto nao encontrado";
+---
+
+<Layout pageTitle={pageTitle}>
+    <section class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        {project ? (
+            <article class="space-y-8">
+                <header class="space-y-4">
+                    <div class="flex flex-row gap-3 justify-start items-center mb-4 text-xs sm:text-sm">
+                        <span class="text-muted-foreground hover:text-primary transition-all">
+                            <a href="/#projetos">Home</a>
+                        </span>
+                        <span class="text-muted-foreground">/</span>
+                        <span class="text-primary font-semibold">{project.title}</span>
+                    </div>
+
+                    <h1 class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+                        {project.title}
+                    </h1>
+
+                    <p class="font-mono text-sm text-muted-foreground sm:text-base">
+                        // {project.phrase}
+                    </p>
+
+                    <div class="flex flex-row gap-2">
+                        {project.tags.map((tag) => (
+                            <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </header>
+
+                <div class="mx-auto overflow-hidden rounded-xl border border-border bg-card/40">
+                    {imageModule ? (
+                        <Image
+                            src={imageModule.default}
+                            alt={project.title}
+                            width={1200}
+                            height={675}
+                            class="h-full w-full object-cover"
+                        />
+                    ) : (
+                        <div class="flex aspect-video items-center justify-center text-muted-foreground bg-linear-to-tr from-chart-1/10 to-chart-2/10">
+                            <Icon name="mdi:camera-outline" width="48" height="48" />
+                        </div>
+                    )}
+                </div>
+
+                <h2 class="text-xl font-bold sm:text-2xl">Resumo</h2>
+                <p class="text-base leading-relaxed text-muted-foreground">
+                    {project.resume}
+                </p>
+
+                {project.isPrivate && (
+                    <div class="relative bg-card border border-chart-1/30 rounded-xl p-6 sm:p-8 hover:shadow-2xl hover:shadow-chart-1/20 hover:-translate-y-1 transition-all duration-500 cursor-default">
+                        <div class="flex items-start gap-4 sm:gap-6">
+                            <div class="shrink-0">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-linear-to-tr from-chart-1 to-chart-2 text-white flex items-center justify-center border border-chart-1/30">
+                                    <Icon name="mdi:lock-outline" width="24" height="24" />
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <h2 class="text-lg sm:text-xl font-semibold text-foreground">
+                                        Projeto em Desenvolvimento
+                                    </h2>
+                                </div>
+                                <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                                    {project.privateDescription}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                <div class="flex flex-row flex-wrap gap-4">
+                    {project.github && (
+                        <Button href={project.github} target="_blank" rel="noopener noreferrer">
+                            <Icon name="mdi:github" width="20" height="20" />
+                            Ver no GitHub
+                        </Button>
+                    )}
+                    {project.documentation && (
+                        <Button variant="outline" href={project.documentation} target="_blank" rel="noopener noreferrer">
+                            <Icon name="mdi:file-document-outline" width="20" height="20" />
+                            Ver Documentação
+                        </Button>
+                    )}
+                    {project.website && (
+                        <Button variant="outline" href={project.website} target="_blank" rel="noopener noreferrer">
+                            <Icon name="mdi:web" width="20" height="20" />
+                            Acessar Projeto
+                        </Button>
+                    )}
+                    {project.linkedin && (
+                        <Button variant="outline" href={project.linkedin} target="_blank" rel="noopener noreferrer">
+                            <Icon name="mdi:linkedin" width="20" height="20" />
+                            Ver no LinkedIn
+                        </Button>
+                    )}
+                </div>
+
+                {project.functionalities && project.functionalities.length > 0 && (
+                    <div class="space-y-6">
+                        <h2 class="text-xl font-bold sm:text-2xl">Funcionalidades</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {project.functionalities.map((func) => (
+                                <Card class="flex flex-col gap-3" size="full" hover={true}>
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex items-center justify-center p-2 rounded-lg bg-linear-to-tr from-chart-1 to-chart-2 text-white shrink-0">
+                                            <Icon name={func.icon} width="24" height="24" />
+                                        </div>
+                                        <h3 class="text-lg font-bold leading-tight">{func.title}</h3>
+                                    </div>
+                                    <p class="text-sm leading-relaxed text-muted-foreground">
+                                        {func.description}
+                                    </p>
+                                </Card>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {project.stack && (
+                    <div class="space-y-4">
+                        <h2 class="text-xl font-bold sm:text-2xl">Tecnologias</h2>
+                        
+                        {project.stack.frontend && project.stack.frontend.length > 0 && (
+                            <div class="space-y-2">
+                                <div class="flex flex-row gap-4 items-center">
+                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80">Frontend</h3>
+                                    <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    {project.stack.frontend.map((tech) => (
+                                        <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {project.stack.backend && project.stack.backend.length > 0 && (
+                            <div class="space-y-2">
+                                <div class="flex flex-row gap-4 items-center">
+                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80 mt-2">Backend & Outros</h3>
+                                    <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    {project.stack.backend.map((tech) => (
+                                        <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {project.stack.database && project.stack.database.length > 0 && (
+                            <div class="space-y-2">
+                                <div class="flex flex-row gap-4 items-center">
+                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80 mt-2">Banco de Dados</h3>
+                                    <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    {project.stack.database.map((tech) => (
+                                        <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+                <div class="flex justify-center border-t border-border py-6">
+                    <Button
+                        variant="outline"
+                        href="/#projetos"
+                    >
+                        <Icon name="mdi:arrow-left" width="16" height="16" />
+                        Voltar
+                    </Button>
+                </div>
+            </article>
+        ) : (
+            <article class="space-y-4 rounded-xl border border-border bg-card/40 p-6">
+                <h1 class="text-2xl font-bold sm:text-3xl">Projeto nao encontrado</h1>
+                <p class="text-muted-foreground">
+                    O projeto com slug <code>{slug}</code> nao existe ou nao esta publicado.
+                </p>
+                <Button
+                    variant="outline"
+                    href="/#projetos"
+                >
+                    <Icon name="mdi:arrow-left" width="16" height="16" />
+                    Voltar
+                </Button>
+            </article>
+        )}
+    </section>
+</Layout>

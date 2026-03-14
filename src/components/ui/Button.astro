@@ -1,7 +1,8 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import { twMerge } from "tailwind-merge";
 
-interface Props {
+interface Props extends HTMLAttributes<"a"> {
     href?: string;
     variant?: "default" | "outline";
     size?: "responsive" | "lg" | "full";
@@ -12,7 +13,8 @@ const {
     href = "#", 
     variant = "default", 
     size = "responsive",
-    class: className = "" 
+    class: className = "",
+    ...props
 } = Astro.props;
 
 const baseStyles = "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
@@ -31,6 +33,6 @@ const sizeStyles = {
 const buttonClasses = twMerge(baseStyles, variantStyles[variant], sizeStyles[size], className);
 ---
 
-<a href={href} class={buttonClasses}>
+<a href={href} class={buttonClasses} {...props}>
     <slot />
 </a>

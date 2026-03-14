@@ -31,7 +31,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                                     alt={project.title}
                                     width={800}
                                     height={450}
-                                    class="w-full h-full object-cover"
+                                    class="w-full h-full object-cover rounded-lg"
                                 />
                             ) : (
                                 <div class="w-full h-full flex items-center justify-center text-muted-foreground">
@@ -56,9 +56,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                                     // {project.phrase}
                                 </span>
                             </div>
-                            <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                                {project.resume}
-                            </p>
                             <div class="flex flex-row flex-wrap gap-2">
                                 {project.tags.map((tag) => (
                                     <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
@@ -67,7 +64,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                                 ))}
                             </div>
                             <Button
-                                href={project.slug}
+                                href={`/projetos/${project.slug}`}
                                 size="full"
                                 class="px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base dark:text-primary bg-linear-to-r from-chart-1 to-chart-2 border-0 uppercase group/btn"
                             >
