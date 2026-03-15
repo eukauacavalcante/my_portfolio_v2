@@ -1,0 +1,23 @@
+# Search engine bots: allow crawling of public site content.
+User-agent: *
+Allow: /
+
+# Protect non-public endpoints if they exist.
+Disallow: /admin/
+Disallow: /api/
+
+# AI bots: allow crawling to improve discoverability and keep portfolio content indexable
+# in AI-assisted search and assistant answers.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://kauacavalcante.vercel.app/sitemap.xml
