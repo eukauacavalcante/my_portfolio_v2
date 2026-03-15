@@ -3,7 +3,6 @@ import BlogLayout from "../layouts/Layout.astro";
 import Card from '@/components/ui/Card.astro';
 import BlogCard from '../components/ui/BlogCard.astro';
 import Button from '@/components/ui/Button.astro';
-import Icon from 'astro-iconify';
 
 export async function getStaticPaths() {
     const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true })) as any[];
@@ -36,8 +35,10 @@ for (let i = 0; i < posts.length; i += 2) {
     <section class="min-h-svh w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
 
         <div class="mb-8 sm:mb-12">
-            <Button href="/blog/tags" variant="outline">
-                <Icon name="lucide:arrow-left" class="w-4 h-4 mr-2" />
+            <Button href="/blog/tags" variant="outline" class="group">
+                <svg class="group-hover:-translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path stroke-dasharray="20" d="M21 12h-17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M3 12l7 7M3 12l7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
+                </svg>
                 Todas as tags
             </Button>
         </div>
@@ -68,7 +69,9 @@ for (let i = 0; i < posts.length; i += 2) {
             </div>
         ) : (
             <Card class="w-full py-16 flex flex-col items-center justify-center gap-3 text-center">
-                <Icon name="lucide:tag" class="w-8 h-8 text-muted-foreground" />
+                <svg class="w-8 h-8 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="m6 20l1-4H3l.5-2h4l1-4h-4L5 8h4l1-4h2l-1 4h4l1-4h2l-1 4h4l-.5 2h-4l-1 4h4l-.5 2h-4l-1 4h-2l1-4H9l-1 4zm3.5-6h4l1-4h-4z"/>
+                </svg>
                 <p class="text-muted-foreground font-mono text-sm">// Nenhum post com essa tag ainda.</p>
             </Card>
         )}

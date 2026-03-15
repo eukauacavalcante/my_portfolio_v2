@@ -1,7 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @plugin "@tailwindcss/typography";
-@import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 @import "./components/form.css";
 @import "./components/form-contact.css";
