@@ -11,7 +11,7 @@
 
 Meu portfólio pessoal moderno e responsivo que apresenta minhas habilidades como desenvolvedor full stack, projetos e stack tecnológica de forma intuitiva e acessível.
 
-> **v2:** Esta é a segunda versão do portfólio, reconstruída com Astro. Confira a primeira versão em Next.js: [portfólio_v1](https://github.com/eukauacavalcante/porfolio).
+> **v2:** Esta é a segunda versão do portfólio, reconstruída com Astro. Confira a primeira versão em Next.js: [portfólio_v1](https://github.com/eukauacavalcante/my_portfolio).
 
 </div>
 

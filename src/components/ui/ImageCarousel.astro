@@ -1,0 +1,93 @@
+---
+// Embla Carousel component adapted from https://www.embla-carousel.com/ with custom styles and controls.
+
+interface Props {
+  images: string[];
+  alt?: string;
+}
+const { images, alt = "Imagem do projeto" } = Astro.props;
+---
+
+<div class="embla relative overflow-hidden rounded-xl border border-border bg-card/40 group">
+
+  <div class="embla__viewport">
+    <div class="embla__container flex">
+      {images.map((src) => (
+        <div class="embla__slide min-w-0 flex-[0_0_100%]">
+          <img src={src} alt={alt} class="w-full object-cover aspect-video" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <button
+    class="embla__prev absolute left-3 top-1/2 -translate-y-1/2 z-10
+           flex items-center justify-center w-9 h-9 rounded-full
+           bg-background/70 border border-border text-foreground
+           opacity-100 hover:bg-background hover:scale-110
+           active:scale-95 transition-all duration-200 backdrop-blur-sm cursor-pointer"
+    aria-label="Imagem anterior"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+
+  <button
+    class="embla__next absolute right-3 top-1/2 -translate-y-1/2 z-10
+           flex items-center justify-center w-9 h-9 rounded-full
+           bg-background/70 border border-border text-foreground
+           opacity-100 hover:bg-background hover:scale-110
+           active:scale-95 transition-all duration-200 backdrop-blur-sm cursor-pointer"
+    aria-label="Próxima imagem"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+
+  <div class="embla__dots absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+    {images.map((_, i) => (
+      <button
+        class="embla__dot w-2 h-2 rounded-full bg-foreground/30 border border-border transition-all duration-200"
+        data-index={i}
+        aria-label={`Ir para imagem ${i + 1}`}
+      />
+    ))}
+  </div>
+
+</div>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+
+  document.querySelectorAll<HTMLElement>(".embla").forEach((emblaNode) => {
+    const viewport = emblaNode.querySelector<HTMLElement>(".embla__viewport");
+    if (!viewport) return;
+
+    const embla = EmblaCarousel(viewport, { loop: true });
+    const dots = emblaNode.querySelectorAll<HTMLElement>(".embla__dot");
+
+    const updateDots = () => {
+      const current = embla.selectedScrollSnap();
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("bg-foreground", i === current);
+        dot.classList.toggle("w-4", i === current);
+        dot.classList.toggle("bg-foreground/30", i !== current);
+        dot.classList.toggle("w-2", i !== current);
+      });
+    };
+
+    embla.on("select", updateDots);
+    updateDots();
+
+    emblaNode.querySelector(".embla__prev")
+      ?.addEventListener("click", () => embla.scrollPrev());
+    emblaNode.querySelector(".embla__next")
+      ?.addEventListener("click", () => embla.scrollNext());
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => embla.scrollTo(i));
+    });
+  });
+</script>

@@ -10,7 +10,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 ---
 
-<section id="projetos" class="max-w-7xl min-h-svh flex flex-col gap-4 justify-center items-center w-full pt-24 lg:pt-32">
+<section id="projetos" class="max-w-7xl flex flex-col gap-4 justify-center items-center w-full pt-24 lg:pt-32">
     <SectionHeader
         budgeText="Projetos"
         title="Projetos de Destaque"
@@ -18,7 +18,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     />
     <div class="w-full max-w-5xl flex flex-col gap-6 md:gap-8 lg:gap-12 justify-center items-start">
         { Project.map(async (project, index) => {
-            const imageModule = project.image ? await images[project.image]?.() : null;
+            const imageModule = project.images ? await images[project.images[0]]?.() : null;
 
             return (
                 <Card size="full" hover={true} class="flex flex-col gap-4 justify-center items-center w-full group">

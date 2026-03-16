@@ -5,16 +5,18 @@ import { StarsBackground } from '../ui/StarsBackground.tsx';
 ---
 
 <section id="hero" class="relative min-h-svh flex justify-center items-center border-b border-border w-full py-8 sm:py-12 md:py-16 lg:py-20">
-    <div class="relative z-10 flex flex-col gap-6 sm:gap-8 md:gap-10 justify-center items-center max-w-3xl text-center">
-        <div class="section-badge">
-			<span class="section-badge-indicator"></span>
-			<span class="section-badge-text">
-				Portfólio
-			</span>
+    <div class="relative z-10 flex flex-col gap-6 sm:gap-8 justify-center items-center max-w-3xl text-center">
+		<div class="flex flex-col items-center gap-4">
+			<div class="section-badge">
+				<span class="section-badge-indicator"></span>
+				<span class="section-badge-text">
+					Portfólio
+				</span>
+			</div>
+			<h1 class="text-3xl sm:text-4xl lg:text-7xl font-extrabold">
+				Kauã Cavalcante
+			</h1>
 		</div>
-		<h1 class="text-3xl sm:text-4xl lg:text-7xl font-extrabold">
-			Kauã Cavalcante
-		</h1>
 		<p class="text-base sm:text-lg md:text-2xl text-muted-foreground max-w-2xl">
 			Desenvolvedor Full Stack especializado em criar soluções escaláveis, seguras e modernas com foco em APIs robustas e experiência no desenvolvimento de sistemas end-to-end.
 		</p>
@@ -69,6 +71,13 @@ import { StarsBackground } from '../ui/StarsBackground.tsx';
 					<path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23"/>
 				</svg>
 			</a>
+		</div>
+		<div class="flex justify-center items-center mt-8 sm:mt-6">
+			<svg class="animate-bounce" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+					<path stroke-dasharray="20" d="M12 3l0 17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M12 21l7 -7M12 21l-7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path>
+				</g>
+			</svg>
 		</div>
     </div>
     <ShootingStars client:only="react" />

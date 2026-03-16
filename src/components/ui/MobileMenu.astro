@@ -1,0 +1,206 @@
+---
+import Button from "../ui/Button.astro";
+
+export interface NavLink {
+    icon?: string;
+    label: string;
+    href: string;
+}
+
+export interface Props {
+    links: readonly NavLink[];
+    /**
+     * Quando `true`, renderiza apenas o dropdown flutuante (fora do fluxo).
+     * Quando `false` (padrão), renderiza apenas o botão hamburguer (dentro da pill).
+     */
+    dropdownOnly?: boolean;
+}
+
+const { links, dropdownOnly = false } = Astro.props;
+---
+
+{!dropdownOnly && (
+    <!-- Botão hamburguer — dentro da pill, coluna 2 do grid -->
+    <div class="flex md:hidden justify-end col-start-2">
+        <button
+            id="mobile-menu-btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="p-2 rounded-full hover:bg-accent transition-colors duration-200"
+        >
+            <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+            </svg>
+            <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hidden">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+    </div>
+)}
+
+{dropdownOnly && (
+    <!--
+        O dropdown é absolute em relação ao <header> (position: sticky),
+        portanto flutua sobre o conteúdo sem empurrá-lo.
+        A animação é feita via @keyframes no <style> abaixo.
+    -->
+    <div
+        id="mobile-menu"
+        role="dialog"
+        aria-label="Menu de navegação"
+        aria-modal="false"
+        class="mobile-menu md:hidden"
+    >
+        <nav aria-label="Links principais">
+            <ul class="flex flex-col gap-1 text-sm text-muted-foreground font-mono">
+                {links.map(({ icon, label, href }) => (
+                    <li class="flex flex-col justify-start">
+                        <a
+                            href={href}
+                            class="flex flex-row gap-2 px-3 py-2"
+                        >
+                            <span set:html={icon}></span>
+                            {label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+        <div class="mt-4 pt-3 border-t border-border">
+            <Button variant="default" class="w-full justify-center text-sm py-2.5">
+                Conecte-se
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                    viewBox="0 0 24 24" class="ml-1.5 shrink-0" aria-hidden="true">
+                    <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
+                </svg>
+            </Button>
+        </div>
+    </div>
+
+    <style>
+        .mobile-menu {
+            position: absolute;
+            left: 0.75rem;   /* px-3 */
+            right: 0.75rem;
+            top: calc(100% - 0.25rem);
+            z-index: 40;
+
+            padding: 1rem;
+            background-color: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px hsl(0 0% 0% / 0.12);
+
+            opacity: 0;
+            transform: translateY(-6px);
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity   220ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility  0ms linear 220ms;
+        }
+
+        .mobile-menu.is-open {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+            pointer-events: auto;
+            transition:
+                opacity   220ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility  0ms linear 0ms;
+        }
+
+        @media (min-width: 640px) {
+            .mobile-menu { left: 1.5rem; right: 1.5rem; }
+        }
+
+        /* ── Overlay de blur ────────────────────────────────────────────
+         * Criado via JS e anexado ao <body> para cobrir toda a viewport.
+         * z-index: 39 → fica abaixo do header (z-50) e do dropdown (z-40),
+         * mas acima de todo o conteúdo da página.
+         */
+        #mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 39;
+
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            background-color: hsl(0 0% 0% / 0.15);
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity   220ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility  0ms linear 220ms;
+        }
+
+        #mobile-menu-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition:
+                opacity   220ms cubic-bezier(0.16, 1, 0.3, 1),
+                visibility  0ms linear 0ms;
+        }
+    </style>
+
+    <script>
+        const btn = document.getElementById("mobile-menu-btn") as HTMLButtonElement | null;
+        const menu = document.getElementById("mobile-menu")     as HTMLElement | null;
+        const iconOpen = document.getElementById("icon-open");
+        const iconClose = document.getElementById("icon-close");
+
+        /* Cria o overlay uma única vez e o anexa ao <body> */
+        let overlay = document.getElementById("mobile-menu-overlay") as HTMLElement | null;
+        if (!overlay) {
+            overlay = document.createElement("div");
+            overlay.id = "mobile-menu-overlay";
+            document.body.appendChild(overlay);
+        }
+
+        function openMenu() {
+            menu?.classList.add("is-open");
+            overlay?.classList.add("is-open");
+            iconOpen?.classList.add("hidden");
+            iconClose?.classList.remove("hidden");
+            btn?.setAttribute("aria-expanded", "true");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+            menu?.classList.remove("is-open");
+            overlay?.classList.remove("is-open");
+            iconOpen?.classList.remove("hidden");
+            iconClose?.classList.add("hidden");
+            btn?.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = ""; 
+        }
+
+        btn?.addEventListener("click", () => {
+            btn.getAttribute("aria-expanded") === "true" ? closeMenu() : openMenu();
+        });
+
+        /* Clicar no overlay também fecha o menu */
+        overlay.addEventListener("click", closeMenu);
+
+        menu?.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+
+        document.addEventListener("keydown", (e: KeyboardEvent) => {
+            if (e.key === "Escape") closeMenu();
+        });
+    </script>
+)}
