@@ -39,14 +39,15 @@ Buscando mais simplicidade e performance para algo de conteúdo estático, o por
 ---
 
 ## Comparação de Performance
-
+ 
 Métricas coletadas via DevTools (Network tab) comparando a v1 em Next.js com a v2 em Astro:
-
-| Métrica              | Next.js | Astro  | Diferença | Melhoria               |
-| -------------------- | ------- | ------ | --------- | ---------------------- |
-| **Resources**        | 7.5 MB  | 3.6 MB | -3.9 MB   | **52% menor**          |
-| **Finish**           | 1.02 s  | 0.33 s | -0.69 s   | **67.6% mais rápido**  |
-| **DOMContentLoaded** | 506 ms  | 241 ms | -265 ms   | **52.4% mais rápido**  |
-| **Load**             | 829 ms  | 245 ms | -584 ms   | **70.4% mais rápido**  |
-| **LCP**              | 2.58 s  | 0.26 s | -2.32 s   | **89.9% mais rápido**  |
-
+ 
+| Métrica              | Next.js  | Astro    | Diferença | Melhoria               |
+| -------------------- | -------- | -------- | --------- | ---------------------- |
+| **Requests**         | 19       | 11       | -8        | **42.1% menos**        |
+| **Transferred**      | 304 kB   | 256 kB   | -48 kB    | **15.8% menor**        |
+| **Resources**        | 1.0 MB   | 552 kB   | -472 kB   | **46.1% menor**        |
+| **Finish**           | 768 ms   | 592 ms   | -176 ms   | **22.9% mais rápido**  |
+| **DOMContentLoaded** | 616 ms   | 226 ms   | -390 ms   | **63.3% mais rápido**  |
+| **Load**             | 635 ms   | 237 ms   | -398 ms   | **62.7% mais rápido**  |
+| **LCP**              | 1.45 s   | 0.30 s   | -1.15 s   | **79.3% mais rápido**  |
