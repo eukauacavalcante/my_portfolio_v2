@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../../layouts/layout.astro";
 import projects from "../../data/project";
 import Button from "../../components/ui/Button.astro";
@@ -22,15 +21,6 @@ if (!project) {
 }
 
 const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
-
-const allImages = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/projects/**/*.{png,jpg,jpeg,webp}"
-);
-
-const singleImageModule =
-    project?.images?.length === 1
-        ? await allImages[project.images[0]]?.()
-        : null;
 ---
 
 <Layout pageTitle={pageTitle}>
@@ -66,17 +56,17 @@ const singleImageModule =
                     </div>
                 </header>
 
-                {project.images && project.images.length > 1 ? (
+                {project.images.length > 1 ? (
                     <ImageCarousel images={project.images} alt={project.title} />
-                ) : singleImageModule ? (
+                ) : project.images.length === 1 ? (
                     <div class="mx-auto overflow-hidden rounded-xl border border-border bg-card/40">
-                        <Image
-                            src={singleImageModule.default}
+                        <img
+                            src={project.images[0]}
                             alt={project.title}
-                            width={1200}
-                            height={675}
+                            width="1200"
+                            height="675"
                             class="h-full w-full object-cover"
-                            quality={80}
+                            loading="lazy"
                         />
                     </div>
                 ) : (

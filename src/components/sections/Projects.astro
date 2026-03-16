@@ -3,11 +3,6 @@ import Card from "../ui/Card.astro";
 import Button from "../ui/Button.astro";
 import Project from "../../data/project.ts";
 import SectionHeader from "../ui/SectionHeader.astro";
-import { Image } from "astro:assets";
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/projects/**/*.{png,jpg,jpeg,webp}"
-);
 ---
 
 <section id="projetos" class="max-w-7xl flex flex-col gap-4 justify-center items-center w-full pt-24 lg:pt-32">
@@ -17,19 +12,18 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
         description="Projetos onde coloquei a mão na massa e desenvolvi aplicações modernas, adequadas para o mercado de tecnologia"
     />
     <div class="w-full max-w-5xl flex flex-col gap-6 md:gap-8 lg:gap-12 justify-center items-start">
-        { Project.map(async (project, index) => {
-            const imageModule = project.images ? await images[project.images[0]]?.() : null;
-
+        { Project.map((project, index) => {
             return (
                 <Card size="full" hover={true} class="flex flex-col gap-4 justify-center items-center w-full group">
                     <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10">
                         <div class="w-full lg:w-3/5 bg-linear-to-tr from-chart-1/10 to-chart-2/10 rounded-lg aspect-video shrink-0 order-2 lg:order-1">
-                            { imageModule ? (
-                                <Image
-                                    src={imageModule.default}
+                            {project.images[0] ? (
+                                <img
+                                    src={project.images[0]}
                                     alt={project.title}
-                                    width={800}
-                                    height={450}
+                                    width="800"
+                                    height="450"
+                                    loading="lazy"
                                     class="w-full h-full object-cover rounded-lg"
                                 />
                             ) : (
