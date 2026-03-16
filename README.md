@@ -32,12 +32,9 @@ Buscando mais simplicidade e performance para algo de conteúdo estático, o por
 - **[React 19](https://react.dev)**: biblioteca para construção de componentes interativos via integração `@astrojs/react`
 - **[Tailwind CSS v4](https://tailwindcss.com)**: framework utility-first integrado via `@tailwindcss/vite`, com plugin de tipografia
 
-### Tipografia e Ícones
-- **[Geist Variable](https://vercel.com/font)**: fonte variável via `@fontsource-variable/geist`
-- **[astro-iconify](https://github.com/Hugos68/astro-iconify)**: acesso ao ecossistema Iconify para ícones SVG
-
 ### Utilitários
 - **[clsx](https://github.com/lukeed/clsx)** + **[tailwind-merge](https://github.com/dcastil/tailwind-merge)**: composição e mesclagem segura de classes CSS
+- **[embla-carousel](https://www.embla-carousel.com/)**: biblioteca para carrossel de imagens responsivo
 
 ---
 
