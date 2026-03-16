@@ -1,7 +1,7 @@
 ---
 import Card from "../ui/Card.astro";
 import StackData from "../../data/stack.ts";
-import { Icon } from "astro-iconify";
+import { Icon } from '@iconify/react';
 import SectionHeader from "../ui/SectionHeader.astro";
 ---
 
@@ -39,7 +39,7 @@ import SectionHeader from "../ui/SectionHeader.astro";
 						class="flex flex-col gap-2 sm:gap-3 justify-center items-center backdrop-blur-sm border-border hover:bg-border/5 hover:shadow-[0_0_20px_-5px_var(--color-chart-1)] hover:-translate-y-1.5 cursor-default w-full aspect-square group will-change-transform"
 					>
 						<div class="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center shrink-0">
-							<Icon name={tech.icon} class="w-full h-full" />
+							<Icon icon={tech.icon} className="w-full h-full" />
 						</div>
 						<span class="text-[10px] sm:text-xs md:text-sm font-mono text-muted-foreground group-hover:text-primary text-center transition-colors duration-500 ease-in-out antialiased select-none leading-tight px-1 line-clamp-2">
 							{tech.name}
@@ -70,7 +70,7 @@ import SectionHeader from "../ui/SectionHeader.astro";
 						class="flex flex-col gap-2 sm:gap-3 justify-center items-center backdrop-blur-sm border-border hover:bg-border/5 hover:shadow-[0_0_20px_-5px_var(--color-chart-1)] hover:-translate-y-1.5 cursor-default w-full aspect-square group will-change-transform"
 					>
 						<div class="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center shrink-0">
-							<Icon name={tech.icon} class="w-full h-full" />
+							<Icon icon={tech.icon} className="w-full h-full" />
 						</div>
 						<span class="text-[10px] sm:text-xs md:text-sm font-mono text-muted-foreground group-hover:text-primary text-center transition-colors duration-500 ease-in-out antialiased select-none leading-tight px-1 line-clamp-2">
 							{tech.name}
