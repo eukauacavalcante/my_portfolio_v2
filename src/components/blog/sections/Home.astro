@@ -3,7 +3,7 @@ import Card from "@/components/ui/Card.astro";
 import FeaturedBlogCard from "../ui/FeaturedBlogCard.astro";
 import BlogCard from "../ui/BlogCard.astro";
 
-const allPosts = Object.values(import.meta.glob('../../posts/*.md', { eager: true })) as any[];
+const allPosts = Object.values(import.meta.glob('src/pages/blog/posts/*.md', { eager: true })) as any[];
 
 // Sort by publishedOn descending
 const sortedPosts = allPosts.sort((a, b) =>
@@ -52,7 +52,9 @@ for (let i = 0; i < restPosts.length; i += 2) {
         <div class="w-full max-w-6xl mx-auto flex flex-col gap-4 sm:gap-6">
             {postPairs.map((pair) => (
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    {pair.map((post: any) => (
+                    {pair
+                    .filter((post: any) => post && post.frontmatter)
+                    .map((post: any) => (
                         <BlogCard post={post} />
                     ))}
                 </div>

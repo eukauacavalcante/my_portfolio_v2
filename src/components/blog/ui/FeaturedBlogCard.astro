@@ -7,6 +7,12 @@ import { Image } from "astro:assets";
 const featured = Astro.props.featured;
 ---
 
+{!featured?.frontmatter ? (
+    <Card size="full" class="p-4 text-sm text-muted-foreground">
+        // Post em destaque invalido
+    </Card>
+) : (
+
 <Card
     size="full"
     hover
@@ -66,3 +72,5 @@ const featured = Astro.props.featured;
         </div>
     </div>
 </Card>
+
+)}

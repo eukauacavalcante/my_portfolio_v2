@@ -7,6 +7,12 @@ import { Image } from "astro:assets";
 const post = Astro.props.post;
 ---
 
+{!post?.frontmatter ? (
+    <Card size="full" class="p-4 text-sm text-muted-foreground">
+        // Post invalido
+    </Card>
+) : (
+
 <Card
     size="full"
     hover
@@ -67,3 +73,5 @@ const post = Astro.props.post;
         </Button>
     </div>
 </Card>
+
+)}

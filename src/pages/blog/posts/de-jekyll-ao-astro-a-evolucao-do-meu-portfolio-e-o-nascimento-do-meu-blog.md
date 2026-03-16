@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/PostLayout.astro
+layout: ../../../layouts/blog/PostLayout.astro
 title: "De Jekyll ao Astro: a evolução do meu portfólio e o nascimento do meu blog."
 description: "As escolhas, os erros e os aprendizados que me trouxeram até aqui, e ao lançamento do meu blog."
 author: "Kauã Cavalcante"
