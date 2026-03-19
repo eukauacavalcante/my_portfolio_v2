@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import myImage from "../../../public/landing/world.svg";
 import FormContact from "../ui/FormContact.astro";
 ---
 
@@ -22,13 +20,12 @@ import FormContact from "../ui/FormContact.astro";
                 e aguarde uma resposta em até 24 horas.
             </span>
             <div class="w-full flex justify-center items-center mt-4">
-                <Image
-                    src={myImage}
+                <img
+                    src="landing/world.svg"
                     class="w-4/5 sm:w-2/3 lg:w-full max-w-sm lg:max-w-none opacity-90" 
                     alt="Mapa mundi estilizado representando o contato global"
                     width={400}
                     height={300}
-                    quality={80}
                 />
             </div>
         </div>
