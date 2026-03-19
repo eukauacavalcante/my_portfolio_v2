@@ -1,7 +1,5 @@
 ---
 import Button from "../ui/Button.astro";
-import { Image } from "astro:assets";
-import myImage from "../../../public/me/kauacavalcante.jpeg";
 ---
 
 <section id="sobre-mim" class="max-w-7xl min-h-svh flex flex-col lg:flex-row justify-center items-center w-full pt-24 lg:pt-32">
@@ -54,13 +52,12 @@ import myImage from "../../../public/me/kauacavalcante.jpeg";
 				</span>
 			</div>
 			<div class="grow w-full h-full overflow-hidden bg-primary">
-				<Image
-					src={myImage}
+				<img
+					src="/me/kauacavalcante.jpeg"
 					class="w-full h-full object-cover object-top scale-[1.01] group-hover:scale-110 transition-transform duration-1000 ease-out antialiased"
 					alt="Foto de Kauã Cavalcante"
-					width={600} 
+					width={600}
 					height={600}
-					quality={100}
 					loading="eager"
 				/>
 			</div>
