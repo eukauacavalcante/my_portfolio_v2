@@ -1,7 +1,3 @@
-// TODO: trocar ícones por svg
-// icon: `<conteúdo svg>`
-// aplica set:html={icon} em Services.astro para renderizar no template
-
 const stack = {
   frontend: [
     { 

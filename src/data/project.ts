@@ -1,7 +1,3 @@
-// TODO: trocar ícones por svg
-// icon: `<conteúdo svg>`
-// aplica set:html={icon} em [slug].astro para renderizar no template
-
 const projects = [
   {
     slug: "vortex-project",
@@ -62,7 +58,7 @@ const projects = [
     tags: ["Django", "Projeto Acadêmico"],
     date: "2025",
     github: "https://github.com/eukauacavalcante/morpheus_env",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/posts/eukauacavalcante_morpheus-env-activity-7398835065323036672-TlVp",
     documentation: "https://eukauacavalcante.github.io/morpheus_env/",
     website: "",
     isPrivate: false,

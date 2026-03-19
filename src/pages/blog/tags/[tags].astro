@@ -4,6 +4,8 @@ import Card from '@/components/ui/Card.astro';
 import BlogCard from '@/components/blog/ui/BlogCard.astro';
 import Button from '@/components/ui/Button.astro';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
     const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true })) as any[];
     const uniqueTags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags ?? []).flat())];

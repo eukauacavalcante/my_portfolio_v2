@@ -5,6 +5,8 @@ import Button from "../../components/ui/Button.astro";
 import Card from "../../components/ui/Card.astro";
 import ImageCarousel from "@/components/ui/ImageCarousel.astro";
 
+export const prerender = true;
+
 export function getStaticPaths() {
     return projects.map((project) => ({
         params: { slug: project.slug },
@@ -83,7 +85,7 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                 </p>
 
                 {project.isPrivate && (
-                    <div class="relative bg-card border border-chart-1/30 rounded-xl p-6 sm:p-8 hover:shadow-2xl hover:shadow-chart-1/20 hover:-translate-y-1 transition-all duration-500 cursor-default">
+                    <div class="relative bg-card border border-chart-1/30 rounded-xl p-6 sm:p-8 hover:shadow-2xl hover:shadow-chart-1/20 hover:-translate-y-1 transition-all duration-500 cursor-default group">
                         <div class="flex items-start gap-4 sm:gap-6">
                             <div class="shrink-0">
                                 <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-linear-to-tr from-chart-1 to-chart-2 text-white flex items-center justify-center border border-chart-1/30">
@@ -92,7 +94,7 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center gap-2 mb-3">
-                                    <h2 class="text-lg sm:text-xl font-semibold text-foreground">
+                                    <h2 class="text-lg sm:text-xl font-semibold text-foreground group-hover:text-gradient duration-500 transition-colors">
                                         Projeto em Desenvolvimento
                                     </h2>
                                 </div>
@@ -113,6 +115,14 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                             Ver no GitHub
                         </Button>
                     )}
+                    {project.linkedin && (
+                        <Button variant="default" class="bg-blue-500 hover:bg-blue-600 text-white" href={project.linkedin} target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/>
+                            </svg>
+                            Ver no LinkedIn
+                        </Button>
+                    )}
                     {project.documentation && (
                         <Button variant="outline" href={project.documentation} target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -129,25 +139,22 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                             Acessar Projeto
                         </Button>
                     )}
-                    {project.linkedin && (
-                        <Button variant="outline" href={project.linkedin} target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/>
-                            </svg>
-                            Ver no LinkedIn
-                        </Button>
-                    )}
                 </div>
+
+                <hr>
 
                 {project.functionalities && project.functionalities.length > 0 && (
                     <div class="space-y-6">
-                        <h2 class="text-xl font-bold sm:text-2xl">Funcionalidades</h2>
+                        <div class="text-2xl sm:text-3xl font-bold mb-4 flex items-center gap-3">
+                            <span class="w-1.5 h-8 bg-linear-to-b from-chart-1 to-chart-2 rounded-full" />
+                            <h2 class="text-xl font-bold sm:text-2xl">Funcionalidades</h2>
+                        </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {project.functionalities.map((func) => (
-                                <Card class="flex flex-col gap-3" size="full" hover={true}>
+                                <Card class="flex flex-col gap-3 group cursor-default" size="full" hover={true}>
                                     <div class="flex items-center gap-3">
                                         <div class="flex items-center justify-center p-2 rounded-lg bg-linear-to-tr from-chart-1 to-chart-2 text-white shrink-0" set:html={func.icon} />
-                                        <h3 class="text-lg font-bold leading-tight">{func.title}</h3>
+                                        <h3 class="text-lg font-bold leading-tight group-hover:text-gradient duration-500 transition-colors">{func.title}</h3>
                                     </div>
                                     <p class="text-sm leading-relaxed text-muted-foreground">
                                         {func.description}
@@ -160,7 +167,10 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
 
                 {project.stack && (
                     <div class="space-y-4">
-                        <h2 class="text-xl font-bold sm:text-2xl">Tecnologias</h2>
+                        <div class="text-2xl sm:text-3xl font-bold mb-4 flex items-center gap-3">
+                            <span class="w-1.5 h-8 bg-linear-to-b from-chart-1 to-chart-2 rounded-full" />
+                            <h2 class="text-xl font-bold sm:text-2xl">Tecnologias</h2>
+                        </div>
                         {project.stack.frontend && project.stack.frontend.length > 0 && (
                             <div class="space-y-2">
                                 <div class="flex flex-row gap-4 items-center">
@@ -180,7 +190,7 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                         {project.stack.backend && project.stack.backend.length > 0 && (
                             <div class="space-y-2">
                                 <div class="flex flex-row gap-4 items-center">
-                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80 mt-2">Backend</h3>
+                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80">Backend</h3>
                                     <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
                                 </div>
                                 <div class="flex flex-wrap gap-2">
@@ -196,7 +206,7 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                         {project.stack.database && project.stack.database.length > 0 && (
                             <div class="space-y-2">
                                 <div class="flex flex-row gap-4 items-center">
-                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80 mt-2">Banco de Dados</h3>
+                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80">Banco de Dados</h3>
                                     <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
                                 </div>
                                 <div class="flex flex-wrap gap-2">

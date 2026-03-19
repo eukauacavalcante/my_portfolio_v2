@@ -4,7 +4,7 @@ title: "De Jekyll ao Astro: a evolução do meu portfólio e o nascimento do meu
 description: "As escolhas, os erros e os aprendizados que me trouxeram até aqui, e ao lançamento do meu blog."
 author: "Kauã Cavalcante"
 publishedOn: "03/07/2026"
-updatedOn: "03/08/2026"
+updatedOn: "03/18/2026"
 readingTime: 15
 image:
     url: "blog/post-1/imagem-representativa.jpeg"
@@ -34,7 +34,7 @@ _includes/
 - interação extremamente limitada com JavaScript puro;
 - os motivos acima já eram suficientes para utilizar algo novo.
 
-Em uma conversa com o meu professor, onde eu apresentei a ele o meu currículo (pedindo para ele avaliar se estava OK), ele me recomendou estudar novas tecnologias para complementar minhas skills no front-end: React e algum framework React. Após isso, fiz uma pesquisa e encontrei o Next.js com uma proposta de "foque no desenvolvimento, a complexidade é por nossa parte". Me interessei e fui assistir cursos no Youtube para entender a parte teórica (era meu primeiro contato com TypeScript, antes eu apenas utilizava Django para fullstack), e logo após isso fui direto para prática.
+Em uma conversa com o meu professor, onde eu apresentei a ele o meu currículo (pedindo para ele avaliar), ele me recomendou estudar novas tecnologias para complementar minhas skills no front-end: React e algum framework React. Após isso, fiz uma pesquisa e encontrei o Next.js com uma proposta de "foque no desenvolvimento, a complexidade é por nossa parte". Me interessei e fui assistir cursos no Youtube para entender a parte teórica (era meu primeiro contato com TypeScript, antes eu apenas utilizava Django para fullstack), e logo após isso fui direto para prática.
 
 Em primeiro contato, notei a velocidade na qual você consegue desenvolver aplicações no Next.js. App Router, arquivos "mágicos", Tailwind já integrado... Isso tudo me incentivou ainda mais e me viciou o suficiente para eu não pensar duas vezes: reconstruí meu portfólio em Next.js.
 

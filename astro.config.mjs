@@ -1,18 +1,15 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
-
 import tailwindcss from '@tailwindcss/vite';
-
 import react from '@astrojs/react';
+import vercel from '@astrojs/vercel';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://kauacavalcante.vercel.app',
+  output: "server",
+  adapter: vercel(),
   vite: {
     plugins: [tailwindcss()]
   },
-
-  // TODO: remove manual sitemap, fix build error, and enable automatic sitemap generation
   integrations: [react(), sitemap()]
 });
