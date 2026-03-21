@@ -95,7 +95,7 @@ export function buildContactEmailHtml(data: ContactPayload): string {
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="font-size:11px;color:#aaaaaa;letter-spacing:0.01em;">Enviado via formulário de contato</td>
-                  <td align="right" style="font-size:11px;font-weight:500;color:#bbbbbb;letter-spacing:0.05em;">kauacavalcante.dev</td>
+                  <td align="right" style="font-size:11px;font-weight:500;color:#bbbbbb;letter-spacing:0.05em;">kauacavalcante.vercel.app</td>
                 </tr>
               </table>
             </td>

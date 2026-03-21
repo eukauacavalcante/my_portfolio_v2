@@ -2,8 +2,6 @@
 import Button from "@/components/ui/Button.astro";
 import { ShootingStars } from "@/components/ui/ShootingStars";
 import { StarsBackground } from "@/components/ui/StarsBackground";
-import { Image } from "astro:assets";
-import errorImage from "../../public/not_found/not-found-image.svg";
 import Layout from "@/layouts/layout.astro";
 ---
 
@@ -12,8 +10,8 @@ import Layout from "@/layouts/layout.astro";
         <div class="relative z-10 flex w-full max-w-6xl flex-col items-center justify-center text-center md:flex-row md:text-left">
 
             <div class="flex w-full items-center justify-center md:w-1/2">
-                <Image
-                    src={errorImage}
+                <img
+                    src="not_found/not-found-image.svg"
                     alt="Ilustração de página não encontrada"
                     class="mx-auto w-full max-w-xs sm:max-w-sm md:max-w-full"
                     loading="eager"
