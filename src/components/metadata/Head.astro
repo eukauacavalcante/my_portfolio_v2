@@ -4,6 +4,7 @@ interface Props {
 	description?: string;
 	canonicalUrl?: string;
 	ogImage?: string;
+	ogImageAlt?: string;
 	ogType?: "website" | "profile";
 	twitterHandle?: string;
 	socialLinks?: string[];
@@ -11,9 +12,10 @@ interface Props {
 
 const {
 	title = "Kauã Cavalcante | Desenvolvedor Full Stack",
-	description = "Portfolio de Kauã Cavalcante, desenvolvedor full stack que cria aplicações modernas com Django, Next.js, Astro e APIs REST focadas em performance e UX.",
+	description = "Portfólio de Kauã Cavalcante, desenvolvedor full stack especializado em Django e Next.js. Explore projetos, habilidades e experiência profissional.",
 	canonicalUrl = "https://kauacavalcante.vercel.app/",
 	ogImage = "https://kauacavalcante.vercel.app/og-banner.png",
+	ogImageAlt = "Banner do portfolio de Kauã Cavalcante",
 	ogType = "website",
 	twitterHandle = "@ikauacavalcante",
 	socialLinks = [
@@ -63,7 +65,7 @@ const personJsonLd = JSON.stringify({
 <meta property="og:url" content={normalizedCanonical} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={normalizedOgImage} />
-<meta property="og:image:alt" content="Banner do portfolio de Kauã Cavalcante" />
+<meta property="og:image:alt" content={ogImageAlt} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="pt_BR" />

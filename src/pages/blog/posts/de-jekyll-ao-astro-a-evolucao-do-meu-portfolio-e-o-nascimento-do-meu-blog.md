@@ -1,14 +1,15 @@
 ---
 layout: ../../../layouts/blog/PostLayout.astro
-title: "De Jekyll ao Astro: a evolução do meu portfólio e o nascimento do meu blog."
+title: "De Jekyll ao Astro: a evolução do meu portfólio e o nascimento do meu blog"
 description: "As escolhas, os erros e os aprendizados que me trouxeram até aqui, e ao lançamento do meu blog."
+slug: "de-jekyll-ao-astro-a-evolucao-do-meu-portfolio-e-o-nascimento-do-meu-blog"
 author: "Kauã Cavalcante"
 publishedOn: "03/07/2026"
 updatedOn: "03/18/2026"
-readingTime: 15
+readingTime: 10
 image:
-    url: "blog/post-1/imagem-representativa.jpeg"
-    alt: "Um celular com o site do blog aberto. Ao fundo, um monitor com o site do portfólio aberto na tela inicial."
+  url: "blog/post-1/imagem-representativa.jpeg"
+  alt: "Um celular com o site do blog aberto. Ao fundo, um monitor com o site do portfólio aberto na tela inicial."
 tags: ["portfolio", "blog", "novo"]
 ---
 

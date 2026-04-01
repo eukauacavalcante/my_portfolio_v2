@@ -12,7 +12,13 @@ function formattedDate(dateString: string) {
 }
 ---
 
-<Layout pageTitle={frontmatter.title}>
+<Layout
+    pageTitle={frontmatter.title}
+    pageDescription={frontmatter.description}
+    ogImage={frontmatter.image?.url}
+    ogImageAlt={frontmatter.image?.alt}
+    canonicalUrl={`/blog/${frontmatter.slug}`}
+>
     <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
 
         <div class="mb-8 sm:mb-12">
@@ -83,8 +89,8 @@ function formattedDate(dateString: string) {
                 <Image
                     src={"/" + frontmatter.image.url}
                     alt={frontmatter.image.alt ?? frontmatter.title}
-                    width={100}
-                    height={100}
+                    width={1200}
+                    height={630}
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
             </div>

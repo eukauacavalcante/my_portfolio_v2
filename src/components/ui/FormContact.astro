@@ -126,6 +126,7 @@
       <span id="btn-label">Enviar</span>
       <span id="btn-loading" class="hidden">Enviando...</span>
       <svg
+        id="submit-btn-svg"
         xmlns="http://www.w3.org/2000/svg"
         width="18"
         height="18"
@@ -160,10 +161,24 @@
   let isSuccess = false;
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitBtnSvg = document.getElementById("submit-btn-svg") as unknown as SVGElement;
   const btnLabel = document.getElementById("btn-label")!;
   const btnLoading = document.getElementById("btn-loading")!;
   const successMsg = document.getElementById("form-success")!;
   const globalError = document.getElementById("form-global-error")!;
+
+  // FIXME: toggleSubmitBtn foi criado para evitar repetição de código e mais interatividade. Porém, ele depende de elementos específicos do DOM, o que não é ideal. Refatorar para um componente mais isolado seria melhor.
+  function toggleSubmitBtn(enabled: boolean) {
+      if (enabled) {
+        submitBtn.disabled = false;
+        submitBtn.classList.add("hover:scale-[1.02]", "cursor-pointer");
+        submitBtnSvg.classList.add("group-hover:translate-x-1", "group-hover:scale-110");
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.classList.remove("hover:scale-[1.02]", "cursor-pointer");
+        submitBtnSvg.classList.remove("group-hover:translate-x-1", "group-hover:scale-110");
+      }
+    }
 
   function showError(id: string, msg: string) {
     const el = document.getElementById(`${id}-error`);
@@ -230,7 +245,7 @@
 
     btnLabel.classList.add("hidden");
     btnLoading.classList.remove("hidden");
-    submitBtn.disabled = true;
+    toggleSubmitBtn(false);
 
     try {
       const res = await fetch("/api/contact", {
@@ -255,13 +270,13 @@
           showError(field, msgs[0]);
         }
       } else {
-        submitBtn.disabled = false;
+        toggleSubmitBtn(true);
         globalError.textContent =
           json.error ?? "Algo deu errado. Tente novamente.";
         globalError.classList.remove("hidden");
       }
     } catch {
-      submitBtn.disabled = false;
+      toggleSubmitBtn(true);
       globalError.textContent = "Falha de conexão. Verifique sua internet.";
       globalError.classList.remove("hidden");
     } finally {
