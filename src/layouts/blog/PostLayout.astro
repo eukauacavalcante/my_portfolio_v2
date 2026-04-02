@@ -15,11 +15,11 @@ function formattedDate(dateString: string) {
 <Layout
     pageTitle={frontmatter.title}
     pageDescription={frontmatter.description}
-    ogImage={frontmatter.image?.url}
+    ogImage={frontmatter.image?.ogImage}
     ogImageAlt={frontmatter.image?.alt}
     canonicalUrl={`/blog/${frontmatter.slug}`}
 >
-    <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+    <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <div class="mb-8 sm:mb-12">
             <Button href="/blog" variant="outline" class="group">
@@ -29,6 +29,18 @@ function formattedDate(dateString: string) {
                 Voltar
             </Button>
         </div>
+
+        {frontmatter.image?.banner && (
+            <div class="w-full h-50 md:h-100 mb-10 rounded-2xl overflow-hidden border border-border">
+                <Image
+                    src={"/" + frontmatter.image.banner}
+                    alt={frontmatter.image.alt ?? frontmatter.title}
+                    width={1200}
+                    height={630}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+            </div>
+        )}
 
         <div class="flex flex-col gap-3">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
@@ -83,18 +95,6 @@ function formattedDate(dateString: string) {
                 )}
             </div>
         </div>
-
-        {frontmatter.image?.url && (
-            <div class="w-full h-50 md:h-100 mb-10 rounded-2xl overflow-hidden border border-border">
-                <Image
-                    src={"/" + frontmatter.image.url}
-                    alt={frontmatter.image.alt ?? frontmatter.title}
-                    width={1200}
-                    height={630}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-            </div>
-        )}
 
         <div class="prose dark:prose-invert max-w-none text-primary text-base sm:text-lg leading-relaxed">
             <slot />

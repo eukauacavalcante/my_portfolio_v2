@@ -7,8 +7,9 @@ author: "Kauã Cavalcante"
 publishedOn: "04/01/2026"
 readingTime: 20
 image:
-  url: "blog/post-2/a-desculpa-da-ia-banner.png"
-  alt: "Banner escuro com gráfico de queda ao fundo, ícones de IA e e-commerce nas laterais e o título “A desculpa da IA: quando a inovação vira justificativa para demissões em massa” centralizado em destaque."
+  banner: "blog/post-2/a-desculpa-da-ia-banner.png"
+  ogImage: "blog/post-2/a-desculpa-da-ia-og-image.png"
+  alt: "Imagem de capa do artigo 'A desculpa da IA', sobre como a inovação tecnológica é usada para justificar demissões em massa, com logos da Microsoft, ChatGPT e Amazon."
 tags: ["ia", "layoffs"]
 ---
 

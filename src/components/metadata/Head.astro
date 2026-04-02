@@ -14,8 +14,8 @@ const {
 	title = "Kauã Cavalcante | Desenvolvedor Full Stack",
 	description = "Portfólio de Kauã Cavalcante, desenvolvedor full stack especializado em Django e Next.js. Explore projetos, habilidades e experiência profissional.",
 	canonicalUrl = "https://kauacavalcante.vercel.app/",
-	ogImage = "https://kauacavalcante.vercel.app/og-banner.png",
-	ogImageAlt = "Banner do portfolio de Kauã Cavalcante",
+	ogImage = "https://kauacavalcante.vercel.app/og-image.png",
+	ogImageAlt = "Banner do portfólio de Kauã Cavalcante, Desenvolvedor Full Stack especializado em soluções escaláveis, seguras e modernas. Ao lado, uma ilustração de um gato cinza usando traje de astronauta flutuando no espaço sideral.",
 	ogType = "website",
 	twitterHandle = "@ikauacavalcante",
 	socialLinks = [
@@ -42,6 +42,7 @@ const personJsonLd = JSON.stringify({
     image: normalizedOgImage,
 	sameAs: socialLinks,
     knowsAbout: [
+		"FastAPI",
         "Django",
         "Next.js",
         "Astro",
@@ -75,7 +76,7 @@ const personJsonLd = JSON.stringify({
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={normalizedOgImage} />
-<meta name="twitter:image:alt" content="Banner do portfolio de Kauã Cavalcante" />
+<meta name="twitter:image:alt" content={ogImageAlt} />
 <meta name="twitter:site" content="@ikauacavalcante" />
 {twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
 

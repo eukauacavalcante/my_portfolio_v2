@@ -8,7 +8,8 @@ publishedOn: "03/07/2026"
 updatedOn: "03/18/2026"
 readingTime: 10
 image:
-  url: "blog/post-1/imagem-representativa.jpeg"
+  banner: "blog/post-1/de-jekyll-ao-astro-banner.png"
+  ogImage: "blog/post-1/de-jekyll-ao-astro-og-image.png"
   alt: "Um celular com o site do blog aberto. Ao fundo, um monitor com o site do portfólio aberto na tela inicial."
 tags: ["portfolio", "blog", "novo"]
 ---

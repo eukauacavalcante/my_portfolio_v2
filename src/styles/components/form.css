@@ -8,7 +8,11 @@
 }
 
 .checkbox-label {
-    @apply px-4 py-2 border border-border text-xs text-muted-foreground font-semibold has-checked:bg-linear-to-r has-checked:from-chart-1 has-checked:to-chart-2 has-checked:text-white has-checked:border-transparent transition-all duration-200 uppercase rounded-lg cursor-pointer select-none;
+    @apply px-4 py-2 text-xs text-muted-foreground font-semibold 
+    ring-1 ring-border
+    has-checked:bg-linear-to-r has-checked:from-chart-1 has-checked:to-chart-2 
+    has-checked:text-white has-checked:ring-transparent
+    transition-all duration-200 uppercase rounded-lg cursor-pointer select-none;
 }
 
 .checkbox-input {

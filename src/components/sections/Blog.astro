@@ -1,11 +1,31 @@
 ---
 import Button from "../ui/Button.astro";
 import Card from "../ui/Card.astro";
+
+const allPosts = Object.values(import.meta.glob("../../pages/blog/posts/*.md", { eager: true })) as any[];
+
+const sortedPosts = allPosts.sort(
+    (a, b) => new Date(b.frontmatter?.publishedOn).getTime() - new Date(a.frontmatter?.publishedOn).getTime()
+);
+
+const featured = sortedPosts[0];
+
+const featuredTitle = featured?.frontmatter?.title;
+const featuredDescription = featured?.frontmatter?.description;
+const featuredBanner = featured?.frontmatter?.image?.banner
+    ? `/${featured.frontmatter.image.banner}`
+    : null;
+const featuredUrl = featured?.url;
 ---
 
-<section class="max-w-7xl">
-    <Card size="full" hover={true} class="relative flex flex-col md:flex-row gap-8 items-stretch justify-between my-20 p-6 sm:p-10 lg:p-12 overflow-hidden cursor-default group border-border bg-linear-to-b from-card/50 to-card/20">
-        <div class="w-full md:w-2/3 flex flex-col gap-5 justify-center items-start z-10">
+<section class="mx-auto w-full max-w-5xl flex justify-center items-center">
+    <Card
+        size="full"
+        hover={true}
+        class="relative my-20 overflow-hidden border-border bg-linear-to-br from-card/95 via-card/70 to-card/30 p-6 sm:p-10 lg:p-12"
+    >
+        <div class="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+            <div class="flex w-full flex-col items-start justify-between gap-5 lg:col-span-5">
             <div class="section-badge">
                 <span class="section-badge-indicator"></span>
                 <span class="section-badge-text">
@@ -29,21 +49,40 @@ import Card from "../ui/Card.astro";
                     <path fill="currentColor" d="M4 11v2h12l-5.5 5.5l1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5L16 11z"/>
                 </svg>
             </Button>
-        </div>
-        <div class="w-full md:w-1/3 flex justify-center items-center z-10">
-            <div class="relative w-full aspect-square md:aspect-auto md:h-full max-w-75 md:max-w-none group/img">
-                <div class="w-full h-full rounded-2xl bg-linear-to-br from-foreground/10 to-transparent border border-border p-4 backdrop-blur-md transform transition-all duration-500 group-hover:rotate-2 group-hover:scale-105 shadow-2xl shadow-black/50 flex flex-col gap-4">
-                    <div class="w-full h-2/3 rounded-lg bg-chart-1/20 overflow-hidden flex items-center justify-center border border-border">
-                        <svg class="text-chart-1 opacity-50 group-hover:scale-110 transition-transform duration-700" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M20 5v14H4V5zm0-2H4c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2m-2 12H6v2h12zm-8-8H6v6h4zm2 2h6V7h-6zm6 2h-6v2h6z"/>
-                        </svg>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="h-2 w-1/3 bg-chart-1/40 rounded-full"></div>
-                        <div class="h-4 w-full bg-foreground/10 rounded-full"></div>
-                        <div class="h-4 w-2/3 bg-foreground/10 rounded-full"></div>
-                    </div>
-                </div>
+            </div>
+
+            <div class="flex w-full items-center lg:col-span-7">
+                {featured && (
+                    <a
+                        href={featuredUrl}
+                        class="group/featured w-full overflow-hidden rounded-2xl border border-border/80 bg-card/85 shadow-xl shadow-chart-1/5 transition-all duration-300 hover:-translate-y-1 hover:border-chart-1/40"
+                    >
+                        {featuredBanner && (
+                            <div class="relative aspect-video w-full overflow-hidden">
+                                <img
+                                    src={featuredBanner}
+                                    alt={featuredTitle}
+                                    class="h-full w-full object-cover transition-transform duration-500 group-hover/featured:scale-105"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <div class="absolute inset-0 bg-linear-to-t from-black/50 via-black/0 to-transparent"></div>
+                            </div>
+                        )}
+
+                        <div class="space-y-3 p-4 sm:p-5">
+                            <span class="text-[10px] sm:text-xs font-semibold bg-foreground text-primary-foreground px-2 py-0.5 rounded">
+                                Mais recente
+                            </span>
+                            <h3 class="text-lg font-bold leading-snug text-foreground sm:text-xl line-clamp-2 transition-colors duration-300 group-hover/featured:text-chart-1">
+                                {featuredTitle}
+                            </h3>
+                            <p class="text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                                {featuredDescription}
+                            </p>
+                        </div>
+                    </a>
+                )}
             </div>
         </div>
     </Card>

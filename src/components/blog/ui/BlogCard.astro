@@ -18,11 +18,11 @@ const post = Astro.props.post;
     hover
     class="flex flex-col overflow-hidden p-0 border-border backdrop-blur-sm group"
 >
-    {post.frontmatter.image?.url && (
+    {post.frontmatter.image?.banner && (
         <div class="w-full h-44 sm:h-58 overflow-hidden shrink-0">
-            { post.frontmatter.image?.url ? (
+            { post.frontmatter.image?.banner ? (
                 <Image
-                    src={"/" + post.frontmatter.image.url}
+                    src={"/" + post.frontmatter.image.banner}
                     alt={post.frontmatter.image.alt ?? post.frontmatter.title}
                     width={800}
                     height={450}
@@ -65,9 +65,9 @@ const post = Astro.props.post;
                 {post.frontmatter.readingTime} min de leitura
             </span>
         </div>
-        <Button href={post.url} class="shrink-0 group">
+        <Button href={post.url} class="shrink-0 group/btn">
             <span>Ler mais</span>
-            <svg class="group-hover:translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <svg class="group-hover/btn:translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                 <path stroke-dasharray="20" d="M3 12h17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M21 12l-7 7M21 12l-7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
             </svg>
         </Button>

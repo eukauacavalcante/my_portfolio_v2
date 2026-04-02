@@ -1,8 +1,14 @@
 ---
 import Home from "@/components/blog/sections/Home.astro";
-import BlogLayout from "@/layouts/blog/Layout.astro";
+import Layout from "@/layouts/blog/Layout.astro";
 ---
 
-<BlogLayout pageTitle="Blog">
+<Layout
+    pageTitle="Blog Pessoal"
+    pageDescription="Mundo tech, projetos e aprendizados do dia a dia."
+    ogImage="blog/home/blog-og-image.png"
+    ogImageAlt="Imagem de capa da home do blog pessoal de Kauã Cavalcante, sobre tecnologia, projetos e aprendizados do dia a dia, com ilustração de um autor usando notebook ao lado da visualização do blog em um celular."
+    canonicalUrl="/blog"
+>
     <Home />
-</BlogLayout>
+</Layout>
