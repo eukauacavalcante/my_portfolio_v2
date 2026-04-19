@@ -3,13 +3,11 @@ import Button from "../ui/Button.astro";
 import Card from "../ui/Card.astro";
 
 const allPosts = Object.values(import.meta.glob("../../pages/blog/posts/*.md", { eager: true })) as any[];
-
 const sortedPosts = allPosts.sort(
     (a, b) => new Date(b.frontmatter?.publishedOn).getTime() - new Date(a.frontmatter?.publishedOn).getTime()
 );
 
 const featured = sortedPosts[0];
-
 const featuredTitle = featured?.frontmatter?.title;
 const featuredDescription = featured?.frontmatter?.description;
 const featuredBanner = featured?.frontmatter?.image?.banner
@@ -18,66 +16,56 @@ const featuredBanner = featured?.frontmatter?.image?.banner
 const featuredUrl = featured?.url;
 ---
 
-<section class="mx-auto w-full max-w-5xl flex justify-center items-center">
+<section class="mx-auto min-h-svh px-4 sm:px-6 lg:px-0 w-full max-w-250 flex justify-center items-center">
     <Card
         size="full"
-        hover={true}
-        class="relative my-20 overflow-hidden border-border bg-linear-to-br from-card/95 via-card/70 to-card/30 p-6 sm:p-10 lg:p-12"
+        hover={false}
+        class="relative my-20 overflow-hidden p-6 sm:p-10 lg:p-12"
     >
         <div class="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
             <div class="flex w-full flex-col items-start justify-between gap-5 lg:col-span-5">
-            <div class="section-badge">
-                <span class="section-badge-indicator"></span>
-                <span class="section-badge-text">
-                    Novo
-                </span>
+                <div class="space-y-8">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold uppercase leading-[1.1] tracking-tight">
+                        Blog Pessoal
+                    </h2>
+                    <p class="text-base md:text-xl text-muted-foreground leading-relaxed max-w-xl">
+                        Compartilho minha jornada acadêmica em <span class="text-foreground font-medium">ADS</span>, tutoriais técnicos e reflexões sobre a evolução da tecnologia.
+                    </p>
+                </div>
+                <Button
+                    href="/blog"
+                    class="w-full p-2 sm:p-4 tracking-[1.17px]"
+                >
+                    Acessar Blog
+                </Button>
             </div>
-            <div class="space-y-3">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.1] tracking-tight">
-                    Blog Pessoal
-                </h2>
-                <p class="text-sm sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                    Compartilho minha jornada acadêmica em <span class="text-foreground font-medium">ADS</span>, tutoriais técnicos e reflexões sobre a evolução da tecnologia.
-                </p>
-            </div>
-            <Button
-                href="/blog"
-                class="w-full dark:text-primary p-2 sm:p-4 bg-linear-to-r from-chart-1 to-chart-2 border-0 uppercase font-bold tracking-widest transition-all duration-300 group/btn"
-            >
-                Acessar Blog
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="transition-transform duration-300 group-hover/btn:translate-x-1">
-                    <path fill="currentColor" d="M4 11v2h12l-5.5 5.5l1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5L16 11z"/>
-                </svg>
-            </Button>
-            </div>
-
             <div class="flex w-full items-center lg:col-span-7">
                 {featured && (
                     <a
                         href={featuredUrl}
-                        class="group/featured w-full overflow-hidden rounded-2xl border border-border/80 bg-card/85 shadow-xl shadow-chart-1/5 transition-all duration-300 hover:-translate-y-1 hover:border-chart-1/40"
+                        class="w-full overflow-hidden border border-border hover:border-white bg-background rounded-[5px] transition-colors duration-300"
                     >
                         {featuredBanner && (
-                            <div class="relative aspect-video w-full overflow-hidden">
+                            <div class="aspect-video w-full overflow-hidden">
                                 <img
                                     src={featuredBanner}
                                     alt={featuredTitle}
-                                    class="h-full w-full object-cover transition-transform duration-500 group-hover/featured:scale-105"
+                                    width="1200"
+                                    height="675"
+                                    class="h-full w-full object-cover"
                                     loading="lazy"
                                     decoding="async"
                                 />
-                                <div class="absolute inset-0 bg-linear-to-t from-black/50 via-black/0 to-transparent"></div>
                             </div>
                         )}
-
                         <div class="space-y-3 p-4 sm:p-5">
-                            <span class="text-[10px] sm:text-xs font-semibold bg-foreground text-primary-foreground px-2 py-0.5 rounded">
+                            <span class="text-[10px] sm:text-xs font-semibold bg-foreground text-primary-foreground px-2 py-0.5 uppercase rounded-[5px]">
                                 Mais recente
                             </span>
-                            <h3 class="text-lg font-bold leading-snug text-foreground sm:text-xl line-clamp-2 transition-colors duration-300 group-hover/featured:text-chart-1">
+                            <h3 class="text-lg font-bold leading-snug text-primary sm:text-xl line-clamp-2 uppercase">
                                 {featuredTitle}
                             </h3>
-                            <p class="text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                            <p class="text-sm md:text-base leading-relaxed text-muted-foreground line-clamp-3">
                                 {featuredDescription}
                             </p>
                         </div>

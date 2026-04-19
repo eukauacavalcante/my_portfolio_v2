@@ -1,79 +1,66 @@
 ---
 import Card from "../ui/Card.astro";
 import StackData from "../../data/stack.ts";
-import SectionHeader from "../ui/SectionHeader.astro";
 ---
 
 <section
 	id="stack"
-	class="max-w-7xl flex flex-col gap-8 sm:gap-10 md:gap-12 justify-center items-center w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 mb-10 sm:mb-16 md:mb-20"
+	class="max-w-350 min-h-svh flex flex-col gap-8 sm:gap-10 md:gap-12 justify-center items-center w-full px-4 sm:px-6 lg:px-0 py-12 sm:py-16 md:py-20 lg:py-24 mb-10 sm:mb-16 md:mb-20"
 >
-	<SectionHeader
-		budgeText="Stack"
-		title="Meu Universo Tech"
-		description="Navegando pelo espaço digital com uma constelação robusta de tecnologias, frameworks e ferramentas projetadas para escalabilidade e performance."
-	/>
-
-	<div class="flex flex-col gap-10 sm:gap-12 md:gap-16 w-full">
-
-		<!-- Frontend -->
-		<div class="w-full flex flex-col gap-6 sm:gap-8">
-			<div class="flex flex-col gap-2 sm:gap-3">
-				<div class="flex flex-row gap-3 sm:gap-4 items-center">
-					<h2 class="text-xl lg:text-2xl xl:text-3xl font-extrabold whitespace-nowrap">
-						Engenharia Frontend
-					</h2>
-					<span class="flex-1 max-w-32 sm:max-w-40 lg:max-w-56 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/5"></span>
-				</div>
-				<p class="text-sm sm:text-base text-muted-foreground text-left max-w-2xl font-mono leading-relaxed">
-					// Construindo interfaces de usuário imersivas, responsivas e performáticas com bibliotecas e frameworks de ponta.
+	<div class="w-full flex flex-col items-start max-w-xl text-left self-start mr-auto">
+		<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold uppercase">Tecnologias</h2>
+		<p class="text-lg md:text-xl text-muted-foreground mt-2">
+			Navegando pelo espaço digital com uma constelação robusta de ferramentas modernas.
+		</p>
+	</div>
+	<div class="flex flex-col sm:flex-row gap-8 sm:gap-6 md:gap-10 w-full">
+		<div class="w-full sm:w-1/2 flex flex-col gap-5">
+			<div class="flex flex-col gap-2">
+				<h2 class="text-lg md:text-2xl xl:text-3xl font-semibold">
+					Engenharia Frontend
+				</h2>
+				<p class="text-base md:text-xl text-muted-foreground text-left leading-relaxed">
+					Interfaces de usuário imersivas, responsivas e performáticas com bibliotecas e frameworks de ponta.
 				</p>
 			</div>
-
-			<div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4">
+			<div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
 				{StackData.frontend.map((tech) => (
 					<Card
 						size="sm"
 						hover={false}
-						class="flex flex-col gap-2 sm:gap-3 justify-center items-center backdrop-blur-sm border-border hover:bg-border/5 hover:shadow-[0_0_20px_-5px_var(--color-chart-1)] hover:-translate-y-1.5 cursor-default w-full aspect-square group will-change-transform"
+						class="flex flex-col gap-2 justify-center items-center w-full aspect-square"
 					>
-						<div class="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center shrink-0" set:html={tech.icon}/>
-						<span class="text-[10px] sm:text-xs md:text-sm font-mono text-muted-foreground group-hover:text-primary text-center transition-colors duration-500 ease-in-out antialiased select-none leading-tight px-1 line-clamp-2">
+						<div class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center shrink-0" set:html={tech.icon}/>
+						<span class="text-[10px] md:text-xs text-muted-foreground text-center select-none leading-tight px-1 line-clamp-2 tracking-wide">
 							{tech.name}
 						</span>
 					</Card>
 				))}
 			</div>
 		</div>
-
-		<div class="w-full flex flex-col gap-6 sm:gap-8">
-			<div class="flex flex-col gap-2 sm:gap-3">
-				<div class="flex flex-row gap-3 sm:gap-4 items-center">
-					<h2 class="text-xl lg:text-2xl xl:text-3xl font-extrabold whitespace-nowrap">
-						Backend e Arquitetura
-					</h2>
-					<span class="flex-1 max-w-32 sm:max-w-40 lg:max-w-56 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/5"></span>
-				</div>
-				<p class="text-sm sm:text-base text-muted-foreground text-left max-w-2xl font-mono leading-relaxed">
-					// Soluções robustas no lado do servidor, gerenciamento de bancos de dados e infraestrutura escalável.
+		<div class="w-full sm:w-1/2 flex flex-col gap-5">
+			<div class="flex flex-col gap-2">
+				<h2 class="text-lg md:text-2xl xl:text-3xl font-semibold">
+					Backend e Arquitetura
+				</h2>
+				<p class="text-base md:text-xl text-muted-foreground text-left leading-relaxed">
+					Soluções robustas no lado do servidor, gerenciamento de bancos de dados e infraestrutura escalável.
 				</p>
 			</div>
-
-			<div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4">
+			<div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
 				{StackData.backend.map((tech) => (
 					<Card
 						size="sm"
 						hover={false}
-						class="flex flex-col gap-2 sm:gap-3 justify-center items-center backdrop-blur-sm border-border hover:bg-border/5 hover:shadow-[0_0_20px_-5px_var(--color-chart-1)] hover:-translate-y-1.5 cursor-default w-full aspect-square group will-change-transform"
+						class="flex flex-col gap-2 justify-center items-center w-full aspect-square"
 					>
-						<div class="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center shrink-0" set:html={tech.icon}/>
-						<span class="text-[10px] sm:text-xs md:text-sm font-mono text-muted-foreground group-hover:text-primary text-center transition-colors duration-500 ease-in-out antialiased select-none leading-tight px-1 line-clamp-2">
+						<div class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center shrink-0" set:html={tech.icon}/>
+						<span class="text-[9px] sm:text-[10px] md:text-xs text-muted-foreground text-center select-none leading-tight px-1 line-clamp-2 tracking-wide">
 							{tech.name}
 						</span>
 					</Card>
 				))}
 			</div>
 		</div>
-
 	</div>
 </section>

@@ -15,42 +15,35 @@ function formattedDate(dateString: string) {
 <Layout
     pageTitle={frontmatter.title}
     pageDescription={frontmatter.description}
-    ogImage={frontmatter.image?.ogImage}
+    ogImage={frontmatter.image?.banner}
     ogImageAlt={frontmatter.image?.alt}
     canonicalUrl={`/blog/${frontmatter.slug}`}
 >
-    <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
+    <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div class="mb-8 sm:mb-12">
-            <Button href="/blog" variant="outline" class="group">
-                <svg class="group-hover:-translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    <path stroke-dasharray="20" d="M21 12h-17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M3 12l7 7M3 12l7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
-                </svg>
+            <Button href="/blog" variant="outline" direction="back">
                 Voltar
             </Button>
         </div>
-
         {frontmatter.image?.banner && (
-            <div class="w-full h-50 md:h-100 mb-10 rounded-2xl overflow-hidden border border-border">
+            <div class="w-full h-50 md:h-100 mb-10 overflow-hidden border border-border rounded-[5px]">
                 <Image
                     src={"/" + frontmatter.image.banner}
                     alt={frontmatter.image.alt ?? frontmatter.title}
                     width={1200}
                     height={630}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    class="w-full h-full object-cover"
                 />
             </div>
         )}
-
         <div class="flex flex-col gap-3">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight leading-tight">
                 {frontmatter.title}
             </h1>
-            <p class="text-sm sm:text-base md:text-lg font-mono leading-relaxed text-muted-foreground">
-                // {frontmatter.description}
+            <p class="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
+                {frontmatter.description}
             </p>
         </div>
-
         {frontmatter.tags?.length > 0 && (
             <div class="flex flex-wrap gap-2 my-4">
                 {frontmatter.tags.map((tag: string) => (
@@ -58,14 +51,14 @@ function formattedDate(dateString: string) {
                 ))}
             </div>
         )}
-
-        <div class="flex flex-col gap-2 md:flex-row text-xs sm:text-sm md:text-base text-muted-foreground mb-8 pb-8 border-b border-border">
+        <div class="flex gap-2 flex-row text-sm md:text-base text-muted-foreground mb-8 pb-8 border-b border-border">
             <div class="w-full md:w-1/2 flex flex-col gap-2">
                 <span class="flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/>
                     </svg>
-                    <span>Por
+                    <span>
+                        Por
                         <a href="/#sobre-mim" class="text-primary hover:underline transition">
                             {frontmatter.author}
                         </a>
@@ -97,19 +90,13 @@ function formattedDate(dateString: string) {
                 </div>
             </div>
         </div>
-
-        <div class="prose dark:prose-invert max-w-none text-primary text-base sm:text-lg leading-relaxed">
+        <div class="prose prose-invert font-body max-w-none text-primary text-base sm:text-lg md:text-xl leading-relaxed">
             <slot />
         </div>
-
         <div class="flex justify-center mt-14 pt-8 border-t border-border">
-            <Button href="/blog" variant="outline" class="group">
-                <svg class="group-hover:-translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    <path stroke-dasharray="20" d="M21 12h-17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M3 12l7 7M3 12l7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
-                </svg>
+            <Button href="/blog" variant="outline" direction="back">
                 Voltar
             </Button>
         </div>
-
     </article>
 </Layout>

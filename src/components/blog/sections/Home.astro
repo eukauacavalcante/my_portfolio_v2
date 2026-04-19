@@ -1,5 +1,5 @@
 ---
-import Card from "@/components/ui/Card.astro";
+import Card from "../ui/Card.astro";
 import FeaturedBlogCard from "../ui/FeaturedBlogCard.astro";
 import BlogCard from "../ui/BlogCard.astro";
 
@@ -19,37 +19,45 @@ for (let i = 0; i < restPosts.length; i += 2) {
 }
 ---
 
-<section class="min-h-svh flex flex-col w-full py-10 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-
-    <div class="flex flex-row gap-3 justify-start items-center mb-4 text-xs sm:text-sm">
-        <span class="text-muted-foreground hover:text-primary transition-all">
+<section class="min-h-svh flex flex-col w-full pt-20 pb-10 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-0 max-w-7xl mx-auto overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-black"> 
+        <picture class="w-full h-full">
+            <source srcset="blog/home/moon_mobile.webp" media="(max-width: 768px)" />
+            <img
+                src="blog/home/moon.webp"
+                alt="Uma fotografia em close-up de alta resolução da Lua, em fase minguante. Apenas a metade superior é visível, mostrando uma superfície cinzenta incrivelmente detalhada e densamente coberta por inúmeras crateras de impacto, contra o vazio negro e escuro do espaço."
+                class="h-full w-full object-cover object-top" 
+                loading="lazy"
+                decoding="async"
+            />
+        </picture>
+        <div class="absolute inset-0 bg-black/50 sm:bg-black/60 lg:bg-black/70"></div>
+        <div class="absolute inset-0 bg-linear-to-b from-black/20 via-black/10 to-black/40"></div>
+    </div>
+    <div class="flex flex-row gap-3 justify-start items-center mb-4 text-xs sm:text-sm md:text-base">
+        <span class="text-muted-foreground hover:text-primary transition-all uppercase">
             <a href="/">Home</a>
         </span>
         <span class="text-muted-foreground">/</span>
-        <span class="text-primary font-semibold">Blog Pessoal</span>
+        <span class="text-primary font-bold uppercase">Blog Pessoal</span>
     </div>
-
     <div class="flex flex-col gap-2 mb-10 sm:mb-14 lg:mb-16">
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold uppercase">
             Blog Pessoal
         </h1>
-        <p class="text-sm sm:text-base text-muted-foreground font-mono max-w-xl mt-1">
-            // Mundo tech, projetos e aprendizados do dia a dia.
+        <p class="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mt-1">
+            Mundo tech, projetos e aprendizados do dia a dia.
         </p>
     </div>
-
     <div class="flex flex-col gap-4 sm:gap-6">
-
-        <h2 class="text-xs sm:text-sm font-mono text-muted-foreground tracking-widest uppercase flex items-center gap-3">
-            <span class="h-px w-16 sm:w-20 bg-linear-to-r from-chart-1 to-chart-2 inline-block"></span>
+        <h2 class="text-xs sm:text-sm text-muted-foreground tracking-[1.17px] uppercase flex items-center gap-3">
+            <span class="h-px w-16 sm:w-20 bg-border inline-block"></span>
             Últimas postagens
         </h2>
-
         {featured && (
             <FeaturedBlogCard featured={featured} />
         )}
-
-        <div class="w-full max-w-6xl mx-auto flex flex-col gap-4 sm:gap-6">
+        <div class="w-full max-w-7xl mx-auto flex flex-col gap-4 sm:gap-6">
             {postPairs.map((pair) => (
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     {pair
@@ -60,13 +68,12 @@ for (let i = 0; i < restPosts.length; i += 2) {
                 </div>
             ))}
         </div>
-
         {sortedPosts.length === 0 && (
             <Card class="w-full py-16 flex flex-col items-center justify-center gap-3 text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M20 12a8 8 0 0 0-8-8a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5S7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/>
                 </svg>
-                <p class="text-muted-foreground font-mono text-sm">// Nenhum post ainda. Em breve...</p>
+                <p class="text-muted-foreground text-sm">// Nenhum post ainda. Em breve...</p>
             </Card>
         )}
     </div>

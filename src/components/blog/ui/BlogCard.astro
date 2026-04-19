@@ -1,5 +1,5 @@
 ---
-import Card from "@/components/ui/Card.astro";
+import Card from "./Card.astro";
 import Button from "@/components/ui/Button.astro";
 import TagButton from "./TagButton.astro";
 import { Image } from "astro:assets";
@@ -8,7 +8,7 @@ const post = Astro.props.post;
 ---
 
 {!post?.frontmatter ? (
-    <Card size="full" class="p-4 text-sm text-muted-foreground">
+    <Card size="full" class="p-4 text-sm text-muted-foreground font-mono">
         // Post invalido
     </Card>
 ) : (
@@ -16,17 +16,17 @@ const post = Astro.props.post;
 <Card
     size="full"
     hover
-    class="flex flex-col overflow-hidden p-0 border-border backdrop-blur-sm group"
+    class="flex flex-col overflow-hidden p-0 group"
 >
     {post.frontmatter.image?.banner && (
-        <div class="w-full h-44 sm:h-58 overflow-hidden shrink-0">
+        <div class="w-full h-50 md:h-58 lg:h-78 overflow-hidden shrink-0">
             { post.frontmatter.image?.banner ? (
                 <Image
                     src={"/" + post.frontmatter.image.banner}
                     alt={post.frontmatter.image.alt ?? post.frontmatter.title}
                     width={800}
                     height={450}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    class="w-full h-full object-cover"
                 />
             ) : (
                 <div class="w-full h-full flex items-center justify-center text-muted-foreground">
@@ -37,39 +37,31 @@ const post = Astro.props.post;
             )}
         </div>
     )}
-    <div class="flex flex-col flex-1 p-4 sm:p-5 gap-3">
-        <div class="flex flex-wrap gap-2">
-            {post.frontmatter.tags?.slice(0, 2).map((tag: string) => (
-                <TagButton tag={tag} />
-            ))}
-        </div>
-        <h3 class="text-base sm:text-lg font-bold leading-snug group-hover:text-gradient duration-500 transition-colors line-clamp-2">
+    <div class="flex flex-col flex-1 p-4 sm:p-5 md:p-4 lg:p-5 gap-3 md:gap-2.5">
+        <h3 class="text-base sm:text-lg md:text-lg lg:text-xl font-bold leading-snug transition-colors duration-300 line-clamp-2 group-hover:text-foreground uppercase">
             {post.frontmatter.title}
         </h3>
-        <p class="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1">
-            // {post.frontmatter.description}
+        <p class="text-muted-foreground text-sm sm:text-base md:text-base lg:text-lg line-clamp-4 flex-1">
+            {post.frontmatter.description}
         </p>
     </div>
-    <div class="flex items-center justify-between p-4 border-t border-border mt-auto">
-        <div class="flex flex-col gap-1.5">
-            <span class="text-xs text-muted-foreground flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+    <div class="flex items-center justify-between p-4 md:p-3.5 lg:p-4 gap-4 md:gap-3 border-t border-border mt-auto">
+        <div class="flex flex-col items-start gap-2 md:gap-1.5">
+            <span class="text-xs sm:text-sm md:text-xs lg:text-sm text-muted-foreground flex items-center gap-2.5 md:gap-2 font-medium whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="md:w-4 md:h-4 lg:w-5 lg:h-5">
                     <path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/>
                 </svg>
                 {new Date(post.frontmatter.publishedOn).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
             </span>
-            <span class="text-xs text-muted-foreground flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+            <span class="text-xs sm:text-sm md:text-xs lg:text-sm text-muted-foreground flex items-center gap-2.5 md:gap-2 font-medium whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="md:w-4 md:h-4 lg:w-5 lg:h-5">
                     <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/>
                 </svg>
                 {post.frontmatter.readingTime} min de leitura
             </span>
         </div>
-        <Button href={post.url} class="shrink-0 group/btn">
-            <span>Ler mais</span>
-            <svg class="group-hover/btn:translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                <path stroke-dasharray="20" d="M3 12h17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M21 12l-7 7M21 12l-7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
-            </svg>
+        <Button href={post.url} class="shrink-0 group/btn md:px-4 md:py-2 md:text-sm lg:px-5 lg:py-2.5">
+            <span>Ler artigo</span>
         </Button>
     </div>
 </Card>

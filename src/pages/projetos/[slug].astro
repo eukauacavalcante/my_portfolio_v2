@@ -26,42 +26,43 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
 ---
 
 <Layout pageTitle={pageTitle}>
-    <section class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+    <section class="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         {project ? (
             <article class="space-y-8">
+                <div class="mb-8 sm:mb-12">
+                    <Button href="/#projetos" variant="outline" direction="back" class="group">
+                        Voltar
+                    </Button>
+                </div>
                 <header class="space-y-4">
                     <div class="flex flex-row gap-3 justify-start items-center mb-4 text-xs sm:text-sm">
-                        <span class="text-muted-foreground hover:text-primary transition-all">
+                        <span class="text-muted-foreground hover:text-primary transition-all uppercase">
                             <a href="/#projetos">Home</a>
                         </span>
                         <span class="text-muted-foreground">/</span>
-                        <span class="text-primary font-semibold">{project.title}</span>
+                        <span class="text-primary font-semibold uppercase">{project.title}</span>
                     </div>
-
                     <div class="flex flex-row justify-between items-center">
-                        <h1 class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase">
                             {project.title}
                         </h1>
-                        <span class="text-muted-foreground font-mono">{project.date}</span>
+                        <span class="text-muted-foreground tracking-[1.17px]">{project.date}</span>
                     </div>
-
-                    <p class="font-mono text-sm text-muted-foreground sm:text-base">
-                        // {project.phrase}
+                    <p class="text-base sm:text-lg md:text-xl text-muted-foreground">
+                        {project.phrase}
                     </p>
-
                     <div class="flex flex-row gap-2">
                         {project.tags.map((tag) => (
-                            <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                            <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-white/5 border border-white/10 px-2 py-0.5 rounded-[5px]">
                                 {tag}
                             </span>
                         ))}
                     </div>
                 </header>
-
                 {project.images.length > 1 ? (
                     <ImageCarousel images={project.images} alt={project.title} />
                 ) : project.images.length === 1 ? (
-                    <div class="mx-auto overflow-hidden rounded-xl border border-border bg-card/40">
+                    <div class="mx-auto overflow-hidden border border-border bg-card rounded-[5px]">
                         <img
                             src={project.images[0]}
                             alt={project.title}
@@ -72,62 +73,43 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                         />
                     </div>
                 ) : (
-                    <div class="flex aspect-video items-center justify-center text-muted-foreground bg-linear-to-tr from-chart-1/10 to-chart-2/10">
+                    <div class="flex aspect-video items-center justify-center text-muted-foreground bg-card border border-[rgba(240,240,250,0.2)]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M17 12c0 .54-.1 1.05-.26 1.54L15 11.78A3.06 3.06 0 0 0 12.22 9l-1.76-1.74c.49-.16 1-.26 1.54-.26c2.76 0 5 2.24 5 5M9.88 4h4.24l1.83 2H20v10.8l1.88 1.88c.08-.21.12-.44.12-.68V6c0-1.11-.89-2-2-2h-3.17L15 2H9L7.18 4L8.6 5.4zm12.23 17.46l-1.27 1.27L18.11 20H4a2 2 0 0 1-2-2V6c0-.58.25-1.1.65-1.46L1.11 3l1.28-1.27zM9 12c0 1.66 1.34 3 3 3c.33 0 .65-.07.94-.17l-3.77-3.77c-.1.3-.17.61-.17.94m7.11 6l-1.66-1.66c-.73.41-1.56.66-2.45.66c-2.76 0-5-2.24-5-5c0-.89.25-1.72.66-2.45L4.11 6H4v12z"/>
                         </svg>
                     </div>
                 )}
-
-                <h2 class="text-xl font-bold sm:text-2xl">Resumo</h2>
-                <p class="text-base leading-relaxed text-muted-foreground">
+                <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4">Resumo</h2>
+                <p class="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
                     {project.resume}
                 </p>
-
                 {project.isPrivate && (
-                    <div class="relative bg-card border border-chart-1/30 rounded-xl p-6 sm:p-8 hover:shadow-2xl hover:shadow-chart-1/20 hover:-translate-y-1 transition-all duration-500 cursor-default group">
-                        <div class="flex items-start gap-4 sm:gap-6">
-                            <div class="shrink-0">
-                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-linear-to-tr from-chart-1 to-chart-2 text-white flex items-center justify-center border border-chart-1/30">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16"><path fill="currentColor" d="M3.5 1A2.5 2.5 0 0 0 1 3.5v7A2.5 2.5 0 0 0 3.5 13h1.992a2.5 2.5 0 0 1 .242-.28l.72-.72H3.5A1.5 1.5 0 0 1 2 10.5V5h10v.026a4.5 4.5 0 0 1 1 .004V3.5A2.5 2.5 0 0 0 10.5 1zm5.431 5.724l-.577-.578a.5.5 0 1 0-.708.708l.745.744q.216-.461.54-.874m-2.577.13a.5.5 0 1 0-.708-.708l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L4.707 8.5zm6.538-.83c.366.042.471.48.21.742l-.975.975a1.507 1.507 0 1 0 2.132 2.132l.975-.975c.261-.261.7-.156.742.21a3.518 3.518 0 0 1-4.676 3.723l-2.726 2.727a1.507 1.507 0 1 1-2.132-2.132L9.168 10.7a3.518 3.518 0 0 1 3.724-4.676"/></svg>
-                                </div>
+                    <Card size="full">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-3">
+                                <h2 class="text-lg sm:text-xl font-semibold text-foreground uppercase">
+                                    Projeto em Desenvolvimento
+                                </h2>
                             </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <h2 class="text-lg sm:text-xl font-semibold text-foreground group-hover:text-gradient duration-500 transition-colors">
-                                        Projeto em Desenvolvimento
-                                    </h2>
-                                </div>
-                                <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                                    {project.privateDescription}
-                                </p>
-                            </div>
+                            <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                                {project.privateDescription}
+                            </p>
                         </div>
-                    </div>
+                    </Card>
                 )}
-
                 <div class="flex flex-row flex-wrap gap-4">
                     {project.github && (
                         <Button href={project.github} target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/>
-                            </svg>
                             Ver no GitHub
                         </Button>
                     )}
                     {project.linkedin && (
-                        <Button variant="default" class="bg-blue-500 hover:bg-blue-600 text-white" href={project.linkedin} target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/>
-                            </svg>
+                        <Button variant="default" href={project.linkedin} target="_blank" rel="noopener noreferrer">
                             Ver no LinkedIn
                         </Button>
                     )}
                     {project.documentation && (
                         <Button variant="outline" href={project.documentation} target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/>
-                            </svg>
                             Ver Documentação
                         </Button>
                     )}
@@ -140,78 +122,59 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                         </Button>
                     )}
                 </div>
-
-                <hr>
-
+                <hr class="border border-border">
                 {project.functionalities && project.functionalities.length > 0 && (
                     <div class="space-y-6">
-                        <div class="text-2xl sm:text-3xl font-bold mb-4 flex items-center gap-3">
-                            <span class="w-1.5 h-8 bg-linear-to-b from-chart-1 to-chart-2 rounded-full" />
-                            <h2 class="text-xl font-bold sm:text-2xl">Funcionalidades</h2>
-                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4">Funcionalidades</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {project.functionalities.map((func) => (
-                                <Card class="flex flex-col gap-3 group cursor-default" size="full" hover={true}>
-                                    <div class="flex items-center gap-3">
-                                        <div class="flex items-center justify-center p-2 rounded-lg bg-linear-to-tr from-chart-1 to-chart-2 text-white shrink-0" set:html={func.icon} />
-                                        <h3 class="text-lg font-bold leading-tight group-hover:text-gradient duration-500 transition-colors">{func.title}</h3>
+                                <Card>
+                                    <div class="flex flex-col items-start gap-4">
+                                        <h4 class="text-sm sm:text-lg font-semibold text-foreground uppercase tracking-wider">
+                                            {func.title}
+                                        </h4>
+                                        <p class="text-sm sm:text-base md:text-xl text-muted-foreground leading-relaxed">
+                                            {func.description} 
+                                        </p>
                                     </div>
-                                    <p class="text-sm leading-relaxed text-muted-foreground">
-                                        {func.description}
-                                    </p>
                                 </Card>
                             ))}
                         </div>
                     </div>
                 )}
-
                 {project.stack && (
                     <div class="space-y-4">
-                        <div class="text-2xl sm:text-3xl font-bold mb-4 flex items-center gap-3">
-                            <span class="w-1.5 h-8 bg-linear-to-b from-chart-1 to-chart-2 rounded-full" />
-                            <h2 class="text-xl font-bold sm:text-2xl">Tecnologias</h2>
-                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4">Tecnologias</h2>
                         {project.stack.frontend && project.stack.frontend.length > 0 && (
                             <div class="space-y-2">
-                                <div class="flex flex-row gap-4 items-center">
-                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80">Frontend</h3>
-                                    <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
-                                </div>
+                                <h3 class="text-sm sm:text-base md:text-lg font-semibold text-muted-foreground uppercase">Frontend</h3>
                                 <div class="flex flex-wrap gap-2">
                                     {project.stack.frontend.map((tech) => (
-                                        <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                        <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
                                             {tech}
                                         </span>
                                     ))}
                                 </div>
                             </div>
                         )}
-
                         {project.stack.backend && project.stack.backend.length > 0 && (
                             <div class="space-y-2">
-                                <div class="flex flex-row gap-4 items-center">
-                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80">Backend</h3>
-                                    <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
-                                </div>
+                                <h3 class="text-sm sm:text-base md:text-lg font-semibold text-muted-foreground uppercase">Backend</h3>
                                 <div class="flex flex-wrap gap-2">
                                     {project.stack.backend.map((tech) => (
-                                        <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                        <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
                                             {tech}
                                         </span>
                                     ))}
                                 </div>
                             </div>
                         )}
-
                         {project.stack.database && project.stack.database.length > 0 && (
                             <div class="space-y-2">
-                                <div class="flex flex-row gap-4 items-center">
-                                    <h3 class="text-sm sm:text-base font-semibold text-muted-foreground uppercase opacity-80">Banco de Dados</h3>
-                                    <span class="w-60 h-0.5 bg-linear-to-r from-chart-1 to-chart-2/0"></span>
-                                </div>
+                                <h3 class="text-sm sm:text-base md:text-lg font-semibold text-muted-foreground uppercase">Banco de Dados</h3>
                                 <div class="flex flex-wrap gap-2">
                                     {project.stack.database.map((tech) => (
-                                        <span class="text-xs text-muted-foreground uppercase bg-chart-1/10 border border-border px-3 py-1.5 rounded-xl">
+                                        <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
                                             {tech}
                                         </span>
                                     ))}
@@ -223,28 +186,24 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                 <div class="flex justify-center border-t border-border py-6">
                     <Button
                         variant="outline"
+                        direction="back"
                         href="/#projetos"
                     >
-                        <svg class="group-hover:-translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                            <path stroke-dasharray="20" d="M21 12h-17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M3 12l7 7M3 12l7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
-                        </svg>
                         Voltar
                     </Button>
                 </div>
             </article>
         ) : (
-            <article class="space-y-4 rounded-xl border border-border bg-card/40 p-6">
+            <article class="space-y-4 border border-border bg-card p-6">
                 <h1 class="text-2xl font-bold sm:text-3xl">Projeto nao encontrado</h1>
                 <p class="text-muted-foreground">
                     O projeto com slug <code>{slug}</code> nao existe ou nao esta publicado.
                 </p>
                 <Button
                     variant="outline"
+                    direction="back"
                     href="/#projetos"
                 >
-                    <svg class="group-hover:-translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                        <path stroke-dasharray="20" d="M21 12h-17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M3 12l7 7M3 12l7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
-                    </svg>
                     Voltar
                 </Button>
             </article>

@@ -1,18 +1,20 @@
 /* ===== Base styles for Form elements ===== */
 .label-base {
-    @apply text-xs text-muted-foreground font-mono uppercase tracking-widest;
+    @apply text-xs sm:text-base md:text-lg text-foreground uppercase;
+    letter-spacing: 1.17px;
 }
 
 .input-base {
-    @apply w-full px-4 py-2.5 bg-transparent border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-chart-1 focus:ring-1 focus:ring-chart-1/30 transition-all duration-200;
+    @apply w-full px-4 py-3 bg-background border border-border sm:text-base md:text-lg text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors duration-200 rounded-[5px];
 }
 
 .checkbox-label {
-    @apply px-4 py-2 text-xs text-muted-foreground font-semibold 
-    ring-1 ring-border
-    has-checked:bg-linear-to-r has-checked:from-chart-1 has-checked:to-chart-2 
-    has-checked:text-white has-checked:ring-transparent
-    transition-all duration-200 uppercase rounded-lg cursor-pointer select-none;
+  @apply px-4 py-2 text-xs sm:text-base text-foreground font-semibold border border-border bg-card
+    transition-colors duration-200 uppercase cursor-pointer select-none rounded-[5px];
+}
+
+.checkbox-label:has(:checked) {
+  @apply bg-primary border-border text-primary-foreground;
 }
 
 .checkbox-input {

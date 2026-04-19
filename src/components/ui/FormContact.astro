@@ -25,7 +25,7 @@
             value="Freelance/Projeto"
             name="reasons"
           />
-          Freelance/Projeto
+          Projeto
         </label>
         <label class="checkbox-label">
           <input
@@ -95,7 +95,7 @@
       <span id="message-error" class="field-error hidden"></span>
     </div>
 
-    <p id="form-success" class="hidden text-green-500 text-sm font-medium">
+    <p id="form-success" class="hidden text-foreground text-sm font-medium tracking-[0.96px]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -114,13 +114,13 @@
       Mensagem enviada! Responderei em até 24h.
     </p>
 
-    <p id="form-global-error" class="hidden text-red-500 text-sm font-medium">
+    <p id="form-global-error" class="hidden text-foreground text-sm font-medium tracking-[0.96px]">
     </p>
 
     <button
       type="submit"
       id="submit-btn"
-      class="w-full mt-1 text-white bg-linear-to-r from-chart-1 to-chart-2 hover:scale-[1.02] border-0 transition-all duration-300 uppercase group inline-flex items-center justify-center gap-2 font-semibold px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base rounded-lg cursor-pointer disabled:opacity-50"
+      class="bg-foreground text-primary-foreground border border-foreground hover:bg-foreground/85 inline-flex items-center justify-center gap-2 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-[5px] sm:text-base md:text-lg uppercase w-full px-6 py-3 text-base cursor-pointer"
       )
     >
       <span id="btn-label">Enviar</span>
@@ -132,7 +132,6 @@
         height="18"
         fill="currentColor"
         viewBox="0 0 256 256"
-        class="transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
       >
         <path
           d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"
@@ -144,16 +143,17 @@
 
 <style>
   .field-error {
-    color: #ef4444;
+    color: #d81c1c;
     font-size: 0.75rem;
     margin-top: 0.25rem;
     display: block;
+    letter-spacing: 0.96px;
   }
   .hidden {
     display: none !important;
   }
   .input-error {
-    border-color: #ef4444 !important;
+    border-color: #d81c1c !important;
   }
 </style>
 
@@ -171,12 +171,12 @@
   function toggleSubmitBtn(enabled: boolean) {
       if (enabled) {
         submitBtn.disabled = false;
-        submitBtn.classList.add("hover:scale-[1.02]", "cursor-pointer");
-        submitBtnSvg.classList.add("group-hover:translate-x-1", "group-hover:scale-110");
+        submitBtn.classList.add("cursor-pointer");
+        submitBtnSvg.classList.add("group-hover:translate-x-1");
       } else {
         submitBtn.disabled = true;
-        submitBtn.classList.remove("hover:scale-[1.02]", "cursor-pointer");
-        submitBtnSvg.classList.remove("group-hover:translate-x-1", "group-hover:scale-110");
+        submitBtn.classList.remove("cursor-pointer");
+        submitBtnSvg.classList.remove("group-hover:translate-x-1");
       }
     }
 

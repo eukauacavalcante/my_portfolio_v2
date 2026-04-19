@@ -1,6 +1,4 @@
----
----
-<button aria-label="Alternar tema" title="Alterar tema" class="flex items-center border border-border rounded-full cursor-pointer" id="theme-toggle">
+<button aria-label="Alternar tema" title="Alterar tema" class="flex items-center border border-border cursor-pointer" id="theme-toggle">
     <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
         <g id="sun" class="theme-sun">
             <circle cx="12" cy="12" r="5" fill="currentColor" />
@@ -15,6 +13,7 @@
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
             </g>
         </g>
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g fill="currentColor"></svg>
         <g id="moon" class="theme-moon">
             <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="currentColor" />
         </g>
@@ -26,22 +25,13 @@
         border: 0;
         background: none;
     }
-    .theme-sun { display: none; color: #fbbf24; }
+    .theme-sun { display: none; color: #ffffff; }
     .theme-moon { display: block; color: #000000; }
     :global(.dark) .theme-sun { display: block; }
     :global(.dark) .theme-moon { display: none; }
 </style>
 
 <script is:inline>
-    (function() {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    })();
-
     document.getElementById('theme-toggle')?.addEventListener('click', () => {
         const el = document.documentElement;
         el.classList.toggle('dark');
