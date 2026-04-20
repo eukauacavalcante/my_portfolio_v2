@@ -37,9 +37,9 @@ import Project from "../../data/project.ts";
                     class="flex flex-col sm:flex-row w-full p-0"
                 >
                     <div class="w-full sm:w-1/2 h-48 sm:h-auto shrink-0 bg-card border-b sm:border-b-0 sm:border-r border-border overflow-hidden">
-                        {project.images[0] ? (
+                        {project.logo ? (
                             <img
-                                src={project.images[0]}
+                                src={project.logo}
                                 alt={project.title}
                                 loading="lazy"
                                 class="w-full h-full object-cover"

@@ -1,10 +1,11 @@
 const projects = [
   {
     slug: "vortex-project",
+    logo: "projects/vortex-project/full-logo-dark.webp",
     images: [
-      "/projects/vortex-project/vortex-banner.png",
-      "/projects/vortex-project/vortex-home.png",
-      "/projects/vortex-project/vortex-login.png"
+      "/projects/vortex-project/vortex-banner.webp",
+      "/projects/vortex-project/vortex-home.webp",
+      "/projects/vortex-project/vortex-login.webp"
     ],
     title: "Vortex Project",
     phrase: "Rede social para entusiastas de tecnologia compartilharem projetos e ideias",
@@ -47,10 +48,11 @@ const projects = [
   },
   {
     slug: "morpheus-env",
+    logo: "projects/morpheus-env/morpheus-env-logo.webp",
     images: [
-      "/projects/morpheus-env/morpheus-home.png",
-      "/projects/morpheus-env/morpheus-conversor.png",
-      "/projects/morpheus-env/morpheus-moni.png",
+      "/projects/morpheus-env/morpheus-home.webp",
+      "/projects/morpheus-env/morpheus-conversor.webp",
+      "/projects/morpheus-env/morpheus-moni.webp",
     ],
     title: "Morpheus Env",
     phrase: "Projeto acadêmico com o objetivo de utilizar práticas de segurança e implementação de ferramentas educacionais.",
