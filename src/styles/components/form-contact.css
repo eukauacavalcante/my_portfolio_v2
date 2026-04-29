@@ -1,6 +1,7 @@
 /* ===== Base styles for FormContact ===== */
+
 .form-contact-wrapper {
-    @apply w-full flex flex-col gap-6 px-6 sm:px-8 py-10 bg-card border border-border rounded-[5px];
+    @apply w-full flex flex-col gap-6 px-6 sm:px-8 py-8 sm:py-10 bg-card border border-border rounded-[5px];
 }
 
 .form-contact-checkboxes {
@@ -30,4 +31,16 @@
 
 .form-contact-field {
     @apply flex flex-col gap-1.5 w-full;
+}
+
+.form-contact-field-hint {
+    @apply text-xs sm:text-sm text-muted-foreground leading-relaxed;
+}
+
+.form-contact-actions {
+    @apply flex flex-col sm:flex-row gap-3;
+}
+
+.form-contact-secondary-action {
+    @apply inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 text-base sm:text-base md:text-lg uppercase rounded-[5px] border border-border text-foreground bg-transparent transition-colors duration-200 hover:bg-[rgba(240,240,250,0.15)] hover:border-[rgba(240,240,250,0.65)] cursor-pointer;
 }

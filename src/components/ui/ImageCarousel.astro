@@ -61,33 +61,41 @@ const { images, alt = "Imagem do projeto" } = Astro.props;
 <script>
   import EmblaCarousel from "embla-carousel";
 
-  document.querySelectorAll<HTMLElement>(".embla").forEach((emblaNode) => {
-    const viewport = emblaNode.querySelector<HTMLElement>(".embla__viewport");
-    if (!viewport) return;
+  function initCarousels() {
+    document.querySelectorAll<HTMLElement>(".embla").forEach((emblaNode) => {
+      const viewport = emblaNode.querySelector<HTMLElement>(".embla__viewport");
+      if (!viewport) return;
 
-    const embla = EmblaCarousel(viewport, { loop: true });
-    const dots = emblaNode.querySelectorAll<HTMLElement>(".embla__dot");
+      const embla = EmblaCarousel(viewport, { loop: true });
+      const dots = emblaNode.querySelectorAll<HTMLElement>(".embla__dot");
 
-    const updateDots = () => {
-      const current = embla.selectedScrollSnap();
+      const updateDots = () => {
+        const current = embla.selectedScrollSnap();
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("bg-foreground", i === current);
+          dot.classList.toggle("w-4", i === current);
+          dot.classList.toggle("bg-foreground/30", i !== current);
+          dot.classList.toggle("w-2", i !== current);
+        });
+      };
+
+      embla.on("select", updateDots);
+      updateDots();
+
+      emblaNode.querySelector(".embla__prev")
+        ?.addEventListener("click", () => embla.scrollPrev());
+      emblaNode.querySelector(".embla__next")
+        ?.addEventListener("click", () => embla.scrollNext());
+
       dots.forEach((dot, i) => {
-        dot.classList.toggle("bg-foreground", i === current);
-        dot.classList.toggle("w-4", i === current);
-        dot.classList.toggle("bg-foreground/30", i !== current);
-        dot.classList.toggle("w-2", i !== current);
+        dot.addEventListener("click", () => embla.scrollTo(i));
       });
-    };
-
-    embla.on("select", updateDots);
-    updateDots();
-
-    emblaNode.querySelector(".embla__prev")
-      ?.addEventListener("click", () => embla.scrollPrev());
-    emblaNode.querySelector(".embla__next")
-      ?.addEventListener("click", () => embla.scrollNext());
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => embla.scrollTo(i));
     });
-  });
+  }
+
+  if (document.readyState === "complete") {
+    initCarousels();
+  } else {
+    window.addEventListener("load", initCarousels, { once: true });
+  }
 </script>

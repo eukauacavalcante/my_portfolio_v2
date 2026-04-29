@@ -5,7 +5,7 @@
 }
 
 .input-base {
-    @apply w-full px-4 py-3 bg-background border border-border sm:text-base md:text-lg text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors duration-200 rounded-[5px];
+    @apply w-full px-4 py-3 bg-background border border-border sm:text-base md:text-lg text-foreground placeholder:text-neutral-500 focus:outline-none transition-colors duration-200 rounded-[5px];
 }
 
 .checkbox-label {

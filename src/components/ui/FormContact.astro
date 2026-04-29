@@ -1,29 +1,31 @@
-<div class="form-contact-wrapper">
-  <form id="contact-form" class="form-contact-form" novalidate>
-    <div
-      style="position:absolute; left:-9999px; opacity:0; pointer-events:none"
-      aria-hidden="true"
-    >
-      <label for="_trap">Não preencha</label>
-      <input
-        type="text"
-        id="_trap"
-        name="_trap"
-        tabindex="-1"
-        autocomplete="off"
-      />
-    </div>
+---
+import Button from "./Button.astro";
+
+const contactEmail = "eukauasilvacavalcante@gmail.com";
+const fallbackSubject = "Contato pelo portfólio";
+const fallbackBody = [
+  "Olá Kauã,",
+  "",
+  "Encontrei seu portfólio e gostaria de conversar sobre:",
+  "[Descreva aqui o contexto do seu contato.]",
+  "",
+  "Abraço,",
+  "[Seu nome]",
+].join("\n");
+---
+
+<div class="form-contact-wrapper" data-contact-email={contactEmail}>
+  <form id="contact-mailto-form" class="form-contact-form">
     <div class="form-contact-checkboxes">
-      <span class="form-contact-checkboxes-title"
-        >Com o que eu posso te ajudar?</span
-      >
-      <div class="form-contact-checkboxes-group" id="reasons-group">
+      <span class="form-contact-checkboxes-title">Qual é o contexto?</span>
+      <div class="form-contact-checkboxes-group">
         <label class="checkbox-label">
           <input
             type="radio"
             class="checkbox-input"
-            value="Freelance/Projeto"
-            name="reasons"
+            value="Projeto"
+            name="reason"
+            checked
           />
           Projeto
         </label>
@@ -31,259 +33,158 @@
           <input
             type="radio"
             class="checkbox-input"
-            value="Dúvida"
-            name="reasons"
+            value="Parceria"
+            name="reason"
           />
-          Dúvida
+          Parceria
         </label>
         <label class="checkbox-label">
           <input
             type="radio"
             class="checkbox-input"
             value="Outro"
-            name="reasons"
+            name="reason"
           />
           Outro
         </label>
       </div>
-      <span id="reasons-error" class="field-error hidden"></span>
     </div>
+
     <div class="form-contact-divider"></div>
+
     <div class="form-contact-row">
       <div class="form-contact-field">
-        <label for="name" class="label-base">Nome</label>
+        <label for="contact-name" class="label-base">Seu nome</label>
         <input
-          id="name"
+          id="contact-name"
           name="name"
           type="text"
-          placeholder="João"
+          placeholder="Como você gostaria de se apresentar"
           class="input-base"
         />
-        <span id="name-error" class="field-error hidden"></span>
       </div>
       <div class="form-contact-field">
-        <label for="last-name" class="label-base">Sobrenome</label>
+        <label for="contact-company" class="label-base">Empresa ou projeto</label>
         <input
-          id="last-name"
-          name="lastName"
+          id="contact-company"
+          name="company"
           type="text"
-          placeholder="Silva"
+          placeholder="Nome da marca, produto ou equipe"
           class="input-base"
         />
-        <span id="lastName-error" class="field-error hidden"></span>
       </div>
     </div>
+
     <div class="form-contact-field">
-      <label for="email" class="label-base">Email</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="joao@exemplo.com"
-        class="input-base"
-      />
-      <span id="email-error" class="field-error hidden"></span>
-    </div>
-    <div class="form-contact-field">
-      <label for="message" class="label-base">Mensagem</label>
+      <label for="contact-message" class="label-base">Resumo do contato</label>
       <textarea
-        id="message"
+        id="contact-message"
         name="message"
-        rows="4"
-        placeholder="Conte um pouco sobre o motivo do seu contato..."
+        rows="5"
+        placeholder="Conte o objetivo, o prazo e qualquer detalhe importante para eu entender o contexto."
         class="input-base resize-none"></textarea>
-      <span id="message-error" class="field-error hidden"></span>
     </div>
 
-    <p id="form-success" class="hidden text-foreground text-sm font-medium tracking-[0.96px]">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        ><g
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          ><path d="M11 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"
-          ></path><path d="m3 7l9 6l9-6m-6 12l2 2l4-4"></path></g
-        ></svg
+    <div class="form-contact-actions">
+      <Button
+        id="mailto-link"
+        href={`mailto:${contactEmail}?subject=${encodeURIComponent(fallbackSubject)}&body=${encodeURIComponent(fallbackBody)}`}
+        size="full"
+        class="sm:w-auto sm:flex-1"
       >
-      Mensagem enviada! Responderei em até 24h.
-    </p>
-
-    <p id="form-global-error" class="hidden text-foreground text-sm font-medium tracking-[0.96px]">
-    </p>
-
-    <button
-      type="submit"
-      id="submit-btn"
-      class="bg-foreground text-primary-foreground border border-foreground hover:bg-foreground/85 inline-flex items-center justify-center gap-2 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-[5px] sm:text-base md:text-lg uppercase w-full px-6 py-3 text-base cursor-pointer"
-      )
-    >
-      <span id="btn-label">Enviar</span>
-      <span id="btn-loading" class="hidden">Enviando...</span>
-      <svg
-        id="submit-btn-svg"
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        fill="currentColor"
-        viewBox="0 0 256 256"
+        Abrir email
+      </Button>
+      <button
+        type="button"
+        id="copy-email-btn"
+        class="form-contact-secondary-action"
       >
-        <path
-          d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"
-        ></path>
-      </svg>
-    </button>
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></g></svg>
+        Copiar email
+      </button>
+    </div>
+
+    <p id="contact-feedback" class="text-sm sm:text-base leading-relaxed" aria-live="polite">
+      Se preferir, copie o endereço e envie a mensagem pelo serviço de email da sua escolha.
+    </p>
   </form>
 </div>
 
-<style>
-  .field-error {
-    color: #d81c1c;
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-    display: block;
-    letter-spacing: 0.96px;
-  }
-  .hidden {
-    display: none !important;
-  }
-  .input-error {
-    border-color: #d81c1c !important;
-  }
-</style>
-
 <script>
-  let isSuccess = false;
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
-  const submitBtnSvg = document.getElementById("submit-btn-svg") as unknown as SVGElement;
-  const btnLabel = document.getElementById("btn-label")!;
-  const btnLoading = document.getElementById("btn-loading")!;
-  const successMsg = document.getElementById("form-success")!;
-  const globalError = document.getElementById("form-global-error")!;
+  function initContactForm() {
+    const wrapper = document.querySelector(
+      ".form-contact-wrapper",
+    ) as HTMLDivElement | null;
+    const form = document.getElementById(
+      "contact-mailto-form",
+    ) as HTMLFormElement | null;
+    const mailtoLink = document.getElementById(
+      "mailto-link",
+    ) as HTMLAnchorElement | null;
+    const copyEmailBtn = document.getElementById(
+      "copy-email-btn",
+    ) as HTMLButtonElement | null;
+    const feedback = document.getElementById("contact-feedback");
+    const contactEmail = wrapper?.dataset.contactEmail;
 
-  // FIXME: toggleSubmitBtn foi criado para evitar repetição de código e mais interatividade. Porém, ele depende de elementos específicos do DOM, o que não é ideal. Refatorar para um componente mais isolado seria melhor.
-  function toggleSubmitBtn(enabled: boolean) {
-      if (enabled) {
-        submitBtn.disabled = false;
-        submitBtn.classList.add("cursor-pointer");
-        submitBtnSvg.classList.add("group-hover:translate-x-1");
-      } else {
-        submitBtn.disabled = true;
-        submitBtn.classList.remove("cursor-pointer");
-        submitBtnSvg.classList.remove("group-hover:translate-x-1");
-      }
-    }
-
-  function showError(id: string, msg: string) {
-    const el = document.getElementById(`${id}-error`);
-    const input =
-      document.getElementById(id) || document.querySelector(`[name="${id}"]`);
-    if (el) {
-      el.textContent = msg;
-      el.classList.remove("hidden");
-    }
-    if (input) input.classList.add("input-error");
-  }
-
-  function clearErrors() {
-    document.querySelectorAll(".field-error").forEach((el) => {
-      el.textContent = "";
-      el.classList.add("hidden");
-    });
-    document
-      .querySelectorAll(".input-error")
-      .forEach((el) => el.classList.remove("input-error"));
-    globalError.classList.add("hidden");
-    globalError.textContent = "";
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    clearErrors();
-
-    const data = new FormData(form);
-    const reason = data.get("reasons") as string;
-
-    const payload = {
-      name: ((data.get("name") as string) ?? "").trim(),
-      lastName: ((data.get("lastName") as string) ?? "").trim(),
-      email: ((data.get("email") as string) ?? "").trim(),
-      message: ((data.get("message") as string) ?? "").trim(),
-      _trap: (data.get("_trap") as string) ?? "",
-      reason: reason ? [reason] : [],
+    const subjectByReason: Record<string, string> = {
+      Projeto: "Novo projeto pelo portfólio",
+      Parceria: "Proposta de parceria pelo portfólio",
+      Outro: "Contato pelo portfólio",
     };
 
-    // client-side basic validation (mirrors the backend)
-    let hasError = false;
-    if (!payload.name || payload.name.length < 2) {
-      showError("name", "Nome deve ter ao menos 2 caracteres.");
-      hasError = true;
-    }
-    if (!payload.lastName || payload.lastName.length < 2) {
-      showError("lastName", "Sobrenome deve ter ao menos 2 caracteres.");
-      hasError = true;
-    }
-    if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
-      showError("email", "Email inválido.");
-      hasError = true;
-    }
-    if (!payload.message || payload.message.length < 20) {
-      showError("message", "Mensagem deve ter ao menos 20 caracteres.");
-      hasError = true;
-    }
-    if (!reason) {
-      showError("reasons", "Selecione um motivo.");
-      hasError = true;
-    }
-    if (hasError) return;
+    function buildDraft() {
+      if (!form || !mailtoLink) return;
 
-    btnLabel.classList.add("hidden");
-    btnLoading.classList.remove("hidden");
-    toggleSubmitBtn(false);
+      const data = new FormData(form);
+      const reason = ((data.get("reason") as string) || "Projeto").trim();
+      const name = ((data.get("name") as string) || "").trim();
+      const company = ((data.get("company") as string) || "").trim();
+      const message = ((data.get("message") as string) || "").trim();
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const subject = subjectByReason[reason] || subjectByReason.Outro;
+      const bodyLines = [
+        "Olá Kauã,",
+        "",
+        `Motivo do contato: ${reason}`,
+        company ? `Empresa ou projeto: ${company}` : "",
+        "",
+        "Contexto:",
+        message || "[Descreva aqui o objetivo, o prazo e os detalhes principais.]",
+        "",
+        "Abraço,",
+        name || "[Seu nome]",
+      ];
 
-      const json = await res.json();
+      const href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+      mailtoLink.href = href;
+    }
 
-      if (res.ok) {
-        isSuccess = true;
-        form.reset();
-        successMsg.classList.remove("hidden");
-        successMsg.classList.add("flex", "items-center", "gap-1");
-        btnLabel.textContent = "Mensagem enviada";
-      } else if (res.status === 422 && json.errors) {
-        submitBtn.disabled = false;
-        for (const [field, msgs] of Object.entries(
-          json.errors as Record<string, string[]>,
-        )) {
-          showError(field, msgs[0]);
-        }
-      } else {
-        toggleSubmitBtn(true);
-        globalError.textContent =
-          json.error ?? "Algo deu errado. Tente novamente.";
-        globalError.classList.remove("hidden");
+    async function copyEmail() {
+      if (!feedback) return;
+
+      try {
+        await navigator.clipboard.writeText(contactEmail || "");
+        feedback.textContent =
+          "Email copiado. Agora é só colar no seu cliente de email.";
+        feedback.classList.add("text-green-500");
+      } catch {
+        feedback.textContent =
+          `Não foi possível copiar automaticamente. Use este endereço: ${contactEmail}`;
+        feedback.classList.add("text-red-500");
       }
-    } catch {
-      toggleSubmitBtn(true);
-      globalError.textContent = "Falha de conexão. Verifique sua internet.";
-      globalError.classList.remove("hidden");
-    } finally {
-      if (!isSuccess) {
-        btnLabel.classList.remove("hidden");
-      }
-      btnLoading.classList.add("hidden");
     }
-  });
+
+    form?.addEventListener("input", buildDraft);
+    form?.addEventListener("change", buildDraft);
+    copyEmailBtn?.addEventListener("click", copyEmail);
+
+    buildDraft();
+  }
+
+  if (document.readyState === "complete") {
+    initContactForm();
+  } else {
+    window.addEventListener("load", initContactForm, { once: true });
+  }
 </script>
