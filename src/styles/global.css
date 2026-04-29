@@ -3,7 +3,6 @@
 @import "./components/form.css";
 @import "./components/form-contact.css";
 @import "./components/section.css";
-@custom-variant dark (&:is(.dark *));
 
 ::-webkit-scrollbar {
       width: 8px;
