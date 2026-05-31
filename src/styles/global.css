@@ -2,7 +2,52 @@
 @plugin "@tailwindcss/typography";
 @import "./components/form.css";
 @import "./components/form-contact.css";
-@import "./components/section.css";
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-VariableFont_opsz,wght.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Barlow Condensed';
+    src: url('../fonts/Barlow_Condensed/BarlowCondensed-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Barlow Condensed';
+    src: url('../fonts/Barlow_Condensed/BarlowCondensed-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Barlow Condensed';
+    src: url('../fonts/Barlow_Condensed/BarlowCondensed-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Barlow Condensed';
+    src: url('../fonts/Barlow_Condensed/BarlowCondensed-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 ::-webkit-scrollbar {
       width: 8px;
