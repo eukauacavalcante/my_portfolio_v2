@@ -43,12 +43,12 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                         <span class="text-primary font-semibold uppercase">{project.title}</span>
                     </div>
                     <div class="flex flex-row justify-between items-center">
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase">
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold uppercase">
                             {project.title}
                         </h1>
                         <span class="text-muted-foreground tracking-[1.17px]">{project.date}</span>
                     </div>
-                    <p class="text-base sm:text-lg md:text-xl text-muted-foreground">
+                    <p class="text-lg md:text-xl text-muted-foreground">
                         {project.phrase}
                     </p>
                     <div class="flex flex-row gap-2">
@@ -79,19 +79,21 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                         </svg>
                     </div>
                 )}
-                <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4">Resumo</h2>
-                <p class="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
-                    {project.resume}
+                <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4">Sobre o Projeto</h2>
+                <p
+                    class="text-lg md:text-xl leading-relaxed text-muted-foreground"
+                    set:html={project.resume.replaceAll('\n', '<br />')}
+                >
                 </p>
                 {project.isPrivate && (
                     <Card size="full">
                         <div class="flex-1 min-w-0">
                             <div class="flex items-center gap-2 mb-3">
-                                <h2 class="text-lg sm:text-xl font-semibold text-foreground uppercase">
+                                <h2 class="text-xl font-semibold text-foreground uppercase">
                                     Projeto em Desenvolvimento
                                 </h2>
                             </div>
-                            <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                            <p class="text-muted-foreground text-lg md:text-xl leading-relaxed">
                                 {project.privateDescription}
                             </p>
                         </div>
@@ -122,7 +124,7 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                         </Button>
                     )}
                 </div>
-                <hr class="border border-border">
+                <hr class="border-sm border-border">
                 {project.functionalities && project.functionalities.length > 0 && (
                     <div class="space-y-6">
                         <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4">Funcionalidades</h2>
@@ -130,10 +132,10 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                             {project.functionalities.map((func) => (
                                 <Card>
                                     <div class="flex flex-col items-start gap-4">
-                                        <h4 class="text-sm sm:text-lg font-semibold text-foreground uppercase tracking-wider">
+                                        <h4 class="text-xl font-semibold text-foreground uppercase tracking-wider">
                                             {func.title}
                                         </h4>
-                                        <p class="text-sm sm:text-base md:text-xl text-muted-foreground leading-relaxed">
+                                        <p class="text-lg md:text-xl text-muted-foreground leading-relaxed">
                                             {func.description} 
                                         </p>
                                     </div>
@@ -145,42 +147,56 @@ const pageTitle = project ? `${project.title}` : "Projeto nao encontrado";
                 {project.stack && (
                     <div class="space-y-4">
                         <h2 class="text-2xl sm:text-3xl font-bold uppercase mb-4">Tecnologias</h2>
-                        {project.stack.frontend && project.stack.frontend.length > 0 && (
-                            <div class="space-y-2">
-                                <h3 class="text-sm sm:text-base md:text-lg font-semibold text-muted-foreground uppercase">Frontend</h3>
-                                <div class="flex flex-wrap gap-2">
-                                    {project.stack.frontend.map((tech) => (
-                                        <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
-                                            {tech}
-                                        </span>
-                                    ))}
+                        <div class="flex flex-col gap-6">
+                            {project.stack.frontend && project.stack.frontend.length > 0 && (
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-semibold text-muted-foreground uppercase">Frontend</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        {project.stack.frontend.map((tech) => (
+                                            <span class="text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                        {project.stack.backend && project.stack.backend.length > 0 && (
-                            <div class="space-y-2">
-                                <h3 class="text-sm sm:text-base md:text-lg font-semibold text-muted-foreground uppercase">Backend</h3>
-                                <div class="flex flex-wrap gap-2">
-                                    {project.stack.backend.map((tech) => (
-                                        <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
-                                            {tech}
-                                        </span>
-                                    ))}
+                            )}
+                            {project.stack.backend && project.stack.backend.length > 0 && (
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-semibold text-muted-foreground uppercase">Backend</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        {project.stack.backend.map((tech) => (
+                                            <span class="text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                        {project.stack.database && project.stack.database.length > 0 && (
-                            <div class="space-y-2">
-                                <h3 class="text-sm sm:text-base md:text-lg font-semibold text-muted-foreground uppercase">Banco de Dados</h3>
-                                <div class="flex flex-wrap gap-2">
-                                    {project.stack.database.map((tech) => (
-                                        <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
-                                            {tech}
-                                        </span>
-                                    ))}
+                            )}
+                            {project.stack.ops && project.stack.ops.length > 0 && (
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-semibold text-muted-foreground uppercase">Infraestrutura</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        {project.stack.ops.map((tech) => (
+                                            <span class="text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
+                            )}
+                            {project.stack.database && project.stack.database.length > 0 && (
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-semibold text-muted-foreground uppercase">Banco de Dados</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        {project.stack.database.map((tech) => (
+                                            <span class="text-xs sm:text-sm text-muted-foreground uppercase bg-card border border-[rgba(240,240,250,0.2)] px-3 py-1.5 tracking-[1px] rounded-[5px]">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 )}
                 <div class="flex justify-center border-t border-border py-6">

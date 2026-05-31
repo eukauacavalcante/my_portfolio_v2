@@ -40,7 +40,7 @@ function formattedDate(dateString: string) {
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight leading-tight">
                 {frontmatter.title}
             </h1>
-            <p class="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
+            <p class="text-lg md:text-xl leading-relaxed text-muted-foreground">
                 {frontmatter.description}
             </p>
         </div>
@@ -57,7 +57,7 @@ function formattedDate(dateString: string) {
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/>
                     </svg>
-                    <span>
+                    <span class="sm:text-base md:text-lg">
                         Por
                         <a href="/#sobre-mim" class="text-primary hover:underline transition">
                             {frontmatter.author}
@@ -68,7 +68,7 @@ function formattedDate(dateString: string) {
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/>
                     </svg>
-                    Tempo de leitura: {frontmatter.readingTime} min
+                    <span class="sm:text-base md:text-lg">Tempo de leitura: {frontmatter.readingTime} min</span>
                 </span>
             </div>
             <div class="w-full md:w-1/2 flex flex-col md:items-end">
