@@ -4,7 +4,6 @@
 
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 ![Astro](https://img.shields.io/badge/Astro-v5.18.0-white?logo=astro)
-![React](https://img.shields.io/badge/React-v19-61DAFB?logo=react&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-06B6D4?logo=tailwindcss&logoColor=white)
 
 [kauacavalcante.vercel.app](https://kauacavalcante.vercel.app)
@@ -29,7 +28,6 @@ Buscando mais simplicidade e performance para algo de conteúdo estático, o por
 - **[Astro 5.18.0](https://astro.build)**: framework web otimizado para sites orientados a conteúdo, com suporte a ilhas de componentes interativos.
 
 ### UI e Estilização
-- **[React 19](https://react.dev)**: biblioteca para construção de componentes interativos via integração `@astrojs/react`
 - **[Tailwind CSS v4](https://tailwindcss.com)**: framework utility-first integrado via `@tailwindcss/vite`, com plugin de tipografia
 
 ### Utilitários
