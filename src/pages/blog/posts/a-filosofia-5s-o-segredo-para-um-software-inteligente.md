@@ -34,7 +34,7 @@ No contexto de desenvolvimento de software, a sensação é a mesma quando você
 De forma abrangente, o Seiton nos ensina a separar o que é útil do que é ruído. No código, isso começa pelo uso de nomes adequados. Robert C. Martin resume bem: tratando a escolha de uma variável com o mesmo cuidado com que se escolhe o nome de um filho. Veja o exemplo abaixo em Python:
 
 <div style="display: flex; justify-content: center;">
-  <img src="/blog/post-3/seiton-senso de-organizacao.svg" alt="img" />
+  <img src="/blog/post-3/seiton-senso-de-organizacao.webp" alt="Exemplo de código Python demonstrando Seiton com a função sortear_nome e tipagem de dados clara." />
 </div>
 
 Note que, mesmo se você nunca tiver visto Python na vida, o nome da função entrega o jogo: ela sorteia um nome. Não há necessidade de comentários redundantes ou de ler o código de trás para frente. A função é autoexplicativa.
@@ -54,13 +54,13 @@ A seguir, perceba a diferença entre um código poluído e um código que passou
 ### Código com poluição (Antes do Seiri)
 
 <div style="display: flex; justify-content: center;">
-  <img src="/blog/post-3/seiri-senso-de-utilizacao-1.svg" alt="img" />
+  <img src="/blog/post-3/seiri-senso-de-utilizacao-1.webp" alt="Exemplo de código Python poluído com importações não utilizadas, comentários antigos e código comentado." />
 </div>
 
 ### Código Limpo (Depois do Seiri)
 
 <div style="display: flex; justify-content: center;">
-  <img src="/blog/post-3/seiri-senso-de-utilizacao-2.svg" alt="img" />
+  <img src="/blog/post-3/seiri-senso-de-utilizacao-2.webp" alt="Exemplo de código Python limpo após aplicar o Seiri, mantendo apenas a função essencial e legível." />
 </div>
 
 No primeiro bloco, a gente encontra importações inúteis, funções desativadas presas em comentários e anotações antigas que só geram ruído. No segundo bloco, aplicamos o Seiri: tiramos todo o entulho e deixamos apenas o que tem utilidade real. O resultado? Um código leve, direto ao ponto e pronto para ser limpo com mais profundidade no próximo passo.
@@ -74,7 +74,7 @@ O Seiso nos ensina que a limpeza não é um evento único, mas um hábito. No c�
 Veja este exemplo simples em Python tratando uma entrada de dados:
 
 <div style="display: flex; justify-content: center;">
-  <img src="/blog/post-3/seiso-a-chave-para-identificacao-de-erros.svg" alt="img" />
+  <img src="/blog/post-3/seiso-a-chave-para-identificacao-de-erros.webp" alt="Exemplo de tratamento de erros em Python usando try e except para evitar falhas no programa." />
 </div>
 
 Perceba que, usando o bloco `try/except`, nós antecipamos um erro clássico (divisão por zero). Em vez do programa "pipocar" na tela com uma mensagem assustadora em vermelho, a função identifica a falha com gentileza e mantém a aplicação rodando de forma limpa.
@@ -88,13 +88,13 @@ No mundo do código, o Seiketsu garante que todo o time escreva com o mesmo "sot
 ### Código fora do padrão (Sem Seiketsu)
 
 <div style="display: flex; justify-content: center;">
-  <img src="/blog/post-3/seiketsu-criando-padroes-visuais-de-excelencia-1.svg" alt="img" />
+  <img src="/blog/post-3/seiketsu-criando-padroes-visuais-de-excelencia-1.webp" alt="Exemplo de código Python com formatação inconsistente e sem espaçamentos adequados." />
 </div>
 
 ### Código padronizado - PEP 8 (Com Seiketsu)
 
 <div style="display: flex; justify-content: center;">
-  <img src="/blog/post-3/seiketsu-criando-padroes-visuais-de-excelencia-2.svg" alt="img" />
+  <img src="/blog/post-3/seiketsu-criando-padroes-visuais-de-excelencia-2.webp" alt="Exemplo de código Python padronizado segundo as normas da PEP 8 com espaçamento correto." />
 </div>
 
 Repare como o espaçamento entre os operadores (`+`, `/`), o uso de duas linhas em branco entre as funções e os nomes padronizados deixam a leitura incrivelmente confortável. O Seiketsu transforma a leitura do código em algo fluido e previsível.
@@ -108,7 +108,7 @@ O Shutsuke é sobre criar hábitos sustentáveis a longo prazo. No dia a dia de 
 Para ilustrar isso na prática, imagine uma função que simula uma "esteira de checagem automática" antes do seu código ir para a produção:
 
 <div style="display: flex; justify-content: center;">
-  <img src="/blog/post-3/shutsuke-o-pilar-de-sustentcao-da-metodologia-5s.svg" alt="img" />
+  <img src="/blog/post-3/shutsuke-o-pilar-de-sustentacao-da-metodologia-5s.webp" alt="Exemplo de função Python simulando uma esteira de verificação CI para validar os padrões do 5S." />
 </div>
 
 Esse pequeno script representa a mentalidade do Shutsuke: um compromisso automático com a qualidade. Com a disciplina certa, os outros 4 sensos deixam de ser uma "tarefa chata" e viram o modo natural do time trabalhar.
