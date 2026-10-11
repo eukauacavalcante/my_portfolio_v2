@@ -6,7 +6,7 @@
 ![Astro](https://img.shields.io/badge/Astro-v5.18.0-white?logo=astro)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-06B6D4?logo=tailwindcss&logoColor=white)
 
-[kauacavalcante.vercel.app](https://kauacavalcante.vercel.app)
+[kauacavalcante.com.br](https://kauacavalcante.com.br)
 
 Meu portfólio pessoal moderno e responsivo que apresenta minhas habilidades como desenvolvedor full stack, projetos e stack tecnológica de forma intuitiva e acessível.
 
