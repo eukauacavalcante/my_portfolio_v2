@@ -5,28 +5,31 @@ import { twMerge } from "tailwind-merge";
 interface Props extends HTMLAttributes<"a"> {
     href?: string;
     variant?: "default" | "outline";
-    size?: "responsive" | "lg" | "full";
+    size?: "responsive" | "lg" | "sm" | "full";
+    direction?: "default" | "back";
     class?: string;
 }
 
 const { 
     href = "#", 
-    variant = "default", 
+    variant = "default",
     size = "responsive",
+    direction = "default",
     class: className = "",
     ...props
 } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
+const baseStyles = "inline-flex items-center justify-center transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-[5px] sm:text-base md:text-lg uppercase";
 
 const variantStyles = {
-    default: "bg-foreground text-primary-foreground rounded-lg hover:bg-foreground/80 active:scale-95",
-    outline: "bg-transparent border-2 border-border text-foreground rounded-lg hover:text-accent-foreground hover:border-accent-foreground/50",
+    default: "bg-foreground text-primary-foreground border border-foreground hover:bg-foreground/85",
+    outline: "border border-border text-foreground hover:bg-[rgba(240,240,250,0.15)] hover:border-[rgba(240,240,250,0.65)]",
 };
 
 const sizeStyles = {
-    responsive: "px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base",
+    responsive: "px-4 py-2 text-sm sm:px-6 sm:py-4",
     lg: "px-8 py-4 text-lg",
+    sm: "px-3 py-2 text-sm",
     full: "w-full px-6 py-3 text-base"
 };
 
@@ -34,5 +37,11 @@ const buttonClasses = twMerge(baseStyles, variantStyles[variant], sizeStyles[siz
 ---
 
 <a href={href} class={buttonClasses} {...props}>
+    {direction === "back" && (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 7l-5 5l5 5"/></svg>
+    )}
     <slot />
+    {direction === "default" && (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 12 24" aria-hidden="true"><defs><path id="SVG1pzpbdYY" fill="currentColor" d="m7.588 12.43l-1.061 1.06L.748 7.713a.996.996 0 0 1 0-1.413L6.527.52l1.06 1.06l-5.424 5.425z"/></defs><use fill-rule="evenodd" href="#SVG1pzpbdYY" transform="rotate(-180 5.02 9.505)"/></svg>
+    )}
 </a>

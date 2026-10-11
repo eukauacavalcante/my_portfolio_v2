@@ -14,20 +14,19 @@ const {
 } = Astro.props;
 ---
 
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR">
     <head>
         <Head
             title={pageTitle}
             description={pageDescription}
-            canonicalUrl={Astro.url.href}
             ogImage={ogImage}
             ogImageAlt={ogImageAlt}
-            canonicalUrl={canonicalUrl}
+            canonicalUrl={canonicalUrl ?? Astro.url.href}
         />
     </head>
-    <body class=`${className} bg-background text-primary selection:bg-primary selection:text-primary-foreground overflow-x-hidden`>
+    <body class=`${className} bg-background text-foreground selection:bg-foreground selection:text-primary-foreground overflow-x-hidden`>
         <Header />
-        <main>
+        <main class="w-full">
             <slot />
         </main>
         <Footer />

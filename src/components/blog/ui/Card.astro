@@ -1,0 +1,32 @@
+---
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+    size?: "sm" | "md" | "lg" | "full";
+    class?: string;
+    hover?: boolean;
+}
+
+const { 
+    size = "md",
+    class: className = "",
+    hover = false
+} = Astro.props;
+
+const baseStyles = "bg-black/20 border border-border transition-colors duration-300 rounded-[5px]";
+
+const sizeStyles = {
+    sm: "p-4",
+    md: "p-6 w-full max-w-md",
+    lg: "p-8 w-full max-w-lg",
+    full: "p-6 w-full"
+};
+
+const hoverStyles = hover ? "hover:border-foreground" : "";
+
+const cardClasses = twMerge(baseStyles, sizeStyles[size], hoverStyles, className);
+---
+
+<div class={cardClasses}>
+    <slot />
+</div>

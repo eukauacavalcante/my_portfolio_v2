@@ -15,99 +15,128 @@ function formattedDate(dateString: string) {
 <Layout
     pageTitle={frontmatter.title}
     pageDescription={frontmatter.description}
-    ogImage={frontmatter.image?.ogImage}
+    ogImage={frontmatter.image?.banner}
     ogImageAlt={frontmatter.image?.alt}
     canonicalUrl={`/blog/${frontmatter.slug}`}
 >
-    <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
+    <article class="min-h-svh w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div class="mb-8 sm:mb-12">
-            <Button href="/blog" variant="outline" class="group">
-                <svg class="group-hover:-translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    <path stroke-dasharray="20" d="M21 12h-17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M3 12l7 7M3 12l7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
-                </svg>
+            <Button href="/blog" variant="outline" direction="back">
                 Voltar
             </Button>
         </div>
-
-        {frontmatter.image?.banner && (
-            <div class="w-full h-50 md:h-100 mb-10 rounded-2xl overflow-hidden border border-border">
-                <Image
-                    src={"/" + frontmatter.image.banner}
-                    alt={frontmatter.image.alt ?? frontmatter.title}
-                    width={1200}
-                    height={630}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-            </div>
-        )}
-
         <div class="flex flex-col gap-3">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight leading-tight">
                 {frontmatter.title}
             </h1>
-            <p class="text-sm sm:text-base md:text-lg font-mono leading-relaxed text-muted-foreground">
-                // {frontmatter.description}
+            {frontmatter.image?.banner && (
+                <div class="w-full h-50 md:h-100 overflow-hidden rounded-[5px]">
+                    <Image
+                        src={"/" + frontmatter.image.banner}
+                        alt={frontmatter.image.alt ?? frontmatter.title}
+                        width={1200}
+                        height={630}
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            )}
+            <p class="text-lg md:text-xl leading-relaxed text-muted-foreground">
+                {frontmatter.description}
             </p>
         </div>
-
-        {frontmatter.tags?.length > 0 && (
-            <div class="flex flex-wrap gap-2 my-4">
-                {frontmatter.tags.map((tag: string) => (
-                    <TagButton tag={tag} />
-                ))}
-            </div>
-        )}
-
-        <div class="flex flex-col md:flex-row md:gap-2 text-xs sm:text-sm md:text-base text-muted-foreground mb-8 pb-8 border-b border-border">
-            <div class="w-full md:w-1/2 flex flex-col gap-2 mb-2">
-                <span class="flex flex-row gap-1 justify-start items-center">
+        <div class="flex w-full justify-between items-center flex-row mb-2">
+            {frontmatter.tags?.length > 0 && (
+                <div class="flex flex-wrap gap-2 my-4">
+                    {frontmatter.tags.map((tag: string) => (
+                        <TagButton tag={tag} />
+                    ))}
+                </div>
+            )}
+            <button 
+                id="btnCompartilhar"
+                data-title={frontmatter.title}
+                data-description={frontmatter.description}
+                class="flex gap-2 items-center text-sm md:text-base bg-primary text-background hover:bg-primary/80 transition-colors duration-200 cursor-pointer px-3 py-2 rounded-md h-8 md:h-10"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"></path>
+                </svg>
+                <span>Compartilhar</span>
+            </button>
+        </div>
+        <div class="flex gap-2 flex-row text-sm md:text-base text-muted-foreground mb-8 pb-8 border-b border-border">
+            <div class="w-full md:w-1/2 flex flex-col gap-2">
+                <span class="flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/>
                     </svg>
-                    <span>Por 
+                    <span class="sm:text-base md:text-lg">
+                        Por
                         <a href="/#sobre-mim" class="text-primary hover:underline transition">
                             {frontmatter.author}
                         </a>
                     </span>
                 </span>
-                <span class="flex flex-row gap-1 justify-start items-center">
+                <span class="flex gap-1 items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/>
                     </svg>
-                    Tempo de leitura: {frontmatter.readingTime} min
+                    <span class="sm:text-base md:text-lg">Tempo de leitura: {frontmatter.readingTime} min</span>
                 </span>
             </div>
-            <div class="w-full md:w-1/2 flex flex-col gap-2 md:items-end">
-                <span class="flex flex-row gap-1 justify-start items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/>
-                    </svg>
-                    Publicado em <time datetime={frontmatter.publishedOn}>{formattedDate(frontmatter.publishedOn)}</time>
-                </span>
-                {frontmatter.updatedOn && (
-                    <span class="flex flex-row gap-1 justify-start items-center">
+            <div class="w-full md:w-1/2 flex flex-col md:items-end">
+                <div class="flex flex-col gap-2">
+                    <span class="flex gap-1 items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/>
+                            <path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/>
                         </svg>
-                       Atualizado em <time datetime={frontmatter.updatedOn}>{formattedDate(frontmatter.updatedOn)}</time>
+                        Publicado em <time datetime={frontmatter.publishedOn}>{formattedDate(frontmatter.publishedOn)}</time>
                     </span>
-                )}
+                    {frontmatter.updatedOn && (
+                        <span class="flex gap-1 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/>
+                            </svg>
+                            Atualizado em <time datetime={frontmatter.updatedOn}>{formattedDate(frontmatter.updatedOn)}</time>
+                        </span>
+                    )}
+                </div>
             </div>
         </div>
-
-        <div class="prose dark:prose-invert max-w-none text-primary text-base sm:text-lg leading-relaxed">
+        <div class="prose prose-invert font-body max-w-none text-primary text-base sm:text-lg md:text-xl leading-relaxed">
             <slot />
         </div>
-
         <div class="flex justify-center mt-14 pt-8 border-t border-border">
-            <Button href="/blog" variant="outline" class="group">
-                <svg class="group-hover:-translate-x-1 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    <path stroke-dasharray="20" d="M21 12h-17.5"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M3 12l7 7M3 12l7 -7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0"/></path></g>
-                </svg>
+            <Button href="/blog" variant="outline" direction="back">
                 Voltar
             </Button>
         </div>
-
     </article>
 </Layout>
+
+<script>
+    const btn = document.getElementById('btnCompartilhar');
+
+    btn?.addEventListener('click', async () => {
+        const title = btn.getAttribute('data-title') || document.title;
+        const text = btn.getAttribute('data-description') || '';
+        const url = window.location.href;
+
+        const shareData = { title, text, url };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                console.log('Compartilhamento cancelado:', err);
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(url);
+                alert('Link copiado para a área de transferência! Cole o link em qualquer lugar para compartilhar.');
+            } catch (err) {
+                alert('Erro ao copiar o link.');
+            }
+        }
+    });
+</script>

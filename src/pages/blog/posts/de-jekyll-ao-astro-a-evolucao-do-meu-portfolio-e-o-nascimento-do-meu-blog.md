@@ -9,7 +9,6 @@ updatedOn: "03/18/2026"
 readingTime: 10
 image:
   banner: "blog/post-1/de-jekyll-ao-astro-banner.png"
-  ogImage: "blog/post-1/de-jekyll-ao-astro-og-image.png"
   alt: "De Jekyll ao Astro: A evolução do meu portfólio e o nascimento do meu blog. Imagem com fundo escuro mostrando o ícone do Jekyll (tubo de ensaio vermelho) sendo substituído pelo ícone do Astro (logo roxa em fundo degradê rosa). À direita, mockups do portfólio de Kauã Cavalcante em dispositivos mobile e desktop, exibindo a página do Portfólio e do Blog Pessoal."
 tags: ["portfolio", "blog", "novo"]
 ---
