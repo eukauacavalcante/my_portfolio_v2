@@ -44,13 +44,26 @@ function formattedDate(dateString: string) {
                 {frontmatter.description}
             </p>
         </div>
-        {frontmatter.tags?.length > 0 && (
-            <div class="flex flex-wrap gap-2 my-4">
-                {frontmatter.tags.map((tag: string) => (
-                    <TagButton tag={tag} />
-                ))}
-            </div>
-        )}
+        <div class="flex w-full justify-between items-center flex-row mb-2">
+            {frontmatter.tags?.length > 0 && (
+                <div class="flex flex-wrap gap-2 my-4">
+                    {frontmatter.tags.map((tag: string) => (
+                        <TagButton tag={tag} />
+                    ))}
+                </div>
+            )}
+            <button 
+                id="btnCompartilhar"
+                data-title={frontmatter.title}
+                data-description={frontmatter.description}
+                class="flex gap-2 items-center text-sm md:text-base bg-primary text-background hover:bg-primary/80 transition-colors duration-200 cursor-pointer px-3 py-2 rounded-md h-8 md:h-10"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"></path>
+                </svg>
+                <span>Compartilhar</span>
+            </button>
+        </div>
         <div class="flex gap-2 flex-row text-sm md:text-base text-muted-foreground mb-8 pb-8 border-b border-border">
             <div class="w-full md:w-1/2 flex flex-col gap-2">
                 <span class="flex gap-1 items-center">
@@ -100,3 +113,30 @@ function formattedDate(dateString: string) {
         </div>
     </article>
 </Layout>
+
+<script>
+    const btn = document.getElementById('btnCompartilhar');
+
+    btn?.addEventListener('click', async () => {
+        const title = btn.getAttribute('data-title') || document.title;
+        const text = btn.getAttribute('data-description') || '';
+        const url = window.location.href;
+
+        const shareData = { title, text, url };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                console.log('Compartilhamento cancelado:', err);
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(url);
+                alert('Link copiado para a área de transferência! Cole o link em qualquer lugar para compartilhar.');
+            } catch (err) {
+                alert('Erro ao copiar o link.');
+            }
+        }
+    });
+</script>

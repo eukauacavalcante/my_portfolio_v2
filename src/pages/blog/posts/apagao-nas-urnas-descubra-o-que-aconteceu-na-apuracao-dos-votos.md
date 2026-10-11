@@ -27,7 +27,7 @@ Resumidamente, o problema não estava na apuração dos votos, até porque a cam
 <div style="border-top: 1px solid rgba(84, 82, 82);"></div>
 
 ### Fontes
-<p id="nota1">[1] <a href="https://www.sos.ca.gov/elections/upcoming-elections/vote-counting-process">California Secretary of State - Vote Counting Process</a></p>
-<p id="nota2">[2] <a href="https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/05/eleicao-presidencial-votos-validos-comparacao-historica.ghtml">G1 - Eleição presidencial em 2026 registra 119,3 milhões de votos válidos</a></p>
-<p id="nota3">[3] <a href="https://www.cnnbrasil.com.br/internacional/trump-eleicoes-brasil-india-confunde/">CNN Brasil - Trump elogia rapidez da apuração nas eleições do Brasil em rede social</a></p>
-<p id="nota4">[4] <a href="https://www12.senado.leg.br/noticias/materias/2026/09/16/urna-eletronica-veja-como-funciona-e-como-o-voto-e-protegido">Senado Federal - Urna eletrônica: veja como funciona e como o voto é protegido</a></p>
+<p id="nota1">[1] <a href="https://www.sos.ca.gov/elections/upcoming-elections/vote-counting-process" target="_blank">California Secretary of State - Vote Counting Process</a></p>
+<p id="nota2">[2] <a href="https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/05/eleicao-presidencial-votos-validos-comparacao-historica.ghtml" target="_blank">G1 - Eleição presidencial em 2026 registra 119,3 milhões de votos válidos</a></p>
+<p id="nota3">[3] <a href="https://www.cnnbrasil.com.br/internacional/trump-eleicoes-brasil-india-confunde/" target="_blank">CNN Brasil - Trump elogia rapidez da apuração nas eleições do Brasil em rede social</a></p>
+<p id="nota4">[4] <a href="https://www12.senado.leg.br/noticias/materias/2026/09/16/urna-eletronica-veja-como-funciona-e-como-o-voto-e-protegido" target="_blank">Senado Federal - Urna eletrônica: veja como funciona e como o voto é protegido</a></p>
