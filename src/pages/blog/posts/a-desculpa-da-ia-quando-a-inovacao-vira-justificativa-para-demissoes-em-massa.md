@@ -8,7 +8,7 @@ publishedOn: "04/01/2026"
 updatedOn: "04/10/2026"
 readingTime: 20
 image:
-  banner: "blog/post-2/a-desculpa-da-ia-banner.png"
+  banner: "blog/post-2/a-desculpa-da-ia-banner.webp"
   alt: "Imagem de capa do artigo 'A desculpa da IA', sobre como a inovação tecnológica é usada para justificar demissões em massa, com logos da Microsoft, ChatGPT e Amazon."
 tags: ["ia", "layoffs"]
 ---

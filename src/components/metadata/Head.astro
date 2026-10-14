@@ -1,4 +1,7 @@
 ---
+import barlowRegular from "../../fonts/Barlow_Condensed/BarlowCondensed-Regular.woff2?url";
+import barlowBold from "../../fonts/Barlow_Condensed/BarlowCondensed-Bold.woff2?url";
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -14,7 +17,7 @@ const {
 	title = "Kauã Cavalcante | Desenvolvedor Full Stack",
 	description = "Portfólio de Kauã Cavalcante, desenvolvedor full stack especializado em Django e Next.js. Explore projetos, habilidades e experiência profissional.",
 	canonicalUrl = "https://kauacavalcante.com.br/",
-	ogImage = "https://kauacavalcante.com.br/og-image.png",
+	ogImage = "https://kauacavalcante.com.br/og-image.webp",
 	ogImageAlt = "Banner do portfólio de Kauã Cavalcante, Desenvolvedor Full Stack, exibindo o título em destaque à esquerda e o planeta Marte ao fundo à direita.",
 	ogType = "website",
 	twitterHandle = "@ikauacavalcante",
@@ -53,6 +56,8 @@ const personJsonLd = JSON.stringify({
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preload" href={barlowRegular} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={barlowBold} as="font" type="font/woff2" crossorigin />
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 <meta name="theme-color" content="#0f172a" />
 <title>{title}</title>

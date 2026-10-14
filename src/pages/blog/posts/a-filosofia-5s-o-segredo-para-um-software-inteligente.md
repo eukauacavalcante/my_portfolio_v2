@@ -7,7 +7,7 @@ author: "Kauã Cavalcante"
 publishedOn: "07/26/2026"
 readingTime: 20
 image:
-  banner: "blog/post-3/a-filosofia-5s.png"
+  banner: "blog/post-3/a-filosofia-5s.webp"
   alt: 'Banner ilustrativo do artigo sobre a Filosofia 5S. À esquerda, a capa do livro Código Limpo: "Habilidades Práticas do Agile Software", de Robert C. Martin. À direita, sobre um fundo espacial estrelado, destaca-se o título em letras garrafais brancas: "A FILOSOFIA 5S" seguido do subtítulo: "O segredo para um software inteligente".'
 tags: ["literatura"]
 ---
