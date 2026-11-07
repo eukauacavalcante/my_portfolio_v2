@@ -1,8 +1,6 @@
 ---
 import Card from "./Card.astro";
 import Button from "@/components/ui/Button.astro";
-import TagButton from "./TagButton.astro";
-import { Image } from "astro:assets";
 
 const featured = Astro.props.featured;
 ---
@@ -19,11 +17,14 @@ const featured = Astro.props.featured;
 >
     {featured.frontmatter.image?.banner && (
         <div class="w-full md:w-[56%] h-50 sm:h-80 md:h-auto overflow-hidden shrink-0">
-            <Image
+            <img
                 src={"/" + featured.frontmatter.image.banner}
                 alt={featured.frontmatter.image.alt ?? featured.frontmatter.title}
-                width={800}
-                height={450}
+                width={1200}
+                height={630}
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 class="w-full h-full object-cover"
             />
         </div>

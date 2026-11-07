@@ -1,7 +1,49 @@
 const projects = [
   {
+    slug: "mecanos",
+    logo: "projects/mecanos/mecanos-logo.webp",
+    images: [
+      "/projects/mecanos/mecanos-banner.webp",
+    ],
+    title: "MecanOS",
+    phrase: "Plataforma SaaS multi-tenant para gestão de oficinas mecânicas, com isolamento de dados no banco, cobrança por assinatura e comunicação automática com o cliente.",
+    resume: "MecanOS é um sistema de gestão para oficinas mecânicas que centraliza a operação do negócio em um só lugar: ordens de serviço, agendamentos, cadastro de clientes e veículos, controle de estoque de peças, fluxo de caixa e notificações automáticas por e-mail. O projeto é um produto SaaS em modelo de assinatura, sendo cada oficina um tenant isolado. A arquitetura é dividida em quatro repositórios independentes: uma API Django, a aplicação web em Next.js, a landing page em Astro e um gateway Nginx que termina o TLS e roteia os domínios. O diferencial técnico está no isolamento multitenant: além do filtro por tenant na camada Python, o próprio PostgreSQL aplica Row-Level Security, de forma que uma falha de código não exponha dados de outra oficina. O projeto está em fase final de testes, com previsão de lançamento público em 2027.",
+    tags: ["Django", "Next.js", "Multi-tenant", "SaaS", "PostgreSQL"],
+    date: "2026",
+    github: "",
+    linkedin: "",
+    documentation: "",
+    website: "https://mecanos.com.br",
+    isPrivate: true,
+    privateDescription: "O código-fonte deste projeto é mantido em repositórios privados por se tratar de um produto SaaS comercial com modelo de negócios ativo. Para garantir a segurança dos dados e o isolamento entre oficinas, toda a regra de negócio multi-tenant e as políticas de Row-Level Security (RLS) no PostgreSQL foram implementadas sob uma arquitetura proprietária.",
+    stack: {
+      frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Astro", "Recharts"],
+      backend: ["Django", "Django REST Framework", "Python", "Celery"],
+      devops: ["Docker", "Nginx"],
+      database: ["PostgreSQL", "Redis"],
+    },
+    functionalities: [
+      {
+        title: "Ordens de Serviço",
+        description: "Ciclo completo do atendimento, do agendamento à retirada do veículo, com status visível, peças e mão de obra separadas e PDF do orçamento e do comprovante.",
+      },
+      {
+        title: "Controle de Estoque",
+        description: "Cadastro de peças com SKU, custo e preço de venda, movimentação de entrada, saída e ajuste, alerta de estoque mínimo e baixa automática ao incluir a peça na OS.",
+      },
+      {
+        title: "Agendamentos",
+        description: "Calendário de revisões e serviços com confirmação, conclusão, cancelamento e não comparecimento, podendo originar uma ordem de serviço.",
+      },
+      {
+        title: "Financeiro e Fluxo de Caixa",
+        description: "Pagamentos por OS em dinheiro, cartão, Pix ou transferência, contas a receber com aging, fluxo de caixa e relatórios em PDF.",
+      },
+    ],
+  },
+  {
     slug: "acesso360",
-    logo: "projects/acesso360/acesso360-logo-square-dark.webp",
+    logo: "projects/acesso360/access360-logo.webp",
     images: [
       "/projects/acesso360/acesso360-banner-2-dark.webp",
       "/projects/acesso360/anima-lab-1.webp",
@@ -20,7 +62,7 @@ const projects = [
     privateDescription: "O sistema encontra-se atualmente em sua fase final de testes e validações práticas conduzidas pela nossa equipe de engenharia, acompanhando a instalação e calibração dos novos sensores diretamente nas catracas físicas do campus.",
     stack: {
         backend: ["FastAPI", "Python"],
-        ops: ["Docker"],
+        devops: ["Docker"],
         database: ["PostgreSQL"],
     },
     functionalities: [
@@ -41,57 +83,7 @@ const projects = [
         description: "O sistema oferece um fluxo para cadastros temporários que liberam a entrada de convidados e prestadores de serviço com um prazo de validade específico.",
       }
     ],
-  },
-  {
-    slug: "morpheus-env",
-    logo: "projects/morpheus-env/morpheus-env-logo.webp",
-    images: [
-      "/projects/morpheus-env/morpheus-home.webp",
-      "/projects/morpheus-env/morpheus-conversor.webp",
-      "/projects/morpheus-env/morpheus-moni.webp",
-    ],
-    title: "Morpheus Env",
-    phrase: "Projeto acadêmico com o objetivo de utilizar práticas de segurança e implementação de ferramentas educacionais.",
-    resume: "Morpheus Env é um simulador web que oferece ferramentas educacionais para análise de sistemas computacionais. O projeto foi desenvolvido com fins experimentais e acadêmicos, voltado à pesquisa, aprendizado e demonstração de conceitos.",
-    tags: ["Django", "Projeto Acadêmico"],
-    date: "2025",
-    github: "https://github.com/eukauacavalcante/morpheus_env",
-    linkedin: "https://www.linkedin.com/posts/eukauacavalcante_morpheus-env-activity-7398835065323036672-TlVp",
-    documentation: "https://eukauacavalcante.github.io/morpheus_env/",
-    website: "",
-    isPrivate: false,
-    stack: {
-        frontend: ["Django Templates", "JavaScript", "Tailwind"],
-        backend: ["Django", "Django REST Framework", "Python", "Groq AI"],
-        database: ["SQLite"],
-    },
-    functionalities: [
-      {
-        title: "Monitoramento",
-        description: "Análise em tempo real de CPU, RAM e Disco com visualização intuitiva.",
-      },
-      {
-        title: "Análise por IA",
-        description: "Utilização de IA generativa para interpretar dados do sistema e fornecer insights.",
-      },
-      {
-        title: "Conversor Numérico",
-        description: "Suporte completo para conversões entre binário, hexadecimal, octal e decimal.",
-      },
-      {
-        title: "Operações Lógicas",
-        description: "Execute operações AND, OR e XOR para trabalhar com valores booleanos.",
-      },
-      {
-        title: "Autenticação Segura",
-        description: "Sistema robusto com validação de email temporário e proteção avançada.",
-      },
-      {
-        title: "Notificações",
-        description: "Notificações por email com autenticação OAuth2 do Google integrada.",
-      }
-    ],
-  },
+  }
 ];
 
 export default projects;
